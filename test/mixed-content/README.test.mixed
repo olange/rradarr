@@ -1,0 +1,23 @@
+= Jeu mixte de fichiers DICOM de test
+
+Ce dossier <tt>test/mixed-content/</tt> contient un ensemble mixte de fichiers,
+destinés à éprouver la capacité de la classe Exam à en identifier le type:
+
+* <tt>IM-0001-0001.localizer.dcm</tt>
+  fichier DICOM contenant une image « scout »
+
+* <tt>IM-0001-0003.dcm</tt>
+  fichier DICOM contenant une image d'un examen
+
+* <tt>IM-0001-0004.dcm</tt>
+  fichier DICOM contenant une autre image d'un examen
+
+* <tt>README.test.mixed</tt>
+  un fichier texte (avec cette description)
+
+* <tt>IMPERSONATING.txt.dcm</tt>
+  autre fichier texte, dont l'extension porterait à croire qu'il s'agit
+  d'un fichier DICOM -- seulement un fichier texte cependant.
+
+Noter que la structure des fichiers DICOM de l'image « scout » et des images
+d'examen diffère -- ils n'ont pas exactement le même ensemble de métadonnées.

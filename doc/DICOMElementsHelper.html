@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Module: DICOMElementsHelper</title>
+
+	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="module">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="./lib/dicom_elements_helper_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/dicom_elements_helper.rb">lib/dicom_elements_helper.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-csv_colname_for">::csv_colname_for</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./COPYING.html">COPYING</a></li>
+				
+					<li class="file"><a href="./Gemfile.html">Gemfile</a></li>
+				
+					<li class="file"><a href="./README.html">README</a></li>
+				
+					<li class="file"><a href="./test/README_test.html">README_test</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./DICOMElementsHelper.html">DICOMElementsHelper</a></li>
+				
+					<li><a href="./Exam.html">Exam</a></li>
+				
+					<li><a href="./ExamCruncher.html">ExamCruncher</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="module">DICOMElementsHelper</h1>
+
+		<div id="description">
+			<p>
+Noms et valeurs possibles de quelques éléments de données DICOM qui nous
+intéressent.
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+		<div id="constants-list" class="section">
+			<h3 class="section-header">Constants</h3>
+			<dl>
+			
+				<dt><a name="DICOM_ELEMENTS_DICT">DICOM_ELEMENTS_DICT</a></dt>
+				
+				<dd class="description"><p>
+Dictionnaire de tous les éléments DICOM, avec leur nom et type
+</p></dd>
+				
+			
+				<dt><a name="DICOM_MODALITY_TAG">DICOM_MODALITY_TAG</a></dt>
+				
+				<dd class="description"><p>
+Type de scanner; devrait toujours valoir &#8216;CT&#8217; dans notre cas
+</p></dd>
+				
+			
+				<dt><a name="DICOM_MODALITY_CSVNAME">DICOM_MODALITY_CSVNAME</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+				<dt><a name="DICOM_IMAGE_TYPE_TAG">DICOM_IMAGE_TYPE_TAG</a></dt>
+				
+				<dd class="description"><p>
+Type de l&#8217;image; contient trois valeurs séparées par des backslash
+&#8216;', telles que &#8216;ORIGINALPRIMARYAXIAL&#8217;,
+&#8216;ORIGINALPRIMARYLOCALIZER&#8217; ou &#8216;DERIVEDSECONDARYSCREEN
+SAVE&#8217;
+</p></dd>
+				
+			
+				<dt><a name="DICOM_IMAGE_TYPE_CSVNAME">DICOM_IMAGE_TYPE_CSVNAME</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+				<dt><a name="DICOM_SERIES_DESCRIPTION_TAG">DICOM_SERIES_DESCRIPTION_TAG</a></dt>
+				
+				<dd class="description"><p>
+Description d&#8217;une série d&#8217;images
+</p></dd>
+				
+			
+				<dt><a name="DICOM_SERIES_DESCRIPTION_CSVNAME">DICOM_SERIES_DESCRIPTION_CSVNAME</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+				<dt><a name="DICOM_SCAN_OPTIONS_TAG">DICOM_SCAN_OPTIONS_TAG</a></dt>
+				
+				<dd class="description"><p>
+Mode d&#8217;acquisition d&#8217;une série d&#8217;images; p. ex.
+&#8216;SCOUT MODE&#8217; ou &#8216;HELICAL SCAN&#8217;. Noter que cet
+élément n&#8217;est pas présent sur tous les examens et qu&#8217;il est
+plus sûr de chercher si c&#8217;est une image « scout » dans
+l&#8217;élément Image Type (voir <a
+href="DICOMElementsHelper.html#DICOM_IMAGE_TYPE_TAG">DICOM_IMAGE_TYPE_TAG</a>).
+</p></dd>
+				
+			
+				<dt><a name="DICOM_SCAN_OPTIONS_CSVNAME">DICOM_SCAN_OPTIONS_CSVNAME</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+				<dt><a name="DICOM_XRAY_TUBE_CURRENT_TAG">DICOM_XRAY_TUBE_CURRENT_TAG</a></dt>
+				
+				<dd class="description"><p>
+Intensité du courant pendant l&#8217;acquisition
+</p></dd>
+				
+			
+				<dt><a name="DICOM_XRAY_TUBE_CURRENT_CSVNAME">DICOM_XRAY_TUBE_CURRENT_CSVNAME</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+				<dt><a name="DICOM_FILTER_TYPE_TAG">DICOM_FILTER_TYPE_TAG</a></dt>
+				
+				<dd class="description"><p>
+Filtre appliqué par le scanner aux tranches d&#8217;une série
+d&#8217;images;
+</p>
+<ol style="display: lower-alpha">
+<li><p>
+ex. &#8216;HEAD FILTER&#8217;, &#8216;BODY FILTER&#8217;, etc.
+</p>
+</li>
+</ol></dd>
+				
+			
+				<dt><a name="DICOM_FILTER_TYPE_CSVNAME">DICOM_FILTER_TYPE_CSVNAME</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+				<dt><a name="DICOM_SLICE_LOCATION_TAG">DICOM_SLICE_LOCATION_TAG</a></dt>
+				
+				<dd class="description"><p>
+Distance physique relative entre la tranche correspondant à une image et la
+tranche de la première image
+</p></dd>
+				
+			
+				<dt><a name="DICOM_SLICE_LOCATION_CSVNAME">DICOM_SLICE_LOCATION_CSVNAME</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+				<dt><a name="DICOM_PIXEL_DATA_TAG">DICOM_PIXEL_DATA_TAG</a></dt>
+				
+				<dd class="description"><p>
+Données du bitmap d&#8217;une image
+</p></dd>
+				
+			
+				<dt><a name="DICOM_PIXEL_DATA_CSVNAME">DICOM_PIXEL_DATA_CSVNAME</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+				<dt><a name="DICOM_SOURCE_FILE_TAG">DICOM_SOURCE_FILE_TAG</a></dt>
+				
+				<dd class="description"><p>
+Pseudo-élément correspondant au nom du fichier source d&#8217;une image
+</p></dd>
+				
+			
+				<dt><a name="DICOM_SOURCE_FILE_CSVNAME">DICOM_SOURCE_FILE_CSVNAME</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+				<dt><a name="DICOM_IMAGE_TYPE_SCOUT_MODE_RE">DICOM_IMAGE_TYPE_SCOUT_MODE_RE</a></dt>
+				
+				<dd class="description"><p>
+Valeurs possible de l&#8217;élément 0008,0008 (Image Type): expression
+régulière permettant d&#8217;identifier une image « scout »
+</p></dd>
+				
+			
+			</dl>
+		</div>
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="csv-colname-for-method" class="method-detail ">
+				<a name="method-c-csv_colname_for"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">csv_colname_for</span><span
+						class="method-args">( element_tag)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Compose et retourne le nom de colonne qui doit figurer dans un en-tête CSV
+pour un élément DICOM désigné par son nom (tag). Si le nom de
+l&#8217;élément ne figure pas dans le dictionnaire du module DICOM,
+retourne inchangé ce nom d&#8217;élément.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="csv-colname-for-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/dicom_elements_helper.rb, line 21</span>
+21:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">csv_colname_for</span>( <span class="ruby-identifier">element_tag</span>)
+22:     <span class="ruby-constant">DICOM_ELEMENTS_DICT</span>.<span class="ruby-identifier">has_key?</span>( <span class="ruby-identifier">element_tag</span>)        <span class="ruby-operator">?</span> <span class="ruby-node">&quot;#{element_tag} (#{DICOM_ELEMENTS_DICT[ element_tag][ 1]})&quot;</span>        <span class="ruby-operator">:</span> <span class="ruby-node">&quot;#{element_tag}&quot;</span>
+23:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

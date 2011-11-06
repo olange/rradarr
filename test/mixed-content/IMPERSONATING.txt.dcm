@@ -1,0 +1,3 @@
+Un fichier texte, dont l'extension porterait à croire qu'il s'agit
+d'un fichier DICOM -- qu'il n'est pas. La classe Exam devrait s'en
+apercevoir, comme il ne contient pas l'en-tête DICOM attendu.

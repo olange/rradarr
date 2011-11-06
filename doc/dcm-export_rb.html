@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>File: dcm-export.rb [Analyse d'un examen CTscan]</title>
+
+	<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+</head>
+
+<body class="file file-popup">
+	<div id="metadata">
+		<dl>
+			<dt class="modified-date">Last Modified</dt>
+			<dd class="modified-date">2011-11-06 22:22:38 +0100</dd>
+
+			
+			<dt class="requires">Requires</dt>
+			<dd class="requires">
+				<ul>
+				
+					<li>dicom</li>
+				
+				</ul>
+			</dd>
+			
+
+			
+		</dl>
+	</div>
+
+	<div id="documentation">
+		
+		<div class="description">
+			<h2>Description</h2>
+			<p>
+Commande l&#8217;extraction des métadonnées d&#8217;une série
+d&#8217;images DICOM d&#8217;un dossier (ou d&#8217;une hiérarchie de
+dossiers) et leur conversion au format CSV.
+</p>
+<p>
+Usage:
+</p>
+<pre>
+  ./dcm-export.rb [OPTIONS] DICOM_BASE_DIR
+</pre>
+<p>
+Exemple:
+</p>
+<pre>
+  ./dcm-export.rb --force test/valid-dicom/
+</pre>
+<p>
+Pour un détail des options:
+</p>
+<pre>
+  ./dcm-export.rb --help    .
+</pre>
+<p>
+Prérequis:
+</p>
+<pre>
+  ruby 1.9, et quelques gems (voir les fichiers Gemfile et README).
+</pre>
+<table>
+<tr><td valign="top">Author</td><td><p>
+Olivier Lange (<a
+href="mailto:olange@petit-atelier.ch">olange@petit-atelier.ch</a>)
+</p>
+</td></tr>
+<tr><td valign="top">Copyright</td><td><p>
+&#169; 2011 Tristan Zand &amp; Olivier Lange
+</p>
+</td></tr>
+<tr><td valign="top">License</td><td><p>
+GNU GPL, either v3 or (at your option) any later version.
+</p>
+</td></tr>
+</table>
+
+		</div>
+		
+	</div>
+</body>
+</html>
+

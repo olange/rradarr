@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>File: README_test [Analyse d'un examen CTscan]</title>
+
+	<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+</head>
+
+<body class="file">
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../COPYING.html">COPYING</a></li>
+				
+					<li class="file"><a href="../Gemfile.html">Gemfile</a></li>
+				
+					<li class="file"><a href="../README.html">README</a></li>
+				
+					<li class="file"><a href="../test/README_test.html">README_test</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../DICOMElementsHelper.html">DICOMElementsHelper</a></li>
+				
+					<li><a href="../Exam.html">Exam</a></li>
+				
+					<li><a href="../ExamCruncher.html">ExamCruncher</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1>Jeux de fichiers DICOM de test</h1>
+<p>
+Le dossier <tt>test/</tt> contient plusieurs jeux d&#8217;images DICOM
+destinés aux tests fonctionnels (voir script <tt><a
+href="exam_spec_rb.html">test/exam_spec.rb</a></tt>), répartis dans les
+sous-dossiers suivants:
+</p>
+<h2><tt>invalid-dicom/</tt></h2>
+<p>
+contient 1 fichier DICOM corrompu (créé à partir des ~140 premiers
+octets d&#8217;un fichier DICOM valide).
+</p>
+<h2><tt>mixed-content/</tt></h2>
+<p>
+contient 3 fichiers DICOM, dont l&#8217;un est une image <em>scout</em>,
+les autres des images d&#8217;examen, ainsi que deux fichiers texte;
+destinés à éprouver la capacité de la classe <a
+href="../Exam.html">Exam</a> à les identifier correctement.
+</p>
+<h2><tt>no-dicom/</tt></h2>
+<p>
+dossier vide (aucun fichier DICOM ou autre).
+</p>
+<h2><tt>non-homegeneous/</tt></h2>
+<p>
+contient 6 fichiers DICOM provenant de 3 séries d&#8217;images
+différentes, dont les deux premiers n&#8217;ont pas la même structure de
+données que les quatre suivants (68 éléments vs 226 éléments).
+</p>
+<p>
+Les deux premières images proviennent du rapport de dose, deux autres de
+l&#8217;examen 100KV et les deux derniers de l&#8217;examen 140KV.
+</p>
+<h2><tt>other/</tt></h2>
+<p>
+un fichier DICOM minimal, ne contenant que l&#8217;en-tête avec la
+signature.
+</p>
+<h2><tt>valid-dicom/</tt></h2>
+<h3><tt>LAPIN2_PRO_APC_100KV_CTDIVOL8_6/</tt></h3>
+<p>
+15 images DICOM d&#8217;une radiographie en tranches d&#8217;un lapin,
+réalisée avec l&#8217;exposition <b>automatique</b> du scanner
+(sous-ensemble, le jeu complet comprend 1000 images). Contiennent 226
+éléments de données.
+</p>
+<h3><tt>LAPIN2_PRO_APC_140KV_CTDIVOL2_16/</tt></h3>
+<p>
+10 images DICOM d&#8217;une radiographie en tranches du même lapin, avec
+une exposition <b>constante</b> du scanner (sous-ensemble, le jeu complet
+comprend 1000 images). Contiennent 226 éléments de données.
+</p>
+<h3><tt>Localizers_1/</tt></h3>
+<p>
+2 images DICOM, avec une radiographie transversale du même lapin, donnant
+un aperçu en plan de toutes les tranches. Contiennent 218 éléments de
+données.
+</p>
+<h3><tt>Rapport_dose_999/</tt></h3>
+<p>
+2 images DICOM avec une indication des doses de radiations émises lors des
+précédentes radiographies. Ces images ne présentent que des indications
+littérales (texte), sous forme de bitmap. Contiennent 68 éléments de
+données.
+</p>
+<h2>Licence</h2>
+<p>
+Copyright &#169; 2011 Tristan Zand &amp; Olivier Lange
+</p>
+<p>
+This test fileset is part of a program that is free software: you can
+redistribute it and/or modify it under the terms of the GNU General Public
+License as published by the Free Software Foundation, either version 3 of
+the License, or (at your option) any later version.
+</p>
+<p>
+The program and the test fileset are distributed in the hope that they will
+be useful, but WITHOUT ANY WARRANTY; without even the implied
+warrantywarrantyof MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See
+the GNU General Public License for more details.
+</p>
+<p>
+You should find a copy of the GNU General Public License within the <a
+href="../COPYING.html">COPYING</a> file along with the program.  If not,
+see <a href="http://www.gnu.org/licenses/.">www.gnu.org/licenses/.</a>
+</p>
+
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+</body>
+</html>
+

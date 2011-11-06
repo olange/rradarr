@@ -1,0 +1,100 @@
+= Analyse d'un examen radiologique CTscan
+
+Pour un examen radiologique de type *CTscan*, cette librairie permet:
+
+* de lire un jeu de fichiers DICOM à partir d'un dossier source;
+* d'en identifer les images « scout » (ou « localizers »);
+* d'extraire les métadonnées du jeu d'images DICOM;
+* et de les transcrire dans un fichier CSV.
+
+Quelques indications pour démarrer...
+
+== En un clin d'oeil
+
+N.B. Ignorez la première commande si vous n'utilisez pas RVM.
+
+  $ rvm use 1.9.2@dicom --create
+  $ bundle install
+  $ rdoc .
+  $ rspec --color .
+
+== Générer la documentation (API)
+
+Pour consulter la description des classes et leurs méthodes au format HTML
+et explorer leur hiérarchie.
+
+  $ rdoc -m README .
+  $ google-chrome doc/index.html &
+
+== Exécuter les tests
+
+Pour s'assurer que le code est fonctionnel. Les spécifications
+permettent quant à elles de lire les exigences auxquelles répondent
+les classes et de trouver des fragments de code pour invoquer celles-ci.
+
+  $ rvm use 1.9.2@dicom
+  $ rspec --color .
+  ...............
+
+  Finished in 4.92 seconds
+  15 examples, 0 failures
+
+Décompresser au préalable, dans le sous-dossier <tt>test/valid-dicom/</tt>,
+l'archive <tt>valid-dicom.tar.bz2</tt> qui s'y trouve.
+
+== Mise en place de l'environnement
+
+=== Créer un environnement RVM
+
+Si vous utilisez RVM[beginrescueend.com/rvm/best-practices/] (Ruby enVironment
+Manager), créez un jeu de librairies pour le projet:
+
+  $ rvm use 1.9.2
+  $ rvm gemset create dicom
+
+Ensuite, en préalable à toute commande (+ruby+, +bundle+, +irb+) et à chaque
+fois que vous ouvrirez la ligne de commande, songez à exécuter <b>une fois</b>
+la commande qui suit:
+
+  $ rvm use 1.9.2@dicom
+
+Un descripteur +.rvmrc+ se trouve à la racine du projet, pour simplifier
+cette tâche (RVM l'exécute automatiquement).
+
+=== Outils Ruby nécessaires
+
+Si +bundler+ n'était pas encore installé:
+
+  $ gem install bundler
+
+=== Librairies Ruby nécessaires
+
+Les librairies nécessaires au projet sont décrites dans le fichier +Gemfile+.
+Exécutez la commande suivante pour les télécharger et les installer dans
+votre environnement Ruby:
+
+  $ bundle install
+
+== Crédits de réalisation
+
+Requirements: Tristan Zand (mailto:zzz@zzz.ch)
+
+Author: Olivier Lange (mailto:olange@petit-atelier.ch)
+
+== Licence
+
+Copyright (c) 2011 Tristan Zand & Olivier Lange
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should find a copy of the GNU General Public License within the COPYING
+file along with this program. If not, see http://www.gnu.org/licenses/.
+

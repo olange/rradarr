@@ -1,0 +1,78 @@
+= Jeux de fichiers DICOM de test
+
+Le dossier <tt>test/</tt> contient plusieurs jeux d'images DICOM destinés
+aux tests fonctionnels (voir script <tt>test/exam_spec.rb</tt>), répartis
+dans les sous-dossiers suivants:
+
+== <tt>invalid-dicom/</tt>
+
+contient 1 fichier DICOM corrompu (créé à partir des ~140 premiers octets
+d'un fichier DICOM valide).
+
+== <tt>mixed-content/</tt>
+
+contient 3 fichiers DICOM, dont l'un est une image _scout_, les autres
+des images d'examen, ainsi que deux fichiers texte; destinés à éprouver
+la capacité de la classe Exam à les identifier correctement.
+
+== <tt>no-dicom/</tt>
+
+dossier vide (aucun fichier DICOM ou autre).
+
+== <tt>non-homegeneous/</tt>
+
+contient 6 fichiers DICOM provenant de 3 séries d'images différentes,
+dont les deux premiers n'ont pas la même structure de données que les
+quatre suivants (68 éléments vs 226 éléments).
+
+Les deux premières images proviennent du rapport de dose, deux autres
+de l'examen 100KV et les deux derniers de l'examen 140KV.
+
+== <tt>other/</tt>
+
+un fichier DICOM minimal, ne contenant que l'en-tête avec la signature.
+
+== <tt>valid-dicom/</tt>
+
+=== <tt>LAPIN2_PRO_APC_100KV_CTDIVOL8_6/</tt>
+
+15 images DICOM d'une radiographie en tranches d'un lapin, réalisée
+avec l'exposition *automatique* du scanner (sous-ensemble, le jeu
+complet comprend 1000 images). Contiennent 226 éléments de données.
+
+=== <tt>LAPIN2_PRO_APC_140KV_CTDIVOL2_16/</tt>
+
+10 images DICOM d'une radiographie en tranches du même lapin, avec
+une exposition *constante* du scanner (sous-ensemble, le jeu complet
+comprend 1000 images). Contiennent 226 éléments de données.
+
+=== <tt>Localizers_1/</tt>
+
+2 images DICOM, avec une radiographie transversale du même lapin,
+donnant un aperçu en plan de toutes les tranches.
+Contiennent 218 éléments de données.
+
+=== <tt>Rapport_dose_999/</tt>
+
+2 images DICOM avec une indication des doses de radiations émises
+lors des précédentes radiographies. Ces images ne présentent que
+des indications littérales (texte), sous forme de bitmap.
+Contiennent 68 éléments de données.
+
+== Licence
+
+Copyright (c) 2011 Tristan Zand & Olivier Lange
+
+This test fileset is part of a program that is free software: you can
+redistribute it and/or modify it under the terms of the GNU General
+Public License as published by the Free Software Foundation, either
+version 3 of the License, or (at your option) any later version.
+
+The program and the test fileset are distributed in the hope that they
+will be useful, but WITHOUT ANY WARRANTY; without even the implied
+warrantywarrantyof MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+
+You should find a copy of the GNU General Public License within the COPYING
+file along with the program.  If not, see http://www.gnu.org/licenses/.
+
