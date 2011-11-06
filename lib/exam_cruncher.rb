@@ -206,18 +206,20 @@ class ExamCruncher
         @options[ :force] = force
       end
 
-      # [ TODO
       opts.on( "-r", "--[no-]recurse", "Recurse into directories " \
         + "(default %s)." % @options[ :recurse]) do |recurse|
         @options[ :recurse] = recurse
-      end # ]
+      end
 
-      # [ FIXME: demander à Tristan
+      # [ FIXME: souhaité? cela rendrait-il l'export plus facile
+      # à utiliser? quelles seraient les colonnes souhaitées? ]
       opts.on( "--elements SET", [ :all, :doseff],
         "Set of elements in the export (all, doseff; " \
         + "default %s)." % @options[ :element_set]) do |eltset|
         @options[ :element_set] = eltset
-      end # ]
+        warn( "L'option --elements n'est pas prise en compte " \
+          "(non implémenté). Serait-elle utile?".red)
+      end
 
       opts.on( "-v", "--verbose", "Run more verbosely " \
         + "(default %s)." % @options[ :verbose]) do |verb|
