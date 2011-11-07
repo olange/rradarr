@@ -55,8 +55,8 @@ class Exam
   # Dossier source dans lequel se trouvent les images DICOM à traiter
   attr_accessor :source_dir
 
-  # Options d'extraction
-  attr_reader :options
+  # Options d'extraction; voir DEFAULT_OPTIONS pour les valeurs possibles.
+  attr_reader :options_extract
 
   # Collection des images de l'examen (<tt>'PATH' => DICOM::DObject</tt>).
   #
@@ -108,7 +108,7 @@ class Exam
   # l'être ultérieurement en invoquant la méthode source_dir=
   def initialize( dir_path = nil, options = {})
     reset!
-    @options = DEFAULT_OPTIONS.merge( options)
+    @options_extract = DEFAULT_OPTIONS.merge( options)
     self.source_dir = dir_path
   end
 
@@ -128,7 +128,7 @@ class Exam
     return if dir_path.nil? or @source_dir == dir_path
     reset!    # clear all data as source directory changed
     @source_dir = remove_last_dir_sep_from dir_path
-    read_images unless @options[ :defer_loading]
+    read_images unless @options_extract[ :defer_loading]
     @source_dir
   end
 
@@ -164,7 +164,8 @@ class Exam
     @scouts = prune_scout_images_from! @images
     @name = extract_exam_name
 
-    sort_images_by! options[:sort_images_by] if options[:sort_images_by]
+    sort_images_by! options_extract[:sort_images_by] \
+      if options_extract[:sort_images_by]
 
     @images.count + @scouts.count
   end
@@ -173,16 +174,14 @@ class Exam
   # source, +false+ dans le cas contraire et +nil+ si aucun fichier n'a
   # encore été lu.
   def has_images?
-    return nil if @images.nil?
-    @images.count > 0
+    @images && @images.count > 0
   end
 
   # Retourne +true+ si une image DICOM de type _scout_ au moins a été extraite
   # du dossier source, +false+ dans le cas contraire et +nil+ si aucun fichier
   # n'a encore été lu.
   def has_scouts?
-    return nil if @scouts.nil?
-    @scouts.count > 0
+    @scouts && @scouts.count > 0
   end
 
   # Retourne +false+ si une image DICOM de type quelconque (normale ou _scout_)
@@ -195,7 +194,7 @@ class Exam
 
   # Retourne true si la structure de données de toutes les images
   # est homogène (ou qu'il n'y a aucune image), false sinon.
-  def homogeneous_structure?
+  def has_homogeneous_structure?
     # Si déjà interrogé plus tôt, on s'épargne un recalcul
     return @images_homogeneous unless @images_homogeneous.nil?
 
@@ -265,7 +264,7 @@ class Exam
     read_images
     return if @images.empty?
     raise "DICOM source files have inconsistent structure among them" \
-      unless homogeneous_structure?
+      unless has_homogeneous_structure?
 
     csv_options = DEFAULT_CSV_OPTIONS
     CSV( output_file, csv_options) do |csv_file|
@@ -360,8 +359,8 @@ class Exam
   end
 
   # Détermine et retourne le nom de l'examen tantôt à partir des images
-  # de l'examen s'il y en a, ou des images « scout » s'il n'y en a pas.
-  # Retourne une valeur par défaut d'images d'examen et scout.
+  # de l'examen s'il y en a, ou des images _scout_ s'il n'y en a pas.
+  # Retourne une valeur par défaut s'il n'y a ni image normale ni _scout_.
   def extract_exam_name
     return extract_exam_name_from( @images.first) unless @images.first.nil?
     return extract_exam_name_from( @scouts.first) unless @scouts.first.nil?
@@ -376,18 +375,19 @@ class Exam
     dobject[ DICOM_SERIES_DESCRIPTION_TAG].value
   end
 
-  # Retourne true si l'objet DICOM contient une image « scout », en vérifiant
+  # Retourne true si l'objet DICOM contient une image _scout_, en vérifiant
   # si la valeur 'LOCALIZER' est présente dans l'élément 'Image Type'.
-  # Attention, entorse à la nomenclature: on attend un objet DICOM::DObject.
+  # Attention, entorse à la nomenclature dans le nom de la méthode:
+  # on attend un objet DICOM::DObject comme argument.
   def is_scout_image?( dobject)
     assert_is_kind_of_dobject dobject
     dobject.exists?( DICOM_IMAGE_TYPE_TAG) \
       and dobject[ DICOM_IMAGE_TYPE_TAG].value =~ DICOM_IMAGE_TYPE_SCOUT_MODE_RE
   end
 
-  # Supprime et retourne toutes les images « scout » d'une collection
+  # Supprime et retourne toutes les images _scout_ d'une collection
   # d'images donnée. Attention: la collection passée en paramètre sera
-  # altérée si elle contient des images « scout ».
+  # altérée si elle contient des images _scout_.
   def prune_scout_images_from!( images)
     scouts = images.select { |path, dobject| is_scout_image? dobject }
     scouts.each_key { |path| images.delete path } unless scouts.empty?
@@ -397,7 +397,7 @@ class Exam
   # Retourne un tableau constitué de l'identifiant (tag) et du nom de chaque
   # élément d'une image DICOM, destiné à être utilisé pour former l'en-tête
   # d'un fichier CSV. Exemple de fragment de tableau retourné:
-  # [ ..., "0010,0000 (Group Length)", "0010,0010 (Patient's Name)", ... ]
+  #   [ ..., "0010,0000 (Group Length)", "0010,0010 (Patient's Name)", ... ]
   def csv_metadata_header_from( image)
     path, dobject = image
     dobject.elements.map { |elt| \

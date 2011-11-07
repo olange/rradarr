@@ -147,19 +147,19 @@ describe Exam do
     it 'detects variant structure of the DICOM files' do
       # Cas de série d'images avec structure non homogène
       exam1 = Exam.new DIR_WITH_NON_HOMOGENEOUS_CONTENT
-      exam1.homogeneous_structure?.should be_false
+      exam1.should_not have_homogeneous_structure
 
       # Cas de série d'images avec structure homogène
       exam2 = Exam.new INPUT_DIR
-      exam2.homogeneous_structure?.should be_true
+      exam2.should have_homogeneous_structure
 
       exam3 = Exam.new ANOTHER_INPUT_DIR
-      exam3.homogeneous_structure?.should be_true
+      exam3.should have_homogeneous_structure
 
       # Cas particulier: si images « scout » uniquement, la « structure »
       # des images (absentes!) est considérée comme homogène également
       exam4 = Exam.new DIR_WITH_LOCALIZERS_ONLY
-      exam4.homogeneous_structure?.should be_true
+      exam4.should have_homogeneous_structure
     end
 
   end
