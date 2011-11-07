@@ -15,7 +15,7 @@ N.B. Ignorez la première commande si vous n'utilisez pas RVM.
 
   $ rvm use 1.9.2@dicom --create
   $ bundle install
-  $ rdoc .
+  $ rdoc -m README .
   $ rspec --color .
 
 == Générer la documentation (API)
@@ -23,7 +23,7 @@ N.B. Ignorez la première commande si vous n'utilisez pas RVM.
 Pour consulter la description des classes et leurs méthodes au format HTML
 et explorer leur hiérarchie.
 
-  $ rdoc -m README .
+  $ rdoc -m README -t "Extraction des metadonnees d'un examen DICOM" .
   $ google-chrome doc/index.html &
 
 == Exécuter les tests

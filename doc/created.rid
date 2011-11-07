@@ -1,10 +1,10 @@
-Sun, 06 Nov 2011 22:28:20 +0100
+Mon, 07 Nov 2011 01:00:23 +0100
 ./test/exam_spec.rb	Sun, 06 Nov 2011 22:21:40 +0100
 ./test/README_test	Sun, 06 Nov 2011 22:27:11 +0100
 ./Gemfile	Thu, 03 Nov 2011 23:38:03 +0100
 ./dcm-export.rb	Sun, 06 Nov 2011 22:22:38 +0100
-./README	Sun, 06 Nov 2011 22:21:20 +0100
-./lib/exam_cruncher.rb	Sun, 06 Nov 2011 22:22:10 +0100
+./README	Mon, 07 Nov 2011 00:57:09 +0100
+./lib/exam_cruncher.rb	Sun, 06 Nov 2011 23:49:13 +0100
 ./lib/exam.rb	Sun, 06 Nov 2011 22:22:26 +0100
 ./lib/dicom_elements_helper.rb	Sun, 06 Nov 2011 22:22:55 +0100
 ./COPYING	Sun, 06 Nov 2011 21:22:09 +0100

@@ -444,39 +444,40 @@ Assemble l&#8217;analyseur des options de la ligne de commande spécifiques
 199:         <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:force</span>] = <span class="ruby-identifier">force</span>
 200:       <span class="ruby-keyword kw">end</span>
 201: 
-202:       <span class="ruby-comment cmt"># [ TODO</span>
-203:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>( <span class="ruby-value str">&quot;-r&quot;</span>, <span class="ruby-value str">&quot;--[no-]recurse&quot;</span>, <span class="ruby-value str">&quot;Recurse into directories &quot;</span>          <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;(default %s).&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:recurse</span>]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">recurse</span><span class="ruby-operator">|</span>
-204:         <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:recurse</span>] = <span class="ruby-identifier">recurse</span>
-205:       <span class="ruby-keyword kw">end</span> <span class="ruby-comment cmt"># ]</span>
-206: 
-207:       <span class="ruby-comment cmt"># [ FIXME: demander à Tristan</span>
+202:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>( <span class="ruby-value str">&quot;-r&quot;</span>, <span class="ruby-value str">&quot;--[no-]recurse&quot;</span>, <span class="ruby-value str">&quot;Recurse into directories &quot;</span>          <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;(default %s).&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:recurse</span>]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">recurse</span><span class="ruby-operator">|</span>
+203:         <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:recurse</span>] = <span class="ruby-identifier">recurse</span>
+204:       <span class="ruby-keyword kw">end</span>
+205: 
+206:       <span class="ruby-comment cmt"># [ FIXME: souhaité? cela rendrait-il l'export plus facile</span>
+207:       <span class="ruby-comment cmt"># à utiliser? quelles seraient les colonnes souhaitées? ]</span>
 208:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>( <span class="ruby-value str">&quot;--elements SET&quot;</span>, [ <span class="ruby-value">:all</span>, <span class="ruby-value">:doseff</span>],
 209:         <span class="ruby-value str">&quot;Set of elements in the export (all, doseff; &quot;</span>          <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;default %s).&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:element_set</span>]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">eltset</span><span class="ruby-operator">|</span>
 210:         <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:element_set</span>] = <span class="ruby-identifier">eltset</span>
-211:       <span class="ruby-keyword kw">end</span> <span class="ruby-comment cmt"># ]</span>
-212: 
-213:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>( <span class="ruby-value str">&quot;-v&quot;</span>, <span class="ruby-value str">&quot;--verbose&quot;</span>, <span class="ruby-value str">&quot;Run more verbosely &quot;</span>          <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;(default %s).&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:verbose</span>]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">verb</span><span class="ruby-operator">|</span>
-214:         <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:verbose</span>] = <span class="ruby-identifier">verb</span>
-215:       <span class="ruby-keyword kw">end</span>
-216: 
-217:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>( <span class="ruby-value str">&quot;--dry-run&quot;</span>,
-218:         <span class="ruby-value str">&quot;Parse options and files, but do not write anything.&quot;</span>) <span class="ruby-keyword kw">do</span>
-219:         <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:dry_run</span>] = <span class="ruby-keyword kw">true</span>
-220:       <span class="ruby-keyword kw">end</span>
-221: 
-222:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">&quot;\nMiscellaneous options:&quot;</span>
-223: 
-224:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on_tail</span>( <span class="ruby-value str">&quot;-h&quot;</span>, <span class="ruby-value str">&quot;--help&quot;</span>, <span class="ruby-value str">&quot;Show this usage message and exit.&quot;</span>) <span class="ruby-keyword kw">do</span>
-225:         <span class="ruby-identifier">info</span>( <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">help</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n&quot;</span>)
-226:         <span class="ruby-identifier">exit</span>
-227:       <span class="ruby-keyword kw">end</span>
-228: 
-229:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on_tail</span>( <span class="ruby-value str">&quot;--copyright&quot;</span>, <span class="ruby-value str">&quot;Print the copyright.&quot;</span>) <span class="ruby-keyword kw">do</span>
-230:         <span class="ruby-constant">STDOUT</span>.<span class="ruby-identifier">puts</span> <span class="ruby-constant">LICENSE</span>
-231:         <span class="ruby-identifier">exit</span>
-232:       <span class="ruby-keyword kw">end</span>
-233:     <span class="ruby-keyword kw">end</span>
-234:   <span class="ruby-keyword kw">end</span></pre>
+211:         <span class="ruby-identifier">warn</span>( <span class="ruby-value str">&quot;L'option --elements n'est pas prise en compte &quot;</span>            <span class="ruby-value str">&quot;(non implémenté). Serait-elle utile?&quot;</span>.<span class="ruby-identifier">red</span>)
+212:       <span class="ruby-keyword kw">end</span>
+213: 
+214:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>( <span class="ruby-value str">&quot;-v&quot;</span>, <span class="ruby-value str">&quot;--verbose&quot;</span>, <span class="ruby-value str">&quot;Run more verbosely &quot;</span>          <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;(default %s).&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:verbose</span>]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">verb</span><span class="ruby-operator">|</span>
+215:         <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:verbose</span>] = <span class="ruby-identifier">verb</span>
+216:       <span class="ruby-keyword kw">end</span>
+217: 
+218:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>( <span class="ruby-value str">&quot;--dry-run&quot;</span>,
+219:         <span class="ruby-value str">&quot;Parse options and files, but do not write anything.&quot;</span>) <span class="ruby-keyword kw">do</span>
+220:         <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:dry_run</span>] = <span class="ruby-keyword kw">true</span>
+221:       <span class="ruby-keyword kw">end</span>
+222: 
+223:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">&quot;\nMiscellaneous options:&quot;</span>
+224: 
+225:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on_tail</span>( <span class="ruby-value str">&quot;-h&quot;</span>, <span class="ruby-value str">&quot;--help&quot;</span>, <span class="ruby-value str">&quot;Show this usage message and exit.&quot;</span>) <span class="ruby-keyword kw">do</span>
+226:         <span class="ruby-identifier">info</span>( <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">help</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n&quot;</span>)
+227:         <span class="ruby-identifier">exit</span>
+228:       <span class="ruby-keyword kw">end</span>
+229: 
+230:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on_tail</span>( <span class="ruby-value str">&quot;--copyright&quot;</span>, <span class="ruby-value str">&quot;Print the copyright.&quot;</span>) <span class="ruby-keyword kw">do</span>
+231:         <span class="ruby-constant">STDOUT</span>.<span class="ruby-identifier">puts</span> <span class="ruby-constant">LICENSE</span>
+232:         <span class="ruby-identifier">exit</span>
+233:       <span class="ruby-keyword kw">end</span>
+234:     <span class="ruby-keyword kw">end</span>
+235:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -638,13 +639,13 @@ est retourné tel quel.
 					<div class="method-source-code"
 						id="error-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 246</span>
-246:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">error</span>( <span class="ruby-identifier">msg</span>, <span class="ruby-identifier">with_status</span> = <span class="ruby-keyword kw">nil</span>)
-247:     <span class="ruby-identifier">msg</span> = <span class="ruby-value str">&quot;\n&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">msg</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
-248:     <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">msg</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot; &quot;</span>
-249:     <span class="ruby-identifier">exit</span> <span class="ruby-identifier">with_status</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">with_status</span>.<span class="ruby-identifier">nil?</span>
-250:     <span class="ruby-identifier">exit</span>
-251:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 248</span>
+248:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">error</span>( <span class="ruby-identifier">msg</span>, <span class="ruby-identifier">with_status</span> = <span class="ruby-keyword kw">nil</span>)
+249:     <span class="ruby-identifier">msg</span> = <span class="ruby-value str">&quot;\n&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">msg</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+250:     <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">msg</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot; &quot;</span>
+251:     <span class="ruby-identifier">exit</span> <span class="ruby-identifier">with_status</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">with_status</span>.<span class="ruby-identifier">nil?</span>
+252:     <span class="ruby-identifier">exit</span>
+253:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -752,16 +753,16 @@ du chemin d&#8217;accès. Par exemple, pour le dossier
 					<div class="method-source-code"
 						id="info-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 258</span>
-258:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">info</span>( <span class="ruby-identifier">msg</span>, <span class="ruby-identifier">compl</span> = <span class="ruby-keyword kw">nil</span>)
-259:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:verbose</span>]
-260:       <span class="ruby-identifier">msg</span> = <span class="ruby-value str">&quot;%s → %s&quot;</span> <span class="ruby-operator">%</span> [ <span class="ruby-identifier">msg</span>, <span class="ruby-identifier">compl</span>] <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">compl</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">compl</span>.<span class="ruby-identifier">empty?</span>
-261:       <span class="ruby-identifier">msg</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;\n&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>[ <span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;\n&quot;</span>
-262:     <span class="ruby-keyword kw">else</span>
-263:       <span class="ruby-identifier">msg</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot; &quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>[ <span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;\n&quot;</span>
-264:     <span class="ruby-keyword kw">end</span>
-265:     <span class="ruby-constant">STDOUT</span>.<span class="ruby-identifier">print</span> <span class="ruby-identifier">msg</span>
-266:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 260</span>
+260:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">info</span>( <span class="ruby-identifier">msg</span>, <span class="ruby-identifier">compl</span> = <span class="ruby-keyword kw">nil</span>)
+261:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:verbose</span>]
+262:       <span class="ruby-identifier">msg</span> = <span class="ruby-value str">&quot;%s → %s&quot;</span> <span class="ruby-operator">%</span> [ <span class="ruby-identifier">msg</span>, <span class="ruby-identifier">compl</span>] <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">compl</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">compl</span>.<span class="ruby-identifier">empty?</span>
+263:       <span class="ruby-identifier">msg</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;\n&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>[ <span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;\n&quot;</span>
+264:     <span class="ruby-keyword kw">else</span>
+265:       <span class="ruby-identifier">msg</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot; &quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>[ <span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;\n&quot;</span>
+266:     <span class="ruby-keyword kw">end</span>
+267:     <span class="ruby-constant">STDOUT</span>.<span class="ruby-identifier">print</span> <span class="ruby-identifier">msg</span>
+268:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -922,11 +923,11 @@ invalides.
 					<div class="method-source-code"
 						id="warn-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 253</span>
-253:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">warn</span>( <span class="ruby-identifier">msg</span>)
-254:     <span class="ruby-identifier">msg</span> = <span class="ruby-value str">&quot;\n&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">msg</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
-255:     <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">msg</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot; &quot;</span>
-256:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 255</span>
+255:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">warn</span>( <span class="ruby-identifier">msg</span>)
+256:     <span class="ruby-identifier">msg</span> = <span class="ruby-value str">&quot;\n&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">msg</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
+257:     <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">msg</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot; &quot;</span>
+258:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

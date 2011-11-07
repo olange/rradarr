@@ -6,7 +6,7 @@
 <head>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 
-	<title>Analyse d'un examen CTscan</title>
+	<title>Extraction des metadonnees d'un examen DICOM</title>
 
 	<link type="text/css" media="screen" href="rdoc.css" rel="stylesheet" />
 
@@ -19,7 +19,7 @@
 <body class="indexpage">
 
 	
-	<h1>Analyse d'un examen CTscan</h1>
+	<h1>Extraction des metadonnees d'un examen DICOM</h1>
 
 	
 	<div id="main">
@@ -55,7 +55,7 @@ N.B. Ignorez la première commande si vous n&#8217;utilisez pas RVM.
 <pre>
   $ rvm use 1.9.2@dicom --create
   $ bundle install
-  $ rdoc .
+  $ rdoc -m README .
   $ rspec --color .
 </pre>
 <h2>Générer la documentation (API)</h2>
@@ -64,7 +64,7 @@ Pour consulter la description des classes et leurs méthodes au format HTML
 et explorer leur hiérarchie.
 </p>
 <pre>
-  $ rdoc -m README .
+  $ rdoc -m README -t &quot;Extraction des métadonnées d'un examen DICOM&quot; .
   $ google-chrome doc/index.html &amp;
 </pre>
 <h2>Exécuter les tests</h2>
