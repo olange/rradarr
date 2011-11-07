@@ -147,7 +147,7 @@ class Exam
   # n'a pas pu être créé, le fichier source ne peut pas être analysé
   # ou que la modalité n'est pas 'CT'.
   def read_images
-    return nil if images_already_read?
+    return if images_already_read?
 
     image_files = find_images_in @source_dir
     image_files.each do |path|
@@ -369,15 +369,15 @@ class Exam
   end
 
   # Détermine et retourne le nom de l'examen à partir des métadonnées
-  # d'une image DICOM donnée; extrait pour ce faire la valeur de
-  # l'élément <em>Series Description</em> (tag <tt>0008,103E</tt>).
+  # d'une image DICOM; extrait pour ce faire la valeur de l'élément
+  # <em>Series Description</em> (tag <tt>0008,103E</tt>).
   def extract_exam_name_from( image)
     path, dobject = image
     dobject[ DICOM_SERIES_DESCRIPTION_TAG].value
   end
 
   # Retourne true si l'objet DICOM contient une image « scout », en vérifiant
-  # si la valeur 'SCOUT MODE' est présente dans l'élément 'Scan Options'.
+  # si la valeur 'LOCALIZER' est présente dans l'élément 'Image Type'.
   # Attention, entorse à la nomenclature: on attend un objet DICOM::DObject.
   def is_scout_image?( dobject)
     assert_is_kind_of_dobject dobject
