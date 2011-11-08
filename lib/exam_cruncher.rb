@@ -67,13 +67,12 @@ class ExamCruncher
       info( "sluurp", "images from directory %s/ ..." % input_dir)
       exam = Exam.new( input_dir)
       if exam.empty?
-        info( "ouuups", "found no DICOM images, skipping that directory")
+        info( "ouuups".red, "found no DICOM images, skipping that directory")
         next
       end
 
-      output_basename = get_output_file_for( input_dir)
-      output_csv = output_basename + ".csv"
-      output_html = output_basename + ".html"
+      output_csv = get_output_file_for( input_dir, ".csv")
+      output_html = get_output_file_for( input_dir, ".html")
       check_if_output_exists( output_csv) if @options[ :csv_export]
       check_if_output_exists( output_html) if @options[ :html_export]
 
@@ -147,12 +146,12 @@ class ExamCruncher
   end
 
   # Compose un nom de fichier d'après le chemin d'accès à un dossier
-  # d'images, sans extension (on peut ainsi lui ajouter ".csv" ou ".html").
-  # Par exemple, pour le dossier "test/valid-dicom/LAPIN2/", retournerait
-  # le nom de fichier "test/valid-dicom/LAPIN2".
-  def get_output_file_for( dirname)
+  # d'images. Ajoute l'extension si elle a été communiquée (avec le point).
+  # Par exemple, get_output_file_for( "test/valid-dicom/LAPIN2/", ".csv")
+  # retournerait le nom de fichier "test/valid-dicom/LAPIN2.csv".
+  def get_output_file_for( dirname, suffix = "")
     dirpath = Pathname.new( dirname).cleanpath
-    output_file = "#{dirpath.basename}"   # dernier segment
+    output_file = "%s%s" % [ dirpath.basename, suffix]   # dernier segment + suffixe
     dirpath.parent.join( output_file).to_s
   end
 
