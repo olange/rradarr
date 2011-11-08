@@ -55,7 +55,7 @@
 			<div id="parent-class-section" class="section">
 				<h3 class="section-header">Parent</h3>
 				
-				<p class="link">Object</p>
+				<p class="link"><a href="Object.html">Object</a></p>
 				
 			</div>
 			
@@ -93,11 +93,11 @@
 					
 					<li><a href="#method-i-find_images_in">#find_images_in</a></li>
 					
+					<li><a href="#method-i-has_homogeneous_structure%3F">#has_homogeneous_structure?</a></li>
+					
 					<li><a href="#method-i-has_images%3F">#has_images?</a></li>
 					
 					<li><a href="#method-i-has_scouts%3F">#has_scouts?</a></li>
-					
-					<li><a href="#method-i-homogeneous_structure%3F">#homogeneous_structure?</a></li>
 					
 					<li><a href="#method-i-image_files_pattern_for">#image_files_pattern_for</a></li>
 					
@@ -124,6 +124,8 @@
 					<li><a href="#method-i-source_dir%3D">#source_dir=</a></li>
 					
 					<li><a href="#method-i-to_csv">#to_csv</a></li>
+					
+					<li><a href="#method-i-to_html">#to_html</a></li>
 					
 				</ul>
 			</div>
@@ -155,9 +157,9 @@
 				
 					<li class="file"><a href="./Gemfile.html">Gemfile</a></li>
 				
-					<li class="file"><a href="./README.html">README</a></li>
+					<li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
 				
-					<li class="file"><a href="./test/README_test.html">README_test</a></li>
+					<li class="file"><a href="./test/README_test_rdoc.html">README_test.rdoc</a></li>
 				
 				</ul>
 			</div>
@@ -183,6 +185,8 @@
 					<li><a href="./Exam.html">Exam</a></li>
 				
 					<li><a href="./ExamCruncher.html">ExamCruncher</a></li>
+				
+					<li><a href="./Object.html">Object</a></li>
 				
 				</ul>
 				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -315,18 +319,20 @@ Dossier source dans lequel se trouvent les images DICOM à traiter
 				</div>
 			</div>
 			
-			<div id="options-attribute-method" class="method-detail">
-				<a name="options"></a>
+			<div id="options-extract-attribute-method" class="method-detail">
+				<a name="options_extract"></a>
 				
 				<div class="method-heading attribute-method-heading">
-					<span class="method-name">options</span><span
+					<span class="method-name">options_extract</span><span
 						class="attribute-access-type">[R]</span>
 				</div>
 
 				<div class="method-description">
 				
 				<p>
-Options d&#8217;extraction
+Options d&#8217;extraction; voir <a
+href="Exam.html#DEFAULT_OPTIONS">DEFAULT_OPTIONS</a> pour les valeurs
+possibles.
 </p>
 				
 				</div>
@@ -448,12 +454,12 @@ href="Exam.html#source_dir">source_dir</a>=
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 109</span>
-109:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">dir_path</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">options</span> = {})
-110:     <span class="ruby-identifier">reset!</span>
-111:     <span class="ruby-ivar">@options</span> = <span class="ruby-constant">DEFAULT_OPTIONS</span>.<span class="ruby-identifier">merge</span>( <span class="ruby-identifier">options</span>)
-112:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">source_dir</span> = <span class="ruby-identifier">dir_path</span>
-113:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 110</span>
+110:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">dir_path</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">options</span> = {})
+111:     <span class="ruby-identifier">reset!</span>
+112:     <span class="ruby-ivar">@options_extract</span> = <span class="ruby-constant">DEFAULT_OPTIONS</span>.<span class="ruby-identifier">merge</span>( <span class="ruby-identifier">options</span>)
+113:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">source_dir</span> = <span class="ruby-identifier">dir_path</span>
+114:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -553,6 +559,58 @@ n&#8217;a encore été lu.
 			</div>
 
 		
+			<div id="has-homogeneous-structure--method" class="method-detail ">
+				<a name="method-i-has_homogeneous_structure%3F"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">has_homogeneous_structure?</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Retourne true si la structure de données de toutes les images est homogène
+(ou qu&#8217;il n&#8217;y a aucune image), false sinon.
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="has-homogeneous-structure--source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 198</span>
+198:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_homogeneous_structure?</span>
+199:     <span class="ruby-comment cmt"># Si déjà interrogé plus tôt, on s'épargne un recalcul</span>
+200:     <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@images_homogeneous</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@images_homogeneous</span>.<span class="ruby-identifier">nil?</span>
+201: 
+202:     <span class="ruby-comment cmt"># Sinon on examine la structure des images, deux par deux</span>
+203:     <span class="ruby-identifier">homogeneous</span> = <span class="ruby-keyword kw">true</span>
+204:     <span class="ruby-identifier">prev_struct</span>, <span class="ruby-identifier">struct</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>
+205:     <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">each_value</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dobject</span><span class="ruby-operator">|</span>
+206:       <span class="ruby-identifier">prev_struct</span>, <span class="ruby-identifier">struct</span> = <span class="ruby-identifier">struct</span>, <span class="ruby-identifier">sign_structure_of</span>( <span class="ruby-identifier">dobject</span>)
+207:       <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">prev_struct</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span>( <span class="ruby-identifier">struct</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">prev_struct</span>)
+208:       <span class="ruby-identifier">homogeneous</span> = <span class="ruby-keyword kw">false</span>; <span class="ruby-keyword kw">break</span>
+209:     <span class="ruby-keyword kw">end</span>
+210:     <span class="ruby-ivar">@images_homogeneous</span> = <span class="ruby-identifier">homogeneous</span>
+211: 
+212:     <span class="ruby-comment cmt"># Plus succinct?</span>
+213:     <span class="ruby-comment cmt"># @images.map { |path,dobj| sign_structure_of dobj }.each_cons(2) \</span>
+214:     <span class="ruby-comment cmt">#   { |sig1,sig2| next if sig1 == sig2; homogeneous = false; break }</span>
+215:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
 			<div id="has-images--method" class="method-detail ">
 				<a name="method-i-has_images%3F"></a>
 
@@ -577,11 +635,10 @@ aucun fichier n&#8217;a encore été lu.
 					<div class="method-source-code"
 						id="has-images--source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 175</span>
-175:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_images?</span>
-176:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">nil?</span>
-177:     <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
-178:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 177</span>
+177:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_images?</span>
+178:     <span class="ruby-ivar">@images</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+179:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -616,63 +673,10 @@ Retourne <tt>true</tt> si une image DICOM de type <em>scout</em> au moins a
 					<div class="method-source-code"
 						id="has-scouts--source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 183</span>
-183:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_scouts?</span>
-184:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">nil?</span>
-185:     <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 184</span>
+184:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_scouts?</span>
+185:     <span class="ruby-ivar">@scouts</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
 186:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="homogeneous-structure--method" class="method-detail ">
-				<a name="method-i-homogeneous_structure%3F"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">homogeneous_structure?</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Retourne true si la structure de données de toutes les images est homogène
-(ou qu&#8217;il n&#8217;y a aucune image), false sinon.
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="homogeneous-structure--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 198</span>
-198:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">homogeneous_structure?</span>
-199:     <span class="ruby-comment cmt"># Si déjà interrogé plus tôt, on s'épargne un recalcul</span>
-200:     <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@images_homogeneous</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@images_homogeneous</span>.<span class="ruby-identifier">nil?</span>
-201: 
-202:     <span class="ruby-comment cmt"># Sinon on examine la structure des images, deux par deux</span>
-203:     <span class="ruby-identifier">homogeneous</span> = <span class="ruby-keyword kw">true</span>
-204:     <span class="ruby-identifier">prev_struct</span>, <span class="ruby-identifier">struct</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>
-205:     <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">each_value</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dobject</span><span class="ruby-operator">|</span>
-206:       <span class="ruby-identifier">prev_struct</span>, <span class="ruby-identifier">struct</span> = <span class="ruby-identifier">struct</span>, <span class="ruby-identifier">sign_structure_of</span>( <span class="ruby-identifier">dobject</span>)
-207:       <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">prev_struct</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span>( <span class="ruby-identifier">struct</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">prev_struct</span>)
-208:       <span class="ruby-identifier">homogeneous</span> = <span class="ruby-keyword kw">false</span>; <span class="ruby-keyword kw">break</span>
-209:     <span class="ruby-keyword kw">end</span>
-210:     <span class="ruby-ivar">@images_homogeneous</span> = <span class="ruby-identifier">homogeneous</span>
-211: 
-212:     <span class="ruby-comment cmt"># Plus succinct?</span>
-213:     <span class="ruby-comment cmt"># @images.map { |path,dobj| sign_structure_of dobj }.each_cons(2) \</span>
-214:     <span class="ruby-comment cmt">#   { |sig1,sig2| next if sig1 == sig2; homogeneous = false; break }</span>
-215:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -706,10 +710,10 @@ Retourne true si les fichiers des images DICOM ont été intégralement lus
 					<div class="method-source-code"
 						id="images-already-read--source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 137</span>
-137:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">images_already_read?</span>
-138:     <span class="ruby-ivar">@images_read</span>  <span class="ruby-comment cmt"># comprendre @images_read == true, mais ne pas l'écrire!</span>
-139:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 138</span>
+138:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">images_already_read?</span>
+139:     <span class="ruby-ivar">@images_read</span>  <span class="ruby-comment cmt"># comprendre @images_read == true, mais ne pas l'écrire!</span>
+140:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -751,29 +755,29 @@ que la modalité n&#8217;est pas &#8216;CT&#8217;.
 					<div class="method-source-code"
 						id="read-images-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 149</span>
-149:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_images</span>
-150:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">images_already_read?</span>
-151: 
-152:     <span class="ruby-identifier">image_files</span> = <span class="ruby-identifier">find_images_in</span> <span class="ruby-ivar">@source_dir</span>
-153:     <span class="ruby-identifier">image_files</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
-154:       <span class="ruby-identifier">dobject</span> = <span class="ruby-constant">DICOM</span><span class="ruby-operator">::</span><span class="ruby-constant">DObject</span>.<span class="ruby-identifier">read</span> <span class="ruby-identifier">path</span>
-155:       <span class="ruby-identifier">assert_is_kind_of_dobject</span> <span class="ruby-identifier">dobject</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-comment cmt"># the paranoïd freak in me</span>
-156:       <span class="ruby-identifier">assert_successfully_read</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span>
-157:       <span class="ruby-identifier">assert_modality_is_CTscan</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span>
-158:       <span class="ruby-ivar">@images</span>[ <span class="ruby-identifier">path</span>] = <span class="ruby-identifier">dobject</span>
-159:     <span class="ruby-keyword kw">end</span>
-160:     <span class="ruby-ivar">@images_read</span> = <span class="ruby-keyword kw">true</span>
-161: 
-162:     <span class="ruby-comment cmt"># NOTE: éxécuter prune_scout_images_from!() avant extract_exam_name(),</span>
-163:     <span class="ruby-comment cmt"># afin d'extraire le nom en priorité à partir des images de l'examen</span>
-164:     <span class="ruby-ivar">@scouts</span> = <span class="ruby-identifier">prune_scout_images_from!</span> <span class="ruby-ivar">@images</span>
-165:     <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">extract_exam_name</span>
-166: 
-167:     <span class="ruby-identifier">sort_images_by!</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:sort_images_by</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:sort_images_by</span>]
-168: 
-169:     <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">count</span>
-170:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 150</span>
+150:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_images</span>
+151:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">images_already_read?</span>
+152: 
+153:     <span class="ruby-identifier">image_files</span> = <span class="ruby-identifier">find_images_in</span> <span class="ruby-ivar">@source_dir</span>
+154:     <span class="ruby-identifier">image_files</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+155:       <span class="ruby-identifier">dobject</span> = <span class="ruby-constant">DICOM</span><span class="ruby-operator">::</span><span class="ruby-constant">DObject</span>.<span class="ruby-identifier">read</span> <span class="ruby-identifier">path</span>
+156:       <span class="ruby-identifier">assert_is_kind_of_dobject</span> <span class="ruby-identifier">dobject</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-comment cmt"># the paranoïd freak in me</span>
+157:       <span class="ruby-identifier">assert_successfully_read</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span>
+158:       <span class="ruby-identifier">assert_modality_is_CTscan</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span>
+159:       <span class="ruby-ivar">@images</span>[ <span class="ruby-identifier">path</span>] = <span class="ruby-identifier">dobject</span>
+160:     <span class="ruby-keyword kw">end</span>
+161:     <span class="ruby-ivar">@images_read</span> = <span class="ruby-keyword kw">true</span>
+162: 
+163:     <span class="ruby-comment cmt"># NOTE: éxécuter prune_scout_images_from!() avant extract_exam_name(),</span>
+164:     <span class="ruby-comment cmt"># afin d'extraire le nom en priorité à partir des images de l'examen</span>
+165:     <span class="ruby-ivar">@scouts</span> = <span class="ruby-identifier">prune_scout_images_from!</span> <span class="ruby-ivar">@images</span>
+166:     <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">extract_exam_name</span>
+167: 
+168:     <span class="ruby-identifier">sort_images_by!</span> <span class="ruby-identifier">options_extract</span>[<span class="ruby-value">:sort_images_by</span>]        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options_extract</span>[<span class="ruby-value">:sort_images_by</span>]
+169: 
+170:     <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">count</span>
+171:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -921,14 +925,14 @@ normalisation.
 					<div class="method-source-code"
 						id="source-dir--source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 127</span>
-127:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">source_dir=</span>( <span class="ruby-identifier">dir_path</span>)
-128:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dir_path</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@source_dir</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">dir_path</span>
-129:     <span class="ruby-identifier">reset!</span>    <span class="ruby-comment cmt"># clear all data as source directory changed</span>
-130:     <span class="ruby-ivar">@source_dir</span> = <span class="ruby-identifier">remove_last_dir_sep_from</span> <span class="ruby-identifier">dir_path</span>
-131:     <span class="ruby-identifier">read_images</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:defer_loading</span>]
-132:     <span class="ruby-ivar">@source_dir</span>
-133:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 128</span>
+128:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">source_dir=</span>( <span class="ruby-identifier">dir_path</span>)
+129:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dir_path</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@source_dir</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">dir_path</span>
+130:     <span class="ruby-identifier">reset!</span>    <span class="ruby-comment cmt"># clear all data as source directory changed</span>
+131:     <span class="ruby-ivar">@source_dir</span> = <span class="ruby-identifier">remove_last_dir_sep_from</span> <span class="ruby-identifier">dir_path</span>
+132:     <span class="ruby-identifier">read_images</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@options_extract</span>[ <span class="ruby-value">:defer_loading</span>]
+133:     <span class="ruby-ivar">@source_dir</span>
+134:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -974,7 +978,7 @@ pas homogène (ce qui signale plusieurs séries d&#8217;images différentes).
 264:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_csv</span>( <span class="ruby-identifier">output_file</span>)
 265:     <span class="ruby-identifier">read_images</span>
 266:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">empty?</span>
-267:     <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;DICOM source files have inconsistent structure among them&quot;</span>        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">homogeneous_structure?</span>
+267:     <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;DICOM source files have inconsistent structure among them&quot;</span>        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">has_homogeneous_structure?</span>
 268: 
 269:     <span class="ruby-identifier">csv_options</span> = <span class="ruby-constant">DEFAULT_CSV_OPTIONS</span>
 270:     <span class="ruby-constant">CSV</span>( <span class="ruby-identifier">output_file</span>, <span class="ruby-identifier">csv_options</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">csv_file</span><span class="ruby-operator">|</span>
@@ -984,6 +988,53 @@ pas homogène (ce qui signale plusieurs séries d&#8217;images différentes).
 274:       <span class="ruby-keyword kw">end</span>
 275:     <span class="ruby-keyword kw">end</span>
 276:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="to-html-method" class="method-detail ">
+				<a name="method-i-to_html"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">to_html</span><span
+						class="method-args">( output_file)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="to-html-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 279</span>
+279:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_html</span>( <span class="ruby-identifier">output_file</span>)
+280:     <span class="ruby-identifier">read_images</span>
+281:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">empty?</span>
+282:     <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;DICOM source files have inconsistent structure among them&quot;</span>        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">has_homogeneous_structure?</span>
+283: 
+284:     <span class="ruby-identifier">sort_images_by!</span> <span class="ruby-value">:slice_location</span>
+285: 
+286:     <span class="ruby-identifier">data</span> = []
+287:     <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dobject</span><span class="ruby-operator">|</span>
+288:       <span class="ruby-identifier">data</span> <span class="ruby-operator">&lt;&lt;</span> {
+289:         <span class="ruby-value">:l</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">exists?</span>( <span class="ruby-constant">DICOM_SLICE_LOCATION_TAG</span>)            <span class="ruby-operator">?</span> <span class="ruby-constant">Float</span>( <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_SLICE_LOCATION_TAG</span>].<span class="ruby-identifier">value</span>) <span class="ruby-operator">:</span> <span class="ruby-value">0.0</span>,
+290:         <span class="ruby-value">:x</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">exists?</span>( <span class="ruby-constant">DICOM_XRAY_TUBE_CURRENT_TAG</span>)            <span class="ruby-operator">?</span> <span class="ruby-constant">Float</span>( <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_XRAY_TUBE_CURRENT_TAG</span>].<span class="ruby-identifier">value</span>) <span class="ruby-operator">:</span> <span class="ruby-value">0.0</span>
+291:       }
+292:     <span class="ruby-keyword kw">end</span>
+293:     <span class="ruby-identifier">output_file</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">html_graph_for</span>( <span class="ruby-identifier">data</span>)
+294:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1023,10 +1074,10 @@ DICOM::DObject
 					<div class="method-source-code"
 						id="assert-is-kind-of-dobject-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 335</span>
-335:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_is_kind_of_dobject</span>( <span class="ruby-identifier">obj</span>)
-336:     <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;Expected a DICOM::DObject, got #{obj.class}&quot;</span>        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">DICOM</span><span class="ruby-operator">::</span><span class="ruby-constant">DObject</span>
-337:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 355</span>
+355:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_is_kind_of_dobject</span>( <span class="ruby-identifier">obj</span>)
+356:     <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;Expected a DICOM::DObject, got #{obj.class}&quot;</span>        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">DICOM</span><span class="ruby-operator">::</span><span class="ruby-constant">DObject</span>
+357:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1060,11 +1111,11 @@ de type &#8216;CT&#8217;
 					<div class="method-source-code"
 						id="assert-modality-is-scan-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 348</span>
-348:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_modality_is_CTscan</span>( <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span>)
-349:     <span class="ruby-identifier">modality</span> = <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_MODALITY_TAG</span>].<span class="ruby-identifier">value</span>
-350:     <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Image DICOM de type autre que 'CT': #{path}, type: #{modality}&quot;</span>        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">modality</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;CT&quot;</span>
-351:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 368</span>
+368:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_modality_is_CTscan</span>( <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span>)
+369:     <span class="ruby-identifier">modality</span> = <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_MODALITY_TAG</span>].<span class="ruby-identifier">value</span>
+370:     <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Image DICOM de type autre que 'CT': #{path}, type: #{modality}&quot;</span>        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">modality</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;CT&quot;</span>
+371:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1098,10 +1149,10 @@ partiellement renseigné lors de la lecture du fichier source DICOM
 					<div class="method-source-code"
 						id="assert-successfully-read-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 342</span>
-342:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_successfully_read</span>( <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span>)
-343:     <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Image DICOM non traitée: #{path}; fichier corrompu?&quot;</span>        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">read_success</span>
-344:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 362</span>
+362:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_successfully_read</span>( <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span>)
+363:     <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Image DICOM non traitée: #{path}; fichier corrompu?&quot;</span>        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">read_success</span>
+364:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1136,10 +1187,10 @@ valide dans les premiers octets du fichier pour ce faire.
 					<div class="method-source-code"
 						id="candidate-image--source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 308</span>
-308:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">candidate_image?</span>( <span class="ruby-identifier">file_path</span>)
-309:     <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>( <span class="ruby-identifier">file_path</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">looks_like_dicom?</span>( <span class="ruby-identifier">file_path</span>)
-310:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 328</span>
+328:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">candidate_image?</span>( <span class="ruby-identifier">file_path</span>)
+329:     <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>( <span class="ruby-identifier">file_path</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">looks_like_dicom?</span>( <span class="ruby-identifier">file_path</span>)
+330:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1169,17 +1220,19 @@ chaque élément d&#8217;une image DICOM, destiné à être utilisé pour former
 l&#8217;en-tête d&#8217;un fichier CSV. Exemple de fragment de tableau
 retourné:
 </p>
+<pre>
+  [ ..., &quot;0010,0000 (Group Length)&quot;, &quot;0010,0010 (Patient's Name)&quot;, ... ]</pre>
 					
 
 					
 					<div class="method-source-code"
 						id="csv-metadata-header-from-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 401</span>
-401:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">csv_metadata_header_from</span>( <span class="ruby-identifier">image</span>)
-402:     <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span> = <span class="ruby-identifier">image</span>
-403:     <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">elt</span><span class="ruby-operator">|</span>        <span class="ruby-constant">DICOMElementsHelper</span><span class="ruby-operator">::</span><span class="ruby-identifier">csv_colname_for</span> <span class="ruby-identifier">elt</span>.<span class="ruby-identifier">tag</span> }          .<span class="ruby-identifier">insert</span>( <span class="ruby-value">0</span>, <span class="ruby-constant">DICOM_SOURCE_FILE_CSVNAME</span>)
-404:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 422</span>
+422:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">csv_metadata_header_from</span>( <span class="ruby-identifier">image</span>)
+423:     <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span> = <span class="ruby-identifier">image</span>
+424:     <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">elt</span><span class="ruby-operator">|</span>        <span class="ruby-constant">DICOMElementsHelper</span><span class="ruby-operator">::</span><span class="ruby-identifier">csv_colname_for</span> <span class="ruby-identifier">elt</span>.<span class="ruby-identifier">tag</span> }          .<span class="ruby-identifier">insert</span>( <span class="ruby-value">0</span>, <span class="ruby-constant">DICOM_SOURCE_FILE_CSVNAME</span>)
+425:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1213,11 +1266,11 @@ d&#8217;une image DICOM, destinés à être exportés dans un fichier CSV.
 					<div class="method-source-code"
 						id="csv-metadata-values-from-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 410</span>
-410:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">csv_metadata_values_from</span>( <span class="ruby-identifier">image</span>)
-411:     <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span> = <span class="ruby-identifier">image</span>
-412:     <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">elt</span><span class="ruby-operator">|</span> <span class="ruby-identifier">elt</span>.<span class="ruby-identifier">value</span> }.<span class="ruby-identifier">insert</span>( <span class="ruby-value">0</span>, <span class="ruby-identifier">path</span>)
-413:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 431</span>
+431:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">csv_metadata_values_from</span>( <span class="ruby-identifier">image</span>)
+432:     <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span> = <span class="ruby-identifier">image</span>
+433:     <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">elt</span><span class="ruby-operator">|</span> <span class="ruby-identifier">elt</span>.<span class="ruby-identifier">value</span> }.<span class="ruby-identifier">insert</span>( <span class="ruby-value">0</span>, <span class="ruby-identifier">path</span>)
+434:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1243,9 +1296,9 @@ d&#8217;une image DICOM, destinés à être exportés dans un fichier CSV.
 					
 					<p>
 Détermine et retourne le nom de l&#8217;examen tantôt à partir des images
-de l&#8217;examen s&#8217;il y en a, ou des images « scout » s&#8217;il
-n&#8217;y en a pas. Retourne une valeur par défaut d&#8217;images
-d&#8217;examen et scout.
+de l&#8217;examen s&#8217;il y en a, ou des images <em>scout</em>
+s&#8217;il n&#8217;y en a pas. Retourne une valeur par défaut s&#8217;il
+n&#8217;y a ni image normale ni <em>scout</em>.
 </p>
 					
 
@@ -1253,12 +1306,12 @@ d&#8217;examen et scout.
 					<div class="method-source-code"
 						id="extract-exam-name-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 365</span>
-365:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_exam_name</span>
-366:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">extract_exam_name_from</span>( <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">first</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">nil?</span>
-367:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">extract_exam_name_from</span>( <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">first</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">nil?</span>
-368:     <span class="ruby-value str">&quot;(empty image set)&quot;</span>  <span class="ruby-comment cmt"># valeur par défaut</span>
-369:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 385</span>
+385:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_exam_name</span>
+386:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">extract_exam_name_from</span>( <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">first</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">nil?</span>
+387:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">extract_exam_name_from</span>( <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">first</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">nil?</span>
+388:     <span class="ruby-value str">&quot;(empty image set)&quot;</span>  <span class="ruby-comment cmt"># valeur par défaut</span>
+389:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1284,8 +1337,8 @@ d&#8217;examen et scout.
 					
 					<p>
 Détermine et retourne le nom de l&#8217;examen à partir des métadonnées
-d&#8217;une image DICOM donnée; extrait pour ce faire la valeur de
-l&#8217;élément <em>Series Description</em> (tag <tt>0008,103E</tt>).
+d&#8217;une image DICOM; extrait pour ce faire la valeur de l&#8217;élément
+<em>Series Description</em> (tag <tt>0008,103E</tt>).
 </p>
 					
 
@@ -1293,11 +1346,11 @@ l&#8217;élément <em>Series Description</em> (tag <tt>0008,103E</tt>).
 					<div class="method-source-code"
 						id="extract-exam-name-from-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 374</span>
-374:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_exam_name_from</span>( <span class="ruby-identifier">image</span>)
-375:     <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span> = <span class="ruby-identifier">image</span>
-376:     <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_SERIES_DESCRIPTION_TAG</span>].<span class="ruby-identifier">value</span>
-377:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 394</span>
+394:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_exam_name_from</span>( <span class="ruby-identifier">image</span>)
+395:     <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span> = <span class="ruby-identifier">image</span>
+396:     <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_SERIES_DESCRIPTION_TAG</span>].<span class="ruby-identifier">value</span>
+397:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1331,14 +1384,14 @@ un dossier et qui sont susceptibles d&#8217;être des images DICOM
 					<div class="method-source-code"
 						id="find-images-in-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 326</span>
-326:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_images_in</span>( <span class="ruby-identifier">source_dir</span>)
-327:     <span class="ruby-identifier">image_files</span> = []
-328:     <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>( <span class="ruby-identifier">image_files_pattern_for</span> <span class="ruby-ivar">@source_dir</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
-329:       <span class="ruby-identifier">image_files</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">path</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">candidate_image?</span>( <span class="ruby-identifier">path</span>)
-330:     <span class="ruby-keyword kw">end</span>
-331:     <span class="ruby-identifier">image_files</span>
-332:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 346</span>
+346:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_images_in</span>( <span class="ruby-identifier">source_dir</span>)
+347:     <span class="ruby-identifier">image_files</span> = []
+348:     <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>( <span class="ruby-identifier">image_files_pattern_for</span> <span class="ruby-ivar">@source_dir</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+349:       <span class="ruby-identifier">image_files</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">path</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">candidate_image?</span>( <span class="ruby-identifier">path</span>)
+350:     <span class="ruby-keyword kw">end</span>
+351:     <span class="ruby-identifier">image_files</span>
+352:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1372,10 +1425,10 @@ d&#8217;être communiqué à Dir.glob()
 					<div class="method-source-code"
 						id="image-files-pattern-for-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 301</span>
-301:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image_files_pattern_for</span>( <span class="ruby-identifier">dir_path</span>)
-302:     <span class="ruby-node">&quot;#{dir_path}/*&quot;</span>
-303:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 321</span>
+321:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image_files_pattern_for</span>( <span class="ruby-identifier">dir_path</span>)
+322:     <span class="ruby-node">&quot;#{dir_path}/*&quot;</span>
+323:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1400,10 +1453,11 @@ d&#8217;être communiqué à Dir.glob()
 				<div class="method-description">
 					
 					<p>
-Retourne true si l&#8217;objet DICOM contient une image « scout », en
-vérifiant si la valeur &#8216;SCOUT MODE&#8217; est présente dans
-l&#8217;élément &#8216;Scan Options&#8217;. Attention, entorse à la
-nomenclature: on attend un objet DICOM::DObject.
+Retourne true si l&#8217;objet DICOM contient une image <em>scout</em>, en
+vérifiant si la valeur &#8216;LOCALIZER&#8217; est présente dans
+l&#8217;élément &#8216;Image Type&#8217;. Attention, entorse à la
+nomenclature dans le nom de la méthode: on attend un objet DICOM::DObject
+comme argument.
 </p>
 					
 
@@ -1411,11 +1465,11 @@ nomenclature: on attend un objet DICOM::DObject.
 					<div class="method-source-code"
 						id="is-scout-image--source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 382</span>
-382:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">is_scout_image?</span>( <span class="ruby-identifier">dobject</span>)
-383:     <span class="ruby-identifier">assert_is_kind_of_dobject</span> <span class="ruby-identifier">dobject</span>
-384:     <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">exists?</span>( <span class="ruby-constant">DICOM_IMAGE_TYPE_TAG</span>)        <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_IMAGE_TYPE_TAG</span>].<span class="ruby-identifier">value</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">DICOM_IMAGE_TYPE_SCOUT_MODE_RE</span>
-385:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 403</span>
+403:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">is_scout_image?</span>( <span class="ruby-identifier">dobject</span>)
+404:     <span class="ruby-identifier">assert_is_kind_of_dobject</span> <span class="ruby-identifier">dobject</span>
+405:     <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">exists?</span>( <span class="ruby-constant">DICOM_IMAGE_TYPE_TAG</span>)        <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_IMAGE_TYPE_TAG</span>].<span class="ruby-identifier">value</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">DICOM_IMAGE_TYPE_SCOUT_MODE_RE</span>
+406:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1451,15 +1505,15 @@ href="http://www.cabiatl.com/mricro/dicom/">www.cabiatl.com/mricro/dicom/</a>)
 					<div class="method-source-code"
 						id="looks-like-dicom--source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 315</span>
-315:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">looks_like_dicom?</span>( <span class="ruby-identifier">file_path</span>)
-316:     <span class="ruby-identifier">chars</span> = <span class="ruby-value str">&quot;&quot;</span>
-317:     <span class="ruby-identifier">open</span>( <span class="ruby-identifier">file_path</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
-318:       <span class="ruby-identifier">file</span>.<span class="ruby-identifier">pos</span> = <span class="ruby-value">128</span>
-319:       <span class="ruby-identifier">chars</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span> <span class="ruby-value">4</span>
-320:     <span class="ruby-keyword kw">end</span>
-321:     <span class="ruby-identifier">chars</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'DICM'</span>
-322:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 335</span>
+335:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">looks_like_dicom?</span>( <span class="ruby-identifier">file_path</span>)
+336:     <span class="ruby-identifier">chars</span> = <span class="ruby-value str">&quot;&quot;</span>
+337:     <span class="ruby-identifier">open</span>( <span class="ruby-identifier">file_path</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+338:       <span class="ruby-identifier">file</span>.<span class="ruby-identifier">pos</span> = <span class="ruby-value">128</span>
+339:       <span class="ruby-identifier">chars</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span> <span class="ruby-value">4</span>
+340:     <span class="ruby-keyword kw">end</span>
+341:     <span class="ruby-identifier">chars</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'DICM'</span>
+342:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1484,9 +1538,9 @@ href="http://www.cabiatl.com/mricro/dicom/">www.cabiatl.com/mricro/dicom/</a>)
 				<div class="method-description">
 					
 					<p>
-Supprime et retourne toutes les images « scout » d&#8217;une collection
-d&#8217;images donnée. Attention: la collection passée en paramètre sera
-altérée si elle contient des images « scout ».
+Supprime et retourne toutes les images <em>scout</em> d&#8217;une
+collection d&#8217;images donnée. Attention: la collection passée en
+paramètre sera altérée si elle contient des images <em>scout</em>.
 </p>
 					
 
@@ -1494,12 +1548,12 @@ altérée si elle contient des images « scout ».
 					<div class="method-source-code"
 						id="prune-scout-images-from--source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 391</span>
-391:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prune_scout_images_from!</span>( <span class="ruby-identifier">images</span>)
-392:     <span class="ruby-identifier">scouts</span> = <span class="ruby-identifier">images</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span><span class="ruby-operator">|</span> <span class="ruby-identifier">is_scout_image?</span> <span class="ruby-identifier">dobject</span> }
-393:     <span class="ruby-identifier">scouts</span>.<span class="ruby-identifier">each_key</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span> <span class="ruby-identifier">images</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">path</span> } <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">scouts</span>.<span class="ruby-identifier">empty?</span>
-394:     <span class="ruby-identifier">scouts</span>  <span class="ruby-comment cmt"># contient au moins {}</span>
-395:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 412</span>
+412:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prune_scout_images_from!</span>( <span class="ruby-identifier">images</span>)
+413:     <span class="ruby-identifier">scouts</span> = <span class="ruby-identifier">images</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span><span class="ruby-operator">|</span> <span class="ruby-identifier">is_scout_image?</span> <span class="ruby-identifier">dobject</span> }
+414:     <span class="ruby-identifier">scouts</span>.<span class="ruby-identifier">each_key</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span> <span class="ruby-identifier">images</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">path</span> } <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">scouts</span>.<span class="ruby-identifier">empty?</span>
+415:     <span class="ruby-identifier">scouts</span>  <span class="ruby-comment cmt"># contient au moins {}</span>
+416:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1535,10 +1589,10 @@ Par exemple, retourne &#8220;test&#8221; pour les chemins d&#8217;accès
 					<div class="method-source-code"
 						id="remove-last-dir-sep-from-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 295</span>
-295:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_last_dir_sep_from</span>( <span class="ruby-identifier">path</span>)
-296:     <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>( <span class="ruby-identifier">path</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>( <span class="ruby-identifier">path</span>) <span class="ruby-operator">:</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>( <span class="ruby-identifier">path</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;/.&quot;</span>)
-297:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 315</span>
+315:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_last_dir_sep_from</span>( <span class="ruby-identifier">path</span>)
+316:     <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>( <span class="ruby-identifier">path</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>( <span class="ruby-identifier">path</span>) <span class="ruby-operator">:</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>( <span class="ruby-identifier">path</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;/.&quot;</span>)
+317:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1572,15 +1626,15 @@ lorsque le chemin d&#8217;accès du dossier source change.
 					<div class="method-source-code"
 						id="reset--source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 283</span>
-283:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reset!</span>
-284:     <span class="ruby-ivar">@source_dir</span> = <span class="ruby-keyword kw">nil</span>
-285:     <span class="ruby-ivar">@name</span> = <span class="ruby-value str">&quot;(no name)&quot;</span>
-286:     <span class="ruby-ivar">@images_read</span> = <span class="ruby-keyword kw">false</span>
-287:     <span class="ruby-ivar">@images_homogeneous</span> = <span class="ruby-keyword kw">nil</span>
-288:     <span class="ruby-ivar">@images</span> = <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> {} <span class="ruby-operator">:</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">clear</span>
-289:     <span class="ruby-ivar">@scouts</span> = <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> {} <span class="ruby-operator">:</span> <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">clear</span>
-290:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 303</span>
+303:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reset!</span>
+304:     <span class="ruby-ivar">@source_dir</span> = <span class="ruby-keyword kw">nil</span>
+305:     <span class="ruby-ivar">@name</span> = <span class="ruby-value str">&quot;(no name)&quot;</span>
+306:     <span class="ruby-ivar">@images_read</span> = <span class="ruby-keyword kw">false</span>
+307:     <span class="ruby-ivar">@images_homogeneous</span> = <span class="ruby-keyword kw">nil</span>
+308:     <span class="ruby-ivar">@images</span> = <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> {} <span class="ruby-operator">:</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">clear</span>
+309:     <span class="ruby-ivar">@scouts</span> = <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> {} <span class="ruby-operator">:</span> <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">clear</span>
+310:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -1616,11 +1670,11 @@ distincts.
 					<div class="method-source-code"
 						id="sign-structure-of-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 357</span>
-357:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sign_structure_of</span>( <span class="ruby-identifier">dobject</span>)
-358:     <span class="ruby-identifier">assert_is_kind_of_dobject</span> <span class="ruby-identifier">dobject</span>
-359:     <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">elt</span><span class="ruby-operator">|</span> <span class="ruby-identifier">elt</span>.<span class="ruby-identifier">tag</span> }.<span class="ruby-identifier">join</span>( <span class="ruby-value str">&quot;/&quot;</span>)
-360:   <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/exam.rb, line 377</span>
+377:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sign_structure_of</span>( <span class="ruby-identifier">dobject</span>)
+378:     <span class="ruby-identifier">assert_is_kind_of_dobject</span> <span class="ruby-identifier">dobject</span>
+379:     <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">elt</span><span class="ruby-operator">|</span> <span class="ruby-identifier">elt</span>.<span class="ruby-identifier">tag</span> }.<span class="ruby-identifier">join</span>( <span class="ruby-value str">&quot;/&quot;</span>)
+380:   <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

@@ -71,14 +71,22 @@ class ExamCruncher
         next
       end
 
-      output_file = get_output_file_for( input_dir)
-      check_if_output_exists( output_file)
+      output_basename = get_output_file_for( input_dir)
+      output_csv = output_basename + ".csv"
+      output_html = output_basename + ".html"
+      check_if_output_exists( output_csv) if @options[ :csv_export]
+      check_if_output_exists( output_html) if @options[ :html_export]
 
       unless @options[ :dry_run]
-        info( "crunch", "to CSV file %s ..." % output_file)
-        open( output_file, "w") { |f| exam.to_csv f }
+        if @options[ :csv_export]
+          info( "crunch", "to CSV file %s ..." % output_csv)
+          open( output_csv, "w") { |f| exam.to_csv f }
+        end
 
-        # TODO: info( "cronch", "to HTML"); exam.to_html
+        if @options[ :html_export]
+          info( "cronch", "to HTML file %s ..." % output_html)
+          open( output_html, "w") { |f| exam.to_html f }
+        end
       end
     end
     info( "buuurp\n")
@@ -138,13 +146,13 @@ class ExamCruncher
     Pathname.new( path).cleanpath.to_s
   end
 
-  # Compose un nom de fichier CSV d'après le chemin d'accès à un dossier
-  # d'images, en ajoutant '.csv' au dernier segment du chemin d'accès.
+  # Compose un nom de fichier d'après le chemin d'accès à un dossier
+  # d'images, sans extension (on peut ainsi lui ajouter ".csv" ou ".html").
   # Par exemple, pour le dossier "test/valid-dicom/LAPIN2/", retournerait
-  # le nom de fichier "test/valid-dicom/LAPIN2.csv".
+  # le nom de fichier "test/valid-dicom/LAPIN2".
   def get_output_file_for( dirname)
     dirpath = Pathname.new( dirname).cleanpath
-    output_file = "#{dirpath.basename}.csv"   # dernier segment
+    output_file = "#{dirpath.basename}"   # dernier segment
     dirpath.parent.join( output_file).to_s
   end
 

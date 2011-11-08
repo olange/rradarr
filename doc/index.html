@@ -6,7 +6,7 @@
 <head>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 
-	<title>Extraction des metadonnees d'un examen DICOM</title>
+	<title>RDoc Documentation</title>
 
 	<link type="text/css" media="screen" href="rdoc.css" rel="stylesheet" />
 
@@ -19,143 +19,10 @@
 <body class="indexpage">
 
 	
-	<h1>Extraction des metadonnees d'un examen DICOM</h1>
+	<h1>RDoc Documentation</h1>
 
 	
-	<div id="main">
-		
-<p>
-Pour un examen radiologique de type <b>CTscan</b>, cette librairie permet:
-</p>
-<ul>
-<li><p>
-de lire un jeu de fichiers DICOM à partir d&#8217;un dossier source;
-</p>
-</li>
-<li><p>
-d&#8217;en identifer les images « scout » (ou « localizers »);
-</p>
-</li>
-<li><p>
-d&#8217;extraire les métadonnées du jeu d&#8217;images DICOM;
-</p>
-</li>
-<li><p>
-et de les transcrire dans un fichier CSV.
-</p>
-</li>
-</ul>
-<p>
-Quelques indications pour démarrer...
-</p>
-<h2>En un clin d&#8217;oeil</h2>
-<p>
-N.B. Ignorez la première commande si vous n&#8217;utilisez pas RVM.
-</p>
-<pre>
-  $ rvm use 1.9.2@dicom --create
-  $ bundle install
-  $ rdoc -m README .
-  $ rspec --color .
-</pre>
-<h2>Générer la documentation (API)</h2>
-<p>
-Pour consulter la description des classes et leurs méthodes au format HTML
-et explorer leur hiérarchie.
-</p>
-<pre>
-  $ rdoc -m README -t &quot;Extraction des métadonnées d'un examen DICOM&quot; .
-  $ google-chrome doc/index.html &amp;
-</pre>
-<h2>Exécuter les tests</h2>
-<p>
-Pour s&#8217;assurer que le code est fonctionnel. Les spécifications
-permettent quant à elles de lire les exigences auxquelles répondent les
-classes et de trouver des fragments de code pour invoquer celles-ci.
-</p>
-<pre>
-  $ rvm use 1.9.2@dicom
-  $ rspec --color .
-  ...............
-
-  Finished in 4.92 seconds
-  15 examples, 0 failures
-</pre>
-<p>
-Décompresser au préalable, dans le sous-dossier
-<tt>test/valid-dicom/</tt>, l&#8217;archive <tt>valid-dicom.tar.bz2</tt>
-qui s&#8217;y trouve.
-</p>
-<h2>Mise en place de l&#8217;environnement</h2>
-<h3>Créer un environnement RVM</h3>
-<p>
-Si vous utilisez <a
-href="http://beginrescueend.com/rvm/best-practices/">RVM</a> (Ruby
-enVironment Manager), créez un jeu de librairies pour le projet:
-</p>
-<pre>
-  $ rvm use 1.9.2
-  $ rvm gemset create dicom
-</pre>
-<p>
-Ensuite, en préalable à toute commande (<tt>ruby</tt>, <tt>bundle</tt>,
-<tt>irb</tt>) et à chaque fois que vous ouvrirez la ligne de commande,
-songez à exécuter <b>une fois</b> la commande qui suit:
-</p>
-<pre>
-  $ rvm use 1.9.2@dicom
-</pre>
-<p>
-Un descripteur <tt>.rvmrc</tt> se trouve à la racine du projet, pour
-simplifier cette tâche (RVM l&#8217;exécute automatiquement).
-</p>
-<h3>Outils Ruby nécessaires</h3>
-<p>
-Si <tt>bundler</tt> n&#8217;était pas encore installé:
-</p>
-<pre>
-  $ gem install bundler
-</pre>
-<h3>Librairies Ruby nécessaires</h3>
-<p>
-Les librairies nécessaires au projet sont décrites dans le fichier
-<tt>Gemfile</tt>. Exécutez la commande suivante pour les télécharger et
-les installer dans votre environnement Ruby:
-</p>
-<pre>
-  $ bundle install
-</pre>
-<h2>Crédits de réalisation</h2>
-<p>
-Requirements: Tristan Zand (<a href="mailto:zzz@zzz.ch">zzz@zzz.ch</a>)
-</p>
-<p>
-Author: Olivier Lange (<a
-href="mailto:olange@petit-atelier.ch">olange@petit-atelier.ch</a>)
-</p>
-<h2>Licence</h2>
-<p>
-Copyright &#169; 2011 Tristan Zand &amp; Olivier Lange
-</p>
-<p>
-This program is free software: you can redistribute it and/or modify it
-under the terms of the GNU General Public License as published by the Free
-Software Foundation, either version 3 of the License, or (at your option)
-any later version.
-</p>
-<p>
-This program is distributed in the hope that it will be useful, but WITHOUT
-ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
-more details.
-</p>
-<p>
-You should find a copy of the GNU General Public License within the <a
-href="COPYING.html">COPYING</a> file along with this program. If not, see
-<a href="http://www.gnu.org/licenses/.">www.gnu.org/licenses/.</a>
-</p>
-
-	</div>
+	<p>This is the API documentation for 'RDoc Documentation'.</p>
 	
 
 	
@@ -167,9 +34,9 @@ href="COPYING.html">COPYING</a> file along with this program. If not, see
 		
 			<li class="file"><a href="Gemfile.html">Gemfile</a></li>
 		
-			<li class="file"><a href="README.html">README</a></li>
+			<li class="file"><a href="README_rdoc.html">README.rdoc</a></li>
 		
-			<li class="file"><a href="test/README_test.html">README_test</a></li>
+			<li class="file"><a href="test/README_test_rdoc.html">README_test.rdoc</a></li>
 		
 	</ul>
 	
@@ -182,6 +49,8 @@ href="COPYING.html">COPYING</a> file along with this program. If not, see
 		<li class="class"><a href="Exam.html">Exam</a></li>
 		
 		<li class="class"><a href="ExamCruncher.html">ExamCruncher</a></li>
+		
+		<li class="class"><a href="Object.html">Object</a></li>
 		
 	</ul>
 
@@ -234,11 +103,13 @@ href="COPYING.html">COPYING</a> file along with this program. If not, see
 		
 			<li><a href="ExamCruncher.html#method-i-get_output_file_for">#get_output_file_for &mdash; ExamCruncher</a></li>
 		
+			<li><a href="Exam.html#method-i-has_homogeneous_structure%3F">#has_homogeneous_structure? &mdash; Exam</a></li>
+		
 			<li><a href="Exam.html#method-i-has_images%3F">#has_images? &mdash; Exam</a></li>
 		
 			<li><a href="Exam.html#method-i-has_scouts%3F">#has_scouts? &mdash; Exam</a></li>
 		
-			<li><a href="Exam.html#method-i-homogeneous_structure%3F">#homogeneous_structure? &mdash; Exam</a></li>
+			<li><a href="Object.html#method-i-html_graph_for">#html_graph_for &mdash; Object</a></li>
 		
 			<li><a href="Exam.html#method-i-image_files_pattern_for">#image_files_pattern_for &mdash; Exam</a></li>
 		
@@ -273,6 +144,8 @@ href="COPYING.html">COPYING</a> file along with this program. If not, see
 			<li><a href="Exam.html#method-i-source_dir%3D">#source_dir= &mdash; Exam</a></li>
 		
 			<li><a href="Exam.html#method-i-to_csv">#to_csv &mdash; Exam</a></li>
+		
+			<li><a href="Exam.html#method-i-to_html">#to_html &mdash; Exam</a></li>
 		
 			<li><a href="ExamCruncher.html#method-i-warn">#warn &mdash; ExamCruncher</a></li>
 		

@@ -8,6 +8,7 @@
 require 'dicom'
 require 'csv'
 require_relative 'dicom_elements_helper'
+require_relative 'graph_template.html'
 
 # Lit un jeu d'images DICOM d'un examen radiologique de type CTscan
 # à partir d'un dossier source, en distinguant les images « scout »
@@ -273,6 +274,26 @@ class Exam
         csv_file << csv_metadata_values_from( image)
       end
     end
+  end
+
+  def to_html( output_file)
+    read_images
+    return if @images.empty?
+    raise "DICOM source files have inconsistent structure among them" \
+      unless has_homogeneous_structure?
+
+    sort_images_by! :slice_location
+
+    data = []
+    @images.values.each do |dobject|
+      data << {
+        :l => dobject.exists?( DICOM_SLICE_LOCATION_TAG) \
+          ? Float( dobject[ DICOM_SLICE_LOCATION_TAG].value) : 0.0,
+        :x => dobject.exists?( DICOM_XRAY_TUBE_CURRENT_TAG) \
+          ? Float( dobject[ DICOM_XRAY_TUBE_CURRENT_TAG].value) : 0.0
+      }
+    end
+    output_file << html_graph_for( data)
   end
 
   private
