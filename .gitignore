@@ -1,5 +1,6 @@
 .svn
 test/**/*.csv
+test/**/*.html
 test/valid-dicom/LAPIN2_PRO_APC_100KV_CTDIVOL8_6
 test/valid-dicom/LAPIN2_PRO_APC_140KV_CTDIVOL2_16
 test/valid-dicom/Localizers_1
