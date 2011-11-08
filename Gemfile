@@ -6,6 +6,7 @@ source :rubygems
 # Librairies requises par le projet
 
 gem "dicom", ">= 0.9.2"
+gem "json", ">= 1.6"
 gem "colored", ">= 1.2"
 
 # Librairies requises pour les tests et le développement
