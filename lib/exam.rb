@@ -294,7 +294,7 @@ class Exam
           ? Float( dobject[ DICOM_XRAY_TUBE_CURRENT_TAG].value) : 0.0
       }
     end
-    output_file << html_graph_for( data)
+    output_file << html_graph_for( data, @name)
   end
 
   private

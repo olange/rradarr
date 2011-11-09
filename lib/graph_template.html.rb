@@ -15,13 +15,14 @@ require 'json/ext'
 # forme { :l => FLOAT, :x => FLOAT }. Par exemple:
 #
 # [ { :l => 66.125, :x => 140.0 }, { :l => 66.750, :x => 145.5 }, ... ]
-def html_graph_for( data)
-  return BARGRAPH_TEMPLATE % { :graph_data => data.to_json }
+def html_graph_for( data, title)
+  return BARGRAPH_TEMPLATE \
+    % { :graph_data => data.to_json, :graph_title => title }
 end
 
 # Modèle de document HTML avec script D3.js pour tracer histogramme.
-# Contient un marqueur %{graph_data}, qui doit être remplacé par les
-# valeurs effectives (cf. html_graph_for).
+# Contient les marqueurs %{graph_title} et %{graph_data}, qui doivent
+# être remplacés par leurs valeurs effectives (cf. html_graph_for).
 BARGRAPH_TEMPLATE = <<EOF
 <!doctype html>
 <html>
@@ -34,6 +35,8 @@ BARGRAPH_TEMPLATE = <<EOF
     // rectilignes <X,Y> (X: abscisse/libellé et Y: ordonnée/valeur
     // de l'un des points du graphe).
     //
+    // title: titre du graphe, qui sera inscrit sous l'axe X.
+    //
     // data: tableau de tuples (X,Y)
     //   par exemple: [ { loc: 66.125, xray: 140.0 }, ... ]
     //
@@ -43,31 +46,51 @@ BARGRAPH_TEMPLATE = <<EOF
     // attr_y: accesseur permettant de lire la valeur Y d'un tuple
     //   par exemple: function(d) { return d.xray; }
     //
-    // width: largeur du graphe, en pixels; par exemple: 960.
+    // width: largeur intérieure du graphe, en pixels; par exemple: 960.
     //
-    // height: hauteur du graphe, en pixels; par exemple: 480.
+    // height: hauteur intérieure du graphe, en pixels; par exemple: 480.
     //
-    // m: marges intérieures du graphe; il doit s'agir d'un objet,
-    //   qui doit posséder les attributs top, bottom, left et right;
-    //   par exemple: { top: 10, right: 5, bottom: 10, left: 5 }
-    function draw_area_graph( data, attr_x, attr_y, width, height, m) {
+    // m: marges du graphe; il doit s'agir d'un objet, qui doit posséder
+    //   les attributs top, bottom, left et right; par exemple:
+    //   { top: 10, right: 5, bottom: 10, left: 5 }
+    //
+    // Noter que la largeur totale du graphe est width + m.left + m.right
+    // et que sa hauteur est height + m.top + m.bottom.
+    function draw_area_graph( title, data, attr_x, attr_y, width, height, m) {
       var TICK_COUNT = 10;
 
-      var scale_x = d3.scale.linear()
-            .domain( d3.extent( data, attr_x)).nice()
+      var data_extent_x = d3.extent( data, attr_x),   // p. ex. [ 59.2, 68]
+          data_extent_y = d3.extent( data, attr_y),   // p. ex. [ 120, 175]
+
+          scale_x = d3.scale.linear()
+            .domain( data_extent_x).nice()
             .range( [ 0, width]),
 
           scale_y = d3.scale.linear()
-            .domain( [ 0, d3.max( data, attr_y)]).nice()
+            .domain( [ 0, d3.max( data_extent_y)]).nice()
             .range( [ height, 0]);
 
       var vis = d3.select( "#chart")
         .append( "svg:svg")
-          .data( [ data])   // astuce: le tableau imbriqué 'data' sera mappé sur élément descendant
+          .data( [ data])
           .attr( "width", width + m.left + m.right)
           .attr( "height", height + m.top + m.bottom)
         .append( "svg:g")
           .attr( "transform", "translate(" + m.left + "," + m.top + ")");
+        // astuce: le tableau imbriqué 'data' sera mappé sur nouvel élément
+        // descendant svg:g. la variable 'vis' référence ce nouvel élément.
+
+      // Titre du graphe
+      if( title != "") {
+        d3.select( "svg")
+          .append( "svg:text")
+          .attr( "class", "title")
+          .attr( "x", ( width + m.left + m.right) / 2)
+          .attr( "y", height + m.top)
+          .attr( "dy", "2.84em")
+          .attr( "text-anchor", "middle")
+          .text( title);
+      }
 
       // Tracé de la grille
       var rules_x = vis.selectAll( "g.rule")
@@ -90,6 +113,8 @@ BARGRAPH_TEMPLATE = <<EOF
 
       var rules_y = vis.selectAll( "g.rule")
           .data( scale_y.ticks( TICK_COUNT));
+          // Nbre de ticks doit être identique à celui de rules_x!
+          // On inscrit les lignes verticales dans le même jeu d'élts g.rule
 
       rules_y.append( "svg:line")
           .attr( "class", function( d) { return d ? null : "axis"; })
@@ -105,11 +130,33 @@ BARGRAPH_TEMPLATE = <<EOF
           .attr( "text-anchor", "end")
           .text( scale_y.tickFormat( TICK_COUNT));
 
+      // Tracé des lignes min / max
+      var rules_minmax = vis.append( "svg:g")
+          .attr( "class", "rule min-max");
+
+      rules_minmax.selectAll( "line")
+          .data( data_extent_y)
+        .enter().append( "svg:line")
+          .attr( "class", "min-max")
+          .attr( "x1", 0)
+          .attr( "y1", scale_y)
+          .attr( "x2", width)
+          .attr( "y2", scale_y);
+
+      rules_minmax.selectAll( "text")
+          .data( data_extent_y)
+        .enter().append( "svg:text")
+          .attr( "class", "min-max")
+          .attr( "y", scale_y)
+          .attr( "x", width + 6)
+          .attr( "dy", ".35em")
+          .attr( "text-anchor", "start")
+          .text( scale_y.tickFormat( TICK_COUNT));
+
       // Tracé du graphe
       var coord_x = function( d) { return scale_x( attr_x( d)); },
           coord_y = function( d) { return scale_y( attr_y( d)); };
 
-      // FIXME: pourquoi le dernier fill/trait revient-il au début?
       vis.append( "svg:path")
           .attr( "class", "area")
           .attr( "d", d3.svg.area()
@@ -118,39 +165,29 @@ BARGRAPH_TEMPLATE = <<EOF
             .y1( coord_y)
           );
 
-      // FIXME: itou, pourquoi le dernier trait revient-il au début?
       vis.append( "svg:path")
           .attr( "class", "line")
           .attr( "d", d3.svg.line()
             .x( coord_x)
             .y( coord_y)
           );
-
-      vis.selectAll( "circle.area")
-          .data( data)
-        .enter().append( "svg:circle")
-          .attr( "class", "area")
-          .attr( "cx", coord_x)
-          .attr( "cy", coord_y)
-          .attr( "r", 3.0);
     }
     </script>
     <style type="text/css">
       body {
         font-family: Arial, Helvetica, sans-serif; }
       #chart {
-        width: 960px; height: 450px;
+        width: 960px; height: 480px;
         border: 1px solid #eee;
         font-size: 10px; }
       #chart .bar { fill: steelblue; }
-      #chart .xaxis { stroke: black; }
-      #chart .rule line {
-        stroke: #eee; shape-rendering: crispEdges; }
+      #chart .rule line { stroke: #eee; shape-rendering: crispEdges; }
       #chart .rule line.axis { stroke: black; }
+      #chart .rule line.min-max { stroke: lightsteelblue; stroke-dasharray: 4,4; }
+      #chart .rule text.min-max { fill: lightsteelblue; font-weight: bold; }
       #chart .area { fill: lightsteelblue; fill-opacity: .75; }
-      #chart .line, #chart circle.area {
-        fill: none; stroke: steelblue; stroke-width: 1.5px; }
-      #chart circle.area { fill: white; }
+      #chart .line { fill: none; stroke: steelblue; stroke-width: 1.5px; }
+      #chart text.title { fill: lightsteelblue; font-weight: bold; }
     </style>
   </head>
   <body>
@@ -164,11 +201,13 @@ BARGRAPH_TEMPLATE = <<EOF
           attr_loc  = function( d) { return d.l; },   // Slice location accessor
           attr_xray = function( d) { return d.x; },   // X-ray tube current accessor
 
-          width = 900,  // 900 + 35 (left) + 25 (right) = 960px (CSS width)
-          height = 400, // 400 + 25 (top) + 25 (bottom) = 450px (CSS height)
-          margins = { top: 25, right: 25, bottom: 25, left: 35 };
+          width = 890,  // 890 + 35 (left) + 35 (right) = 960px (CSS width)
+          height = 415, // 420 + 25 (top) + 40 (bottom) = 480px (CSS height)
+          margins = { top: 25, right: 35, bottom: 40, left: 35 },
 
-      draw_area_graph( data, attr_loc, attr_xray, width, height, margins);
+          title = "%{graph_title}";
+
+      draw_area_graph( title, data, attr_loc, attr_xray, width, height, margins);
 
     </script>
   </body>

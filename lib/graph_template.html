@@ -9,6 +9,8 @@
     // rectilignes <X,Y> (X: abscisse/libellé et Y: ordonnée/valeur
     // de l'un des points du graphe).
     //
+    // title: titre du graphe, qui sera inscrit sous l'axe X.
+    //
     // data: tableau de tuples (X,Y)
     //   par exemple: [ { loc: 66.125, xray: 140.0 }, ... ]
     //
@@ -18,80 +20,148 @@
     // attr_y: accesseur permettant de lire la valeur Y d'un tuple
     //   par exemple: function(d) { return d.xray; }
     //
-    // width: largeur du graphe, en pixels; par exemple: 960.
+    // width: largeur intérieure du graphe, en pixels; par exemple: 960.
     //
-    // height: hauteur du graphe, en pixels; par exemple: 480.
+    // height: hauteur intérieure du graphe, en pixels; par exemple: 480.
     //
-    // m: marges intérieures du graphe; il doit s'agir d'un objet,
-    //   qui doit posséder les attributs top, bottom, left et right;
-    //   par exemple: { top: 10, right: 5, bottom: 10, left: 5 }
-    function draw_area_graph( data, attr_x, attr_y, width, height, m) {
+    // m: marges du graphe; il doit s'agir d'un objet, qui doit posséder
+    //   les attributs top, bottom, left et right; par exemple:
+    //   { top: 10, right: 5, bottom: 10, left: 5 }
+    //
+    // Noter que la largeur totale du graphe est width + m.left + m.right
+    // et que sa hauteur est height + m.top + m.bottom.
+    function draw_area_graph( title, data, attr_x, attr_y, width, height, m) {
+      var TICK_COUNT = 10;
 
-      var scale_x = d3.scale.ordinal().domain( d3.range( data.length))
-            .rangeBands( [ 0, width - m.right - m.left], 0.05),
+      var data_extent_x = d3.extent( data, attr_x),   // p. ex. [ 59.2, 68]
+          data_extent_y = d3.extent( data, attr_y),   // p. ex. [ 120, 175]
 
-          scale_y = d3.scale.linear().domain( [ 0, d3.max( data, attr_y) ] )
-            .range( [ 0, height - m.top - m.bottom]);
+          scale_x = d3.scale.linear()
+            .domain( data_extent_x).nice()
+            .range( [ 0, width]),
 
-      var vis = d3.select("#chart")
-        .append("svg:svg")
-          .attr("width", width)
-          .attr("height", height)
-        .append("svg:g")
-          .attr("transform", "translate(" + m.left + "," + m.top + ")");
+          scale_y = d3.scale.linear()
+            .domain( [ 0, d3.max( data_extent_y)]).nice()
+            .range( [ height, 0]);
 
-      vis.selectAll("rect.bar")
-          .data( data)
-        .enter().append("svg:rect")
-          .attr( "class", "bar")
-          .attr( "x", function( d, i) { return scale_x( i); })
-          .attr( "y", function( d)    { return height - m.top - m.bottom - scale_y( attr_y( d)); })
-          .attr( "width", scale_x.rangeBand())
-          .attr( "height", function( d) {
-            return scale_y( attr_y( d)); });
+      var vis = d3.select( "#chart")
+        .append( "svg:svg")
+          .data( [ data])
+          .attr( "width", width + m.left + m.right)
+          .attr( "height", height + m.top + m.bottom)
+        .append( "svg:g")
+          .attr( "transform", "translate(" + m.left + "," + m.top + ")");
+        // astuce: le tableau imbriqué 'data' sera mappé sur nouvel élément
+        // descendant svg:g. la variable 'vis' référence ce nouvel élément.
 
-      vis.selectAll("text.value")
-          .data( data)
-        .enter().append("svg:text")
-          .attr( "class", "value")
-          .attr( "x", function( d, i) { return scale_x( i) + scale_x.rangeBand() / 2; })
-          .attr( "y", function( d)    { return height - m.top - m.bottom - scale_y( attr_y( d)); })
-          .attr( "dy", -2)
+      // Titre du graphe
+      if( title != "") {
+        d3.select( "svg")
+          .append( "svg:text")
+          .attr( "class", "title")
+          .attr( "x", ( width + m.left + m.right) / 2)
+          .attr( "y", height + m.top)
+          .attr( "dy", "2.84em")
           .attr( "text-anchor", "middle")
-          .text( attr_y);
+          .text( title);
+      }
 
-      vis.selectAll("text.label")
-          .data( data)
-        .enter().append("svg:text")
-          .attr( "class", "label")
-          .attr( "x", function( d, i) { return scale_x( i) + scale_x.rangeBand() / 2; })
-          .attr( "y", height - m.top - m.bottom - scale_y( 0))
-          .attr( "dy", 12)
+      // Tracé de la grille
+      var rules_x = vis.selectAll( "g.rule")
+          .data( scale_x.ticks( TICK_COUNT))
+        .enter().append( "svg:g")
+          .attr( "class", "rule");
+
+      rules_x.append( "svg:line")
+          .attr( "x1", scale_x)
+          .attr( "x2", scale_x)
+          .attr( "y1", 0)
+          .attr( "y2", height - 1);
+
+      rules_x.append( "svg:text")
+          .attr( "x", scale_x)
+          .attr( "y", height + 6)
+          .attr( "dy", ".71em")
           .attr( "text-anchor", "middle")
-          .text( attr_x);
+          .text( scale_x.tickFormat( TICK_COUNT));
 
-      vis.append("svg:line")
-        .attr("class", "xaxis")
-        .attr("x1", 0)
-        .attr("x2", width - m.right - m.left)
-        .attr("y1", height - m.top - m.bottom - scale_y( 0))
-        .attr("y2", height - m.top - m.bottom - scale_y( 0));
+      var rules_y = vis.selectAll( "g.rule")
+          .data( scale_y.ticks( TICK_COUNT));
+          // Nbre de ticks doit être identique à celui de rules_x!
+          // On inscrit les lignes verticales dans le même jeu d'élts g.rule
+
+      rules_y.append( "svg:line")
+          .attr( "class", function( d) { return d ? null : "axis"; })
+          .attr( "y1", scale_y)
+          .attr( "y2", scale_y)
+          .attr( "x1", 0)
+          .attr( "x2", width + 1);
+
+      rules_y.append( "svg:text")
+          .attr( "y", scale_y)
+          .attr( "x", -6)
+          .attr( "dy", ".35em")
+          .attr( "text-anchor", "end")
+          .text( scale_y.tickFormat( TICK_COUNT));
+
+      // Tracé des lignes min / max
+      var rules_minmax = vis.append( "svg:g")
+          .attr( "class", "rule min-max");
+
+      rules_minmax.selectAll( "line")
+          .data( data_extent_y)
+        .enter().append( "svg:line")
+          .attr( "class", "min-max")
+          .attr( "x1", 0)
+          .attr( "y1", scale_y)
+          .attr( "x2", width)
+          .attr( "y2", scale_y);
+
+      rules_minmax.selectAll( "text")
+          .data( data_extent_y)
+        .enter().append( "svg:text")
+          .attr( "class", "min-max")
+          .attr( "y", scale_y)
+          .attr( "x", width + 6)
+          .attr( "dy", ".35em")
+          .attr( "text-anchor", "start")
+          .text( scale_y.tickFormat( TICK_COUNT));
+
+      // Tracé du graphe
+      var coord_x = function( d) { return scale_x( attr_x( d)); },
+          coord_y = function( d) { return scale_y( attr_y( d)); };
+
+      vis.append( "svg:path")
+          .attr( "class", "area")
+          .attr( "d", d3.svg.area()
+            .x(  coord_x)
+            .y0( height - 1)
+            .y1( coord_y)
+          );
+
+      vis.append( "svg:path")
+          .attr( "class", "line")
+          .attr( "d", d3.svg.line()
+            .x( coord_x)
+            .y( coord_y)
+          );
     }
     </script>
     <style type="text/css">
+      body {
+        font-family: Arial, Helvetica, sans-serif; }
       #chart {
-        width: 960px;
-        height: 480px;
-        border: 1px solid lightgray;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 12px;
-      }
-      #chart .bar {
-        fill: steelblue;
-      }
-      #chart .xaxis {
-        stroke: black;
-      }
+        width: 960px; height: 480px;
+        border: 1px solid #eee;
+        font-size: 10px; }
+      #chart .bar { fill: steelblue; }
+      #chart .rule line { stroke: #eee; shape-rendering: crispEdges; }
+      #chart .rule line.axis { stroke: black; }
+      #chart .rule line.min-max { stroke: lightsteelblue; stroke-dasharray: 4,4; }
+      #chart .rule text.min-max { fill: lightsteelblue; font-weight: bold; }
+      #chart .area { fill: lightsteelblue; fill-opacity: .75; }
+      #chart .line { fill: none; stroke: steelblue; stroke-width: 1.5px; }
+      #chart text.title { fill: lightsteelblue; font-weight: bold; }
     </style>
   </head>
   <body>
@@ -108,16 +178,18 @@
             { l: 61.125, x: 135.0 }, { l: 61.750, x: 138.0 }, { l: 62.375, x: 140.0 },
             { l: 63.000, x: 145.5 }, { l: 63.625, x: 144.0 }, { l: 64.250, x: 140.0 },
             { l: 64.875, x: 141.0 }, { l: 65.500, x: 144.0 }, { l: 66.125, x: 155.0 },
-            { l: 66.750, x: 160.5 }, { l: 67.375, x: 175.0 }, { l: 68.000, x: 165.0 } ],
+            { l: 66.750, x: 160.5 }, { l: 67.375, x: 175.0 }, { l: 67.750, x: 165.0 } ],
 
           attr_loc  = function( d) { return d.l; },   // Slice location accessor
           attr_xray = function( d) { return d.x; },   // X-ray tube current accessor
 
-          width = 960,
-          height = 480,
-          margins = { top: 20, right: 10, bottom: 20, left: 10 };
+          width = 890,  // 890 + 35 (left) + 35 (right) = 960px (CSS width)
+          height = 415, // 420 + 25 (top) + 40 (bottom) = 480px (CSS height)
+          margins = { top: 25, right: 35, bottom: 40, left: 35 },
 
-      draw_area_graph( data, attr_loc, attr_xray, width, height, margins);
+          title = "LAPIN2 PRO APC 100KV CTDIVOL8";
+
+      draw_area_graph( title, data, attr_loc, attr_xray, width, height, margins);
 
     </script>
   </body>
