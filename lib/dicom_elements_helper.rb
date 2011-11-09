@@ -72,6 +72,9 @@ module DICOMElementsHelper
                                   # "0020,1041 (Slice Location)"
 
   # Données du bitmap d'une image
+  DICOM_PIXEL_GROUP_TAG           = "7FE0"
+  DICOM_PIXEL_GROUP_LENGTH_TAG    = "7FE0,0000"
+
   DICOM_PIXEL_DATA_TAG            = "7FE0,0010"
   DICOM_PIXEL_DATA_CSVNAME        = csv_colname_for DICOM_PIXEL_DATA_TAG
                                   # "7FE0,0010 (Pixel Data)"

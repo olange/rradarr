@@ -87,6 +87,7 @@ class ExamCruncher
           open( output_html, "w") { |f| exam.to_html f }
         end
       end
+      exam = nil  # zappe l'objet
     end
     info( "buuurp\n")
   end

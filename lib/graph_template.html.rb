@@ -51,72 +51,106 @@ BARGRAPH_TEMPLATE = <<EOF
     //   qui doit posséder les attributs top, bottom, left et right;
     //   par exemple: { top: 10, right: 5, bottom: 10, left: 5 }
     function draw_area_graph( data, attr_x, attr_y, width, height, m) {
+      var TICK_COUNT = 10;
 
-      var scale_x = d3.scale.ordinal().domain( d3.range( data.length))
-            .rangeBands( [ 0, width - m.right - m.left], 0.05),
+      var scale_x = d3.scale.linear()
+            .domain( d3.extent( data, attr_x)).nice()
+            .range( [ 0, width]),
 
-          scale_y = d3.scale.linear().domain( [ 0, d3.max( data, attr_y) ] )
-            .range( [ 0, height - m.top - m.bottom]);
+          scale_y = d3.scale.linear()
+            .domain( [ 0, d3.max( data, attr_y)]).nice()
+            .range( [ height, 0]);
 
-      var vis = d3.select("#chart")
-        .append("svg:svg")
-          .attr("width", width)
-          .attr("height", height)
-        .append("svg:g")
-          .attr("transform", "translate(" + m.left + "," + m.top + ")");
+      var vis = d3.select( "#chart")
+        .append( "svg:svg")
+          .data( [ data])   // astuce: le tableau imbriqué 'data' sera mappé sur élément descendant
+          .attr( "width", width + m.left + m.right)
+          .attr( "height", height + m.top + m.bottom)
+        .append( "svg:g")
+          .attr( "transform", "translate(" + m.left + "," + m.top + ")");
 
-      vis.selectAll("rect.bar")
-          .data( data)
-        .enter().append("svg:rect")
-          .attr( "class", "bar")
-          .attr( "x", function( d, i) { return scale_x( i); })
-          .attr( "y", function( d)    { return height - m.top - m.bottom - scale_y( attr_y( d)); })
-          .attr( "width", scale_x.rangeBand())
-          .attr( "height", function( d) {
-            return scale_y( attr_y( d)); });
+      // Tracé de la grille
+      var rules_x = vis.selectAll( "g.rule")
+          .data( scale_x.ticks( TICK_COUNT))
+        .enter().append( "svg:g")
+          .attr( "class", "rule");
 
-      vis.selectAll("text.value")
-          .data( data)
-        .enter().append("svg:text")
-          .attr( "class", "value")
-          .attr( "x", function( d, i) { return scale_x( i) + scale_x.rangeBand() / 2; })
-          .attr( "y", function( d)    { return height - m.top - m.bottom - scale_y( attr_y( d)); })
-          .attr( "dy", -2)
+      rules_x.append( "svg:line")
+          .attr( "x1", scale_x)
+          .attr( "x2", scale_x)
+          .attr( "y1", 0)
+          .attr( "y2", height - 1);
+
+      rules_x.append( "svg:text")
+          .attr( "x", scale_x)
+          .attr( "y", height + 6)
+          .attr( "dy", ".71em")
           .attr( "text-anchor", "middle")
-          .text( attr_y);
+          .text( scale_x.tickFormat( TICK_COUNT));
 
-      vis.selectAll("text.label")
+      var rules_y = vis.selectAll( "g.rule")
+          .data( scale_y.ticks( TICK_COUNT));
+
+      rules_y.append( "svg:line")
+          .attr( "class", function( d) { return d ? null : "axis"; })
+          .attr( "y1", scale_y)
+          .attr( "y2", scale_y)
+          .attr( "x1", 0)
+          .attr( "x2", width + 1);
+
+      rules_y.append( "svg:text")
+          .attr( "y", scale_y)
+          .attr( "x", -6)
+          .attr( "dy", ".35em")
+          .attr( "text-anchor", "end")
+          .text( scale_y.tickFormat( TICK_COUNT));
+
+      // Tracé du graphe
+      var coord_x = function( d) { return scale_x( attr_x( d)); },
+          coord_y = function( d) { return scale_y( attr_y( d)); };
+
+      // FIXME: pourquoi le dernier fill/trait revient-il au début?
+      vis.append( "svg:path")
+          .attr( "class", "area")
+          .attr( "d", d3.svg.area()
+            .x(  coord_x)
+            .y0( height - 1)
+            .y1( coord_y)
+          );
+
+      // FIXME: itou, pourquoi le dernier trait revient-il au début?
+      vis.append( "svg:path")
+          .attr( "class", "line")
+          .attr( "d", d3.svg.line()
+            .x( coord_x)
+            .y( coord_y)
+          );
+
+      vis.selectAll( "circle.area")
           .data( data)
-        .enter().append("svg:text")
-          .attr( "class", "label")
-          .attr( "x", function( d, i) { return scale_x( i) + scale_x.rangeBand() / 2; })
-          .attr( "y", height - m.top - m.bottom - scale_y( 0))
-          .attr( "dy", 12)
-          .attr( "text-anchor", "middle")
-          .text( attr_x);
-
-      vis.append("svg:line")
-        .attr("class", "xaxis")
-        .attr("x1", 0)
-        .attr("x2", width - m.right - m.left)
-        .attr("y1", height - m.top - m.bottom - scale_y( 0))
-        .attr("y2", height - m.top - m.bottom - scale_y( 0));
+        .enter().append( "svg:circle")
+          .attr( "class", "area")
+          .attr( "cx", coord_x)
+          .attr( "cy", coord_y)
+          .attr( "r", 3.0);
     }
     </script>
     <style type="text/css">
+      body {
+        font-family: Arial, Helvetica, sans-serif; }
       #chart {
-        width: 960px;
-        height: 480px;
-        border: 1px solid lightgray;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 12px;
-      }
-      #chart .bar {
-        fill: steelblue;
-      }
-      #chart .xaxis {
-        stroke: black;
-      }
+        width: 960px; height: 450px;
+        border: 1px solid #eee;
+        font-size: 10px; }
+      #chart .bar { fill: steelblue; }
+      #chart .xaxis { stroke: black; }
+      #chart .rule line {
+        stroke: #eee; shape-rendering: crispEdges; }
+      #chart .rule line.axis { stroke: black; }
+      #chart .area { fill: lightsteelblue; fill-opacity: .75; }
+      #chart .line, #chart circle.area {
+        fill: none; stroke: steelblue; stroke-width: 1.5px; }
+      #chart circle.area { fill: white; }
     </style>
   </head>
   <body>
@@ -130,9 +164,9 @@ BARGRAPH_TEMPLATE = <<EOF
           attr_loc  = function( d) { return d.l; },   // Slice location accessor
           attr_xray = function( d) { return d.x; },   // X-ray tube current accessor
 
-          width = 960,
-          height = 480,
-          margins = { top: 20, right: 10, bottom: 20, left: 10 };
+          width = 900,  // 900 + 35 (left) + 25 (right) = 960px (CSS width)
+          height = 400, // 400 + 25 (top) + 25 (bottom) = 450px (CSS height)
+          margins = { top: 25, right: 25, bottom: 25, left: 35 };
 
       draw_area_graph( data, attr_loc, attr_xray, width, height, margins);
 
@@ -140,4 +174,3 @@ BARGRAPH_TEMPLATE = <<EOF
   </body>
 </html>
 EOF
-

@@ -156,6 +156,7 @@ class Exam
       assert_is_kind_of_dobject dobject if dobject.nil? # the paranoïd freak in me
       assert_successfully_read path, dobject
       assert_modality_is_CTscan path, dobject
+      # dobject.remove_group( DICOM_PIXEL_GROUP_TAG)  # empreinte mémoire
       @images[ path] = dobject
     end
     @images_read = true
