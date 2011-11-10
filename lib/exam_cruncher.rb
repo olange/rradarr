@@ -29,6 +29,8 @@ class ExamCruncher
     :force => false, :recurse => true, :dry_run => false, :verbose => false
   }
 
+  EXCLUDED_DIRS = [ ".cvs", ".git", ".svn" ]
+
   LICENSE = """
   Copyright (c) 2011 Tristan Zand & Olivier Lange\n
   This program comes with ABSOLUTELY NO WARRANTY. It is free software
@@ -64,10 +66,11 @@ class ExamCruncher
       % [ count, count > 1 ? "ies" : "y"])
 
     image_dirs.each do |input_dir|
-      info( "sluurp", "images from directory %s/ ..." % input_dir)
+      info( "sluurp", "images from directory %s/" % input_dir)
       exam = Exam.new( input_dir)
       if exam.empty?
-        info( "ouuups".red, "found no DICOM images, skipping that directory")
+        info( "ouuups".red, \
+          "found no DICOM images in %s, skipping to next (sub)directory" % input_dir)
         next
       end
 
@@ -78,12 +81,12 @@ class ExamCruncher
 
       unless @options[ :dry_run]
         if @options[ :csv_export]
-          info( "crunch", "to CSV file %s ..." % output_csv)
+          info( "crunch", "to CSV file %s" % output_csv)
           open( output_csv, "w") { |f| exam.to_csv f }
         end
 
         if @options[ :html_export]
-          info( "cronch", "to HTML file %s ..." % output_html)
+          info( "cronch", "to HTML file %s" % output_html)
           open( output_html, "w") { |f| exam.to_html f }
         end
       end
@@ -110,15 +113,15 @@ class ExamCruncher
   end
 
   def excluded_directory?( pathname)
-    # raise TypeError unless pathname.kind_of? Pathname
-    pathname.fnmatch? "**/.svn", File::FNM_PATHNAME
+    # assert pathname.kind_of? Pathname
+    EXCLUDED_DIRS.include? pathname.basename.to_s  # dernier segment
   end
 
   def candidate_directory?( pathname)
-    # raise TypeError unless pathname.kind_of? Pathname
+    # assert pathname.kind_of? Pathname
     it_contains_a_file = false
     Dir.glob( pathname.join( "*")) do |path|
-      next if path.end_with?( ".csv")
+      next if path.end_with?( ".csv") or path.end_with?( ".html")
       it_contains_a_file = File.file?( path)
       break if it_contains_a_file
     end
@@ -203,11 +206,10 @@ class ExamCruncher
         @options[ :csv_export] = csv
       end
 
-      # [ TODO
       opts.on( "--[no-]html", "Graph the DICOM metadata as HTML " \
         + "(default %s)." % @options[ :html_export]) do |html|
         @options[ :html_export] = html
-      end # ]
+      end
 
       opts.on( "-f", "--[no-]force", "Overwrite existing files " \
         + "(default %s)." % @options[ :force]) do |force|
@@ -225,8 +227,10 @@ class ExamCruncher
         "Set of elements in the export (all, doseff; " \
         + "default %s)." % @options[ :element_set]) do |eltset|
         @options[ :element_set] = eltset
-        warn( "L'option --elements n'est pas prise en compte " \
-          "(non implémenté). Serait-elle utile?".red)
+        warn( "L'option --elements n'est pas implémentée. Serait-elle utile?" \
+          "\nElle permettrait de restreindre les métadonnées exportées " \
+          "\nà celles nécessaires au calcul de la dose effective, " \
+          "\npour faciliter l'utilisation du fichier CSV exporté.".red)
       end
 
       opts.on( "-v", "--verbose", "Run more verbosely " \
