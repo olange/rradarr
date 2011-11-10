@@ -54,8 +54,8 @@ BARGRAPH_TEMPLATE = <<EOF
     //   les attributs top, bottom, left et right; par exemple:
     //   { top: 10, right: 5, bottom: 10, left: 5 }
     //
-    // Noter que la largeur totale du graphe est width + m.left + m.right
-    // et que sa hauteur est height + m.top + m.bottom.
+    // Noter que la largeur totale du graphe sera width + m.left + m.right
+    // et que sa hauteur sera height + m.top + m.bottom.
     function draw_area_graph( title, data, attr_x, attr_y, width, height, m) {
       var TICK_COUNT = 10;
 
@@ -70,20 +70,20 @@ BARGRAPH_TEMPLATE = <<EOF
             .domain( [ 0, d3.max( data_extent_y)]).nice()
             .range( [ height, 0]);
 
-      var vis = d3.select( "#chart")
-        .append( "svg:svg")
+      var canvas = d3.select( "#chart")
           .data( [ data])
+        .append( "svg:svg")
           .attr( "width", width + m.left + m.right)
-          .attr( "height", height + m.top + m.bottom)
-        .append( "svg:g")
+          .attr( "height", height + m.top + m.bottom),
+          // astuce: le tableau imbriqué 'data' sera mappé sur nouvel
+          // élément descendant svg:g créé ci-après
+
+          vis = canvas.append( "svg:g")
           .attr( "transform", "translate(" + m.left + "," + m.top + ")");
-        // astuce: le tableau imbriqué 'data' sera mappé sur nouvel élément
-        // descendant svg:g. la variable 'vis' référence ce nouvel élément.
 
       // Titre du graphe
       if( title != "") {
-        d3.select( "svg")
-          .append( "svg:text")
+        canvas.append( "svg:text")
           .attr( "class", "title")
           .attr( "x", ( width + m.left + m.right) / 2)
           .attr( "y", height + m.top)
@@ -96,7 +96,7 @@ BARGRAPH_TEMPLATE = <<EOF
       var rules_x = vis.selectAll( "g.rule")
           .data( scale_x.ticks( TICK_COUNT))
         .enter().append( "svg:g")
-          .attr( "class", "rule");
+          .attr( "class", "rule xy");
 
       rules_x.append( "svg:line")
           .attr( "x1", scale_x)
@@ -112,9 +112,12 @@ BARGRAPH_TEMPLATE = <<EOF
           .text( scale_x.tickFormat( TICK_COUNT));
 
       var rules_y = vis.selectAll( "g.rule")
+          .data( scale_y.ticks( TICK_COUNT))
+        .enter().append( "svg:g")
+          .attr( "class", "rule y");
+
+      var rules_y = vis.selectAll( "g.rule")
           .data( scale_y.ticks( TICK_COUNT));
-          // Nbre de ticks doit être identique à celui de rules_x!
-          // On inscrit les lignes verticales dans le même jeu d'élts g.rule
 
       rules_y.append( "svg:line")
           .attr( "class", function( d) { return d ? null : "axis"; })
@@ -195,14 +198,13 @@ BARGRAPH_TEMPLATE = <<EOF
     <script type="text/javascript">
 
       var data =
-          %{graph_data}
-          ,
+          %{graph_data};
 
-          attr_loc  = function( d) { return d.l; },   // Slice location accessor
+      var attr_loc  = function( d) { return d.l; },   // Slice location accessor
           attr_xray = function( d) { return d.x; },   // X-ray tube current accessor
 
           width = 890,  // 890 + 35 (left) + 35 (right) = 960px (CSS width)
-          height = 415, // 420 + 25 (top) + 40 (bottom) = 480px (CSS height)
+          height = 415, // 415 + 25 (top) + 40 (bottom) = 480px (CSS height)
           margins = { top: 25, right: 35, bottom: 40, left: 35 },
 
           title = "%{graph_title}";
