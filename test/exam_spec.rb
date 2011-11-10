@@ -216,28 +216,29 @@ describe Exam do
   context 'when exporting to CSV' do
 
     it 'builds a CSV header with correct number of fields' do
-      # Images DICOM du premier examen contiennent 226 éléments de métadonnées
+      # Images DICOM du premier examen contiennent 225 éléments
+      # de métadonnées (hors Pixel Data, qui a été supprimé)
       exam1 = Exam.new INPUT_DIR
       header_cols1 = exam1.csv_metadata_header
-      header_cols1.should have(227).items
+      header_cols1.should have(226).items   # = 225 élts DICOM + 1 nom fichier
 
       # Eléments génériques
       header_cols1.first.should == DICOM_SOURCE_FILE_CSVNAME
       header_cols1.should include DICOM_MODALITY_CSVNAME
-      header_cols1.last.should == DICOM_PIXEL_DATA_CSVNAME
+      header_cols1.last.should == DICOM_PIXEL_GROUP_LEN_CSVNAME
 
       # Eléments spécifiques qui nous intéressent
       header_cols1.should include DICOM_XRAY_TUBE_CURRENT_CSVNAME
       header_cols1.should include DICOM_SLICE_LOCATION_CSVNAME
 
-      # Images DICOM du rapport de dose contiennent 68 éléments de métadonnées,
+      # Images DICOM du rapport de dose contiennent 67 éléments de métadonnées,
       # dont sont absents les éléments spécifiques "0018,1151" et "0020,1041"
       exam2 = Exam.new ANOTHER_INPUT_DIR
       header_cols2 = exam2.csv_metadata_header
-      header_cols2.should have(69).items
+      header_cols2.should have(68).items
       header_cols1.first.should == DICOM_SOURCE_FILE_CSVNAME
       header_cols2.should include DICOM_MODALITY_CSVNAME
-      header_cols1.last.should == DICOM_PIXEL_DATA_CSVNAME
+      header_cols1.last.should == DICOM_PIXEL_GROUP_LEN_CSVNAME
       header_cols2.should_not include DICOM_XRAY_TUBE_CURRENT_CSVNAME
       header_cols2.should_not include DICOM_SLICE_LOCATION_CSVNAME
 
@@ -266,9 +267,9 @@ describe Exam do
       # retourne le contenu du fichier CSV sous forme de tableau à 2 dimensions)
       datasheet = CSV.read( OUTPUT_CSV, Exam::DEFAULT_CSV_OPTIONS)  # maousse!
       datasheet.should have( 16).lines      # 1 ligne d'en-tête + 15 de données
-      datasheet[ 0].should have( 227).items # ligne de l'en-tête CSV
-      datasheet[ 1].should have( 227).items # première ligne de données
-      datasheet[15].should have( 227).items # dernière ligne de données
+      datasheet[ 0].should have( 226).items # ligne de l'en-tête CSV
+      datasheet[ 1].should have( 226).items # première ligne de données
+      datasheet[15].should have( 226).items # dernière ligne de données
 
       # Et qu'on y trouve les mêmes valeurs que dans l'examen original
       csv_header = datasheet[ 0]
