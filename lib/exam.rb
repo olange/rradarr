@@ -271,7 +271,7 @@ class Exam
     csv_options = DEFAULT_CSV_OPTIONS
     CSV( output_file, csv_options) do |csv_file|
       csv_file << csv_metadata_header
-      @images.each do |image|
+      sort_images_by( :slice_location).each do |image|
         csv_file << csv_metadata_values_from( image)
       end
     end
@@ -283,15 +283,15 @@ class Exam
     raise "DICOM source files have inconsistent structure among them" \
       unless has_homogeneous_structure?
 
-    sort_images_by! :slice_location
-
     data = []
-    @images.values.each do |dobject|
+    sort_images_by( :slice_location).values.each do |dobject|
       data << {
         :l => dobject.exists?( DICOM_SLICE_LOCATION_TAG) \
           ? Float( dobject[ DICOM_SLICE_LOCATION_TAG].value) : 0.0,
         :x => dobject.exists?( DICOM_XRAY_TUBE_CURRENT_TAG) \
-          ? Float( dobject[ DICOM_XRAY_TUBE_CURRENT_TAG].value) : 0.0
+          ? Float( dobject[ DICOM_XRAY_TUBE_CURRENT_TAG].value) : 0.0,
+        :t => dobject.exists?( DICOM_EXPOSURE_TIME_TAG) \
+          ? Float( dobject[ DICOM_EXPOSURE_TIME_TAG].value) : 0.0
       }
     end
     output_file << html_graph_for( data, @name)

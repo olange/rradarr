@@ -54,6 +54,11 @@ module DICOMElementsHelper
   DICOM_SCAN_OPTIONS_CSVNAME      = csv_colname_for DICOM_SCAN_OPTIONS_TAG
                                   # "0018,0022 (Scan Options)"
 
+  # Durée d'exposition de la tranche (en ms)
+  DICOM_EXPOSURE_TIME_TAG     = "0018,1150"
+  DICOM_EXPOSURE_TIME_CSVNAME = csv_colname_for DICOM_EXPOSURE_TIME_TAG
+                                  # "0018,1150 (Exposure Time)"
+
   # Intensité du courant pendant l'acquisition
   DICOM_XRAY_TUBE_CURRENT_TAG     = "0018,1151"
   DICOM_XRAY_TUBE_CURRENT_CSVNAME = csv_colname_for DICOM_XRAY_TUBE_CURRENT_TAG
