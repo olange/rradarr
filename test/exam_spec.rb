@@ -29,7 +29,7 @@ describe Exam do
   before( :all) do
     DICOM.logger.level = Logger::FATAL
 
-    BASE_INPUT_DIR = "test"
+    BASE_INPUT_DIR = "test/fixtures"
     BASE_OUTPUT_DIR = "test"
 
     INPUT_DIR = "#{BASE_INPUT_DIR}/valid-dicom/LAPIN2_PRO_APC_100KV_CTDIVOL8_6"

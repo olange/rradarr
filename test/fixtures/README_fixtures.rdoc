@@ -1,8 +1,8 @@
 = Jeux de fichiers DICOM de test
 
-Le dossier <tt>test/</tt> contient plusieurs jeux d'images DICOM destinés
-aux tests fonctionnels (voir script <tt>test/exam_spec.rb</tt>), répartis
-dans les sous-dossiers suivants:
+Le dossier <tt>test/fixtures/</tt> contient plusieurs jeux d'images DICOM
+destinés aux tests fonctionnels (voir script <tt>test/exam_spec.rb</tt>),
+répartis dans les sous-dossiers suivants:
 
 == <tt>invalid-dicom/</tt>
 
