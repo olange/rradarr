@@ -11,11 +11,19 @@ Quelques indications pour démarrer...
 
 == En un clin d'oeil
 
-N.B. Ignorez la première commande si vous n'utilisez pas RVM.
+Obtenir les sources et décompacter le fichier de jeu de tests:
 
+  $ git clone git@github.com:olange/rradarr.git
+  $ cd rradarr/test/fixtures/valid-dicom/
+  $ tar xjvf valid-dicom.tar.bz2
+
+Installer les dépendances et exécuter les tests pour vérifier que tout
+fonctionne; ignorez la deuxième commande si vous n'utilisez pas RVM:
+
+  $ cd rradarr
   $ rvm use 1.9.2@dicom --create
   $ bundle install
-  $ rdoc -m README .
+  $ rdoc -m README.rdoc .
   $ rspec --color .
 
 == Générer la documentation (API)
@@ -23,14 +31,14 @@ N.B. Ignorez la première commande si vous n'utilisez pas RVM.
 Pour consulter la description des classes et leurs méthodes au format HTML
 et explorer leur hiérarchie.
 
-  $ rdoc -m README -t "Extraction des metadonnees d'un examen DICOM" .
+  $ rdoc -m README.rdoc -t "Extraction des metadonnees d'un examen DICOM" .
   $ google-chrome doc/index.html &
 
 == Exécuter les tests
 
-Pour s'assurer que le code est fonctionnel. Les spécifications
-permettent quant à elles de lire les exigences auxquelles répondent
-les classes et de trouver des fragments de code pour invoquer celles-ci.
+Pour s'assurer que le code est fonctionnel. Les spécifications permettent
+quant à elles de lire les exigences auxquelles répondent les classes et
+de trouver des fragments de code pour invoquer celles-ci.
 
   $ rvm use 1.9.2@dicom
   $ rspec --color .
@@ -39,8 +47,12 @@ les classes et de trouver des fragments de code pour invoquer celles-ci.
   Finished in 4.92 seconds
   15 examples, 0 failures
 
-Décompresser au préalable, dans le sous-dossier <tt>test/valid-dicom/</tt>,
-l'archive <tt>valid-dicom.tar.bz2</tt> qui s'y trouve.
+Avant d'exécuter les tests pour la première fois, décompresser
+l'archive <tt>valid-dicom.tar.bz2</tt>, qui se trouve dans le
+dossier <tt>test/fixtures/valid-dicom/</tt>:
+
+  $ cd test/fixtures/valid-dicom/
+  $ tar xjvf valid-dicom.tar.bz2
 
 == Mise en place de l'environnement
 

@@ -10,17 +10,30 @@ require 'stringio'
 require_relative '../lib/exam'
 require_relative '../lib/dicom_elements_helper'
 
-# Spécifications de test RSpec2 de la classe Exam.
+# Spécifications de test RSpec de la classe Exam.
 #
-# Un jeu de fichiers DICOM de test accompagne ces spécifications, qui se trouve
-# dans le sous-dossier <tt>test/</tt>, dont un aperçu est donné ci-après.
-# Consulter le fichier README_test pour une description détaillée de ce
-# jeu de test, des particularités des fichiers de chaque dossier.
+# Un jeu de fichiers DICOM de test accompagne ces spécifications, qui se
+# trouve dans le sous-dossier <tt>test/fixtures/</tt>.
 #
-# RSpec est un « domain specific language », qui permet d'exprimer les tests
-# fonctionnels par des exemples, dans une forme réputée naturellement lisible.
-# Cela vient au prix d'une certaine astuce et expérience! Pour une explication
-# sur l'un des idiomes de RSpec, consulter http://relishapp.com/rspec.
+# Consulter le fichier README_fixtures.rdoc pour une description détaillée
+# de ce jeu de test, des particularités des fichiers de chaque dossier.
+#
+# Prérequis:
+#
+#   Avant de lancer les tests pour la première fois, il faut décomptacter
+#   le jeu d'images DICOM du sous-dossier <tt>test/fixtures/valid-dicom/</tt>,
+#   qui se trouve dans une archive BZIP:
+#
+#     $ cd test/fixtures/valid-dicom/
+#     $ tar xjvf valid-dicom.tar.bz2
+#
+# Voir aussi:
+#
+#   Pour une explication sur l'un des idiomes de RSpec, consulter:
+#   http://relishapp.com/rspec.
+#
+#   RSpec est un « domain specific language », qui permet d'exprimer les
+#   tests fonctionnels par des exemples, dans une forme réputée lisible.
 
 describe Exam do
 
@@ -46,22 +59,8 @@ describe Exam do
     OTHER_OUTPUT_CSV = "#{BASE_OUTPUT_DIR}/exam-lapin2-140kv.csv"
   end
 
-  # On suppose que le sous-dossier <tt>./test</tt> contient cinq jeux de fichiers
-  # dans la hiérarchie de dossiers et le nombre de fichiers suivants:
-  #
-  # * <tt>test/valid-dicom/LAPIN2_PRO_APC_100KV_CTDIVOL8_6/</tt> 15 fichiers .DCM
-  # * <tt>test/valid-dicom/LAPIN2_PRO_APC_140KV_CTDIVOL2_16/</tt> 10 fichiers .DCM
-  # * <tt>test/valid-dicom/Localizers_1/</tt> 2 fichiers .DCM
-  # * <tt>test/valid-dicom/Rapport_dose_999/</tt> 2 fichiers .DCM
-  # * <tt>test/mixed-content/</tt> 4 fichiers .DCM, dont l'un est
-  #     un fichier texte, et un autre fichier texte sans extension
-  # * <tt>test/non-homogeneous/</tt> 6 fichiers .DCM provenant de 3 séries
-  #     d'images différentes, ayant une structure de données différente
-  # * <tt>test/invalid-dicom/</tt> 1 fichier .DCM corrompu
-  # * <tt>test/no-dicom</tt> aucun fichier .DCM
-  #
-  # Consulter le fichier <tt>test/README.test</tt> pour une description plus
-  # détaillée de ce jeu de test, des particularités des fichiers de chaque dossier.
+  # Consulter le fichier <tt>test/fixtures/README_fixtures.test</tt>
+  # pour une description détaillée du jeu de test attendu.
   it 'test has the expected fileset' do
     Dir.glob( INPUT_DIR + "/*.dcm").should have(15).entries
     Dir.glob( OTHER_INPUT_DIR + "/*.dcm").should have(10).entries
