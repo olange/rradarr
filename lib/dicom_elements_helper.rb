@@ -59,7 +59,7 @@ module DICOMElementsHelper
   DICOM_EXPOSURE_TIME_CSVNAME = csv_colname_for DICOM_EXPOSURE_TIME_TAG
                                   # "0018,1150 (Exposure Time)"
 
-  # Intensité du courant pendant l'acquisition
+  # Intensité du courant pendant l'acquisition (en mA)
   DICOM_XRAY_TUBE_CURRENT_TAG     = "0018,1151"
   DICOM_XRAY_TUBE_CURRENT_CSVNAME = csv_colname_for DICOM_XRAY_TUBE_CURRENT_TAG
                                   # "0018,1151 (X-ray Tube Current)"
@@ -69,6 +69,11 @@ module DICOMElementsHelper
   DICOM_FILTER_TYPE_TAG           = "0018,1160"
   DICOM_FILTER_TYPE_CSVNAME       = csv_colname_for DICOM_FILTER_TYPE_TAG
                                   # "0018,1160 (Filter Type)"
+
+  # Heure d'acquisition de la tranche (en ms)
+  DICOM_CONTENT_TIME_TAG          = "0008,0013"
+  DICOM_CONTENT_TIME_CSVNAME      = csv_colname_for DICOM_CONTENT_TIME_TAG
+                                  # "0008,0013 (Content Time)"
 
   # Distance physique relative entre la tranche correspondant à une image
   # et la tranche de la première image

@@ -286,12 +286,14 @@ class Exam
     data = []
     sort_images_by( :slice_location).values.each do |dobject|
       data << {
-        :l => dobject.exists?( DICOM_SLICE_LOCATION_TAG) \
+        :sl => dobject.exists?( DICOM_SLICE_LOCATION_TAG) \
           ? Float( dobject[ DICOM_SLICE_LOCATION_TAG].value) : 0.0,
-        :x => dobject.exists?( DICOM_XRAY_TUBE_CURRENT_TAG) \
+        :xr => dobject.exists?( DICOM_XRAY_TUBE_CURRENT_TAG) \
           ? Float( dobject[ DICOM_XRAY_TUBE_CURRENT_TAG].value) : 0.0,
-        :t => dobject.exists?( DICOM_EXPOSURE_TIME_TAG) \
-          ? Float( dobject[ DICOM_EXPOSURE_TIME_TAG].value) : 0.0
+        :et => dobject.exists?( DICOM_EXPOSURE_TIME_TAG) \
+          ? Float( dobject[ DICOM_EXPOSURE_TIME_TAG].value) : 0.0,
+        :ct => dobject.exists?( DICOM_CONTENT_TIME_TAG) \
+          ? Float( dobject[ DICOM_CONTENT_TIME_TAG].value) : 0.0
       }
     end
     output_file << html_graph_for( data, @name)

@@ -6,19 +6,21 @@
     <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
     <script type="text/javascript">
     // Trace un histogramme SVG à partir d'un ensemble de coordonnées
-    // rectilignes <X,Y> (X: abscisse/libellé et Y: ordonnée/valeur
+    // rectilignes <X,Y1,Y2> (X: abscisse/libellé et Yx: ordonnée/valeur
     // de l'un des points du graphe).
     //
     // title: titre du graphe, qui sera inscrit sous l'axe X.
     //
-    // data: tableau de tuples (X,Y)
+    // data: tableau de valeurs <X,Y1,Y2...>
     //   par exemple: [ { loc: 66.125, xray: 140.0 }, ... ]
     //
-    // attr_x: accesseur permettant de lire la valeur X d'un tuple
-    //   par exemple: function(d) { return d.loc; }
+    // attr_x: accesseur permettant de lire la valeur X à partir d'une
+    //   entrée du tableau de valeurs; par exemple:
+    //   function( d) { return d.loc; }
     //
-    // attr_y: accesseur permettant de lire la valeur Y d'un tuple
-    //   par exemple: function(d) { return d.xray; }
+    // attr_y: accesseur permettant de lire la valeur Y à partir d'une
+    //   entrée du tableau de valeurs; par exemple:
+    //   function( d) { return d.xray; }
     //
     // width: largeur intérieure du graphe, en pixels; par exemple: 960.
     //
@@ -232,22 +234,29 @@
   <body>
     <div id="chart"></div>
     <script type="text/javascript">
-
       var data = [
-          { l: 59.250, x: 120.0 }, { l: 59.875, x: 125.0 }, { l: 60.500, x: 125.5 },
-          { l: 61.125, x: 135.0 }, { l: 61.750, x: 138.0 }, { l: 62.375, x: 140.0 },
-          { l: 63.000, x: 145.5 }, { l: 63.625, x: 144.0 }, { l: 64.250, x: 140.0 },
-          { l: 64.875, x: 141.0 }, { l: 65.500, x: 144.0 }, { l: 66.125, x: 155.0 },
-          { l: 66.750, x: 160.5 }, { l: 67.375, x: 175.0 }, { l: 68.000, x: 165.0 },
-          { l: 59.250, x: 120.0 }, { l: 59.875, x: 125.0 }, { l: 60.500, x: 125.5 },
-          { l: 61.125, x: 135.0 }, { l: 61.750, x: 138.0 }, { l: 62.375, x: 140.0 },
-          { l: 63.000, x: 145.5 }, { l: 63.625, x: 144.0 }, { l: 64.250, x: 140.0 },
-          { l: 64.875, x: 141.0 }, { l: 65.500, x: 144.0 }, { l: 66.125, x: 155.0 },
-          { l: 66.750, x: 160.5 }, { l: 67.375, x: 175.0 }, { l: 67.750, x: 165.0 }
+        {"sl":59.25,"xr":165.0,"et":400.0,"ct":183213.0},
+        {"sl":59.875,"xr":164.0,"et":400.0,"ct":183213.0},
+        {"sl":60.5,"xr":161.0,"et":400.0,"ct":183213.0},
+        {"sl":61.125,"xr":160.0,"et":400.0,"ct":183213.0},
+        {"sl":61.75,"xr":162.0,"et":400.0,"ct":183213.0},
+        {"sl":62.375,"xr":168.0,"et":400.0,"ct":183213.0},
+        {"sl":63.0,"xr":174,"et":400.0,"ct":183213.0},
+        {"sl":63.625,"xr":175.0,"et":400.0,"ct":183213.0},
+        {"sl":64.25,"xr":176.0,"et":400.0,"ct":183213.0},
+        {"sl":64.875,"xr":180.0,"et":400.0,"ct":183213.0},
+        {"sl":65.5,"xr":183.0,"et":400.0,"ct":183213.0},
+        {"sl":66.125,"xr":181.0,"et":400.0,"ct":183213.0},
+        {"sl":66.75,"xr":176.0,"et":400.0,"ct":183213.0},
+        {"sl":67.375,"xr":175.0,"et":400.0,"ct":183213.0},
+        {"sl":68.0,"xr":178.0,"et":400.0,"ct":183212.0}
       ];
 
-      var attr_loc  = function( d) { return d.l; },   // Slice location accessor
-          attr_xray = function( d) { return d.x; },   // X-ray tube current accessor
+      var // Value X accessor "location" (Slice location [mm], converted to [cm])
+          attr_loc  = function( d) { return d.sl / 10; },
+
+          // Value Y accessor "exposure" (X-ray tube current * Exposure time [mAs])
+          attr_exp = function( d) { return d.xr * d.et / 1000; },
 
           width = 890,  // 890 + 35 (left) + 35 (right) = 960px (CSS width)
           height = 415, // 415 + 25 (top) + 40 (bottom) = 480px (CSS height)
@@ -255,7 +264,7 @@
 
           title = "LAPIN2 PRO APC 100KV CTDIVOL8";
 
-      draw_area_graph( title, data, attr_loc, attr_xray, width, height, margins);
+      draw_area_graph( title, data, attr_loc, attr_exp, width, height, margins);
 
     </script>
   </body>
