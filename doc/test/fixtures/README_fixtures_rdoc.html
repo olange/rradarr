@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>COPYING</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body class="file">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../../COPYING.html">COPYING</a>
+  
+    <li class="file"><a href="../../Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="../../README_rdoc.html">README</a>
+  
+    <li class="file"><a href="../../test/fixtures/README_fixtures_rdoc.html">README_fixtures</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../DICOMElementsHelper.html">DICOMElementsHelper</a>
+  
+    <li><a href="../../Exam.html">Exam</a>
+  
+    <li><a href="../../ExamCruncher.html">ExamCruncher</a>
+  
+    <li><a href="../../Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<h1 id="label-Jeux+de+fichiers+DICOM+de+test">Jeux de fichiers DICOM de test</h1>
+
+<p>Le dossier <code>test/fixtures/</code> contient plusieurs jeux d’images
+DICOM destinés aux tests fonctionnels (voir script
+<code>test/exam_spec.rb</code>), répartis dans les sous-dossiers suivants:</p>
+
+<h2 id="label-invalid-dicom%2F"><code>invalid-dicom/</code></h2>
+
+<p>contient 1 fichier DICOM corrompu (créé à partir des ~140 premiers octets
+d’un fichier DICOM valide).</p>
+
+<h2 id="label-mixed-content%2F"><code>mixed-content/</code></h2>
+
+<p>contient 3 fichiers DICOM, dont l’un est une image <em>scout</em>, les
+autres des images d’examen, ainsi que deux fichiers texte; destinés à
+éprouver la capacité de la classe <a href="../../Exam.html">Exam</a> à les
+identifier correctement.</p>
+
+<h2 id="label-no-dicom%2F"><code>no-dicom/</code></h2>
+
+<p>dossier vide (aucun fichier DICOM ou autre).</p>
+
+<h2 id="label-non-homegeneous%2F"><code>non-homegeneous/</code></h2>
+
+<p>contient 6 fichiers DICOM provenant de 3 séries d’images différentes, dont
+les deux premiers n’ont pas la même structure de données que les quatre
+suivants (68 éléments vs 226 éléments).</p>
+
+<p>Les deux premières images proviennent du rapport de dose, deux autres de
+l’examen 100KV et les deux derniers de l’examen 140KV.</p>
+
+<h2 id="label-other%2F"><code>other/</code></h2>
+
+<p>un fichier DICOM minimal, ne contenant que l’en-tête avec la signature.</p>
+
+<h2 id="label-valid-dicom%2F"><code>valid-dicom/</code></h2>
+
+<h3 id="label-LAPIN2_PRO_APC_100KV_CTDIVOL8_6%2F"><code>LAPIN2_PRO_APC_100KV_CTDIVOL8_6/</code></h3>
+
+<p>15 images DICOM d’une radiographie en tranches d’un lapin, réalisée avec
+l’exposition <strong>automatique</strong> du scanner (sous-ensemble, le jeu
+complet comprend 1000 images). Contiennent 226 éléments de données.</p>
+
+<h3 id="label-LAPIN2_PRO_APC_140KV_CTDIVOL2_16%2F"><code>LAPIN2_PRO_APC_140KV_CTDIVOL2_16/</code></h3>
+
+<p>10 images DICOM d’une radiographie en tranches du même lapin, avec une
+exposition <strong>constante</strong> du scanner (sous-ensemble, le jeu
+complet comprend 1000 images). Contiennent 226 éléments de données.</p>
+
+<h3 id="label-Localizers_1%2F"><code>Localizers_1/</code></h3>
+
+<p>2 images DICOM, avec une radiographie transversale du même lapin, donnant
+un aperçu en plan de toutes les tranches. Contiennent 218 éléments de
+données.</p>
+
+<h3 id="label-Rapport_dose_999%2F"><code>Rapport_dose_999/</code></h3>
+
+<p>2 images DICOM avec une indication des doses de radiations émises lors des
+précédentes radiographies. Ces images ne présentent que des indications
+littérales (texte), sous forme de bitmap. Contiennent 68 éléments de
+données.</p>
+
+<h2 id="label-Licence">Licence</h2>
+
+<p>Copyright © 2011 Tristan Zand &amp; Olivier Lange</p>
+
+<p>This test fileset is part of a program that is free software: you can
+redistribute it and/or modify it under the terms of the GNU General Public
+License as published by the Free Software Foundation, either version 3 of
+the License, or (at your option) any later version.</p>
+
+<p>The program and the test fileset are distributed in the hope that they will
+be useful, but WITHOUT ANY WARRANTY; without even the implied
+warrantywarrantyof MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See
+the GNU General Public License for more details.</p>
+
+<p>You should find a copy of the GNU General Public License within the <a
+href="../../COPYING.html">COPYING</a> file along with the program.  If not,
+see <a href="http://www.gnu.org/licenses/.">www.gnu.org/licenses/.</a></p>
+
+</div>
+
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

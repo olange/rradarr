@@ -1,1708 +1,881 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+
+<html>
 <head>
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-	<title>Class: Exam</title>
+<title>Class: Exam</title>
 
-	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
-	<script src="./js/jquery.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="./js/thickbox-compressed.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="./js/quicksearch.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="./js/darkfish.js" type="text/javascript"
-		charset="utf-8"></script>
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
 
-</head>
-<body class="class">
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
 
-	<div id="metadata">
-		<div id="home-metadata">
-			<div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="./index.html">Home</a>
-          <a href="./index.html#classes">Classes</a>
-          <a href="./index.html#methods">Methods</a>
-        </h3>
-			</div>
-		</div>
 
-		<div id="file-metadata">
-			<div id="file-list-section" class="section">
-				<h3 class="section-header">In Files</h3>
-				<div class="section-body">
-					<ul>
-					
-						<li><a href="./lib/exam_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="lib/exam.rb">lib/exam.rb</a></li>
-					
-					</ul>
-				</div>
-			</div>
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
 
-			
-		</div>
 
-		<div id="class-metadata">
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
 
-			<!-- Parent Class -->
-			
-			<div id="parent-class-section" class="section">
-				<h3 class="section-header">Parent</h3>
-				
-				<p class="link"><a href="Object.html">Object</a></p>
-				
-			</div>
-			
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
 
-			<!-- Namespace Contents -->
-			
 
-			<!-- Method Quickref -->
-			
-			<div id="method-list-section" class="section">
-				<h3 class="section-header">Methods</h3>
-				<ul class="link-list">
-					
-					<li><a href="#method-c-new">::new</a></li>
-					
-					<li><a href="#method-i-assert_is_kind_of_dobject">#assert_is_kind_of_dobject</a></li>
-					
-					<li><a href="#method-i-assert_modality_is_CTscan">#assert_modality_is_CTscan</a></li>
-					
-					<li><a href="#method-i-assert_successfully_read">#assert_successfully_read</a></li>
-					
-					<li><a href="#method-i-candidate_image%3F">#candidate_image?</a></li>
-					
-					<li><a href="#method-i-csv_metadata_header">#csv_metadata_header</a></li>
-					
-					<li><a href="#method-i-csv_metadata_header_from">#csv_metadata_header_from</a></li>
-					
-					<li><a href="#method-i-csv_metadata_values_from">#csv_metadata_values_from</a></li>
-					
-					<li><a href="#method-i-empty%3F">#empty?</a></li>
-					
-					<li><a href="#method-i-extract_exam_name">#extract_exam_name</a></li>
-					
-					<li><a href="#method-i-extract_exam_name_from">#extract_exam_name_from</a></li>
-					
-					<li><a href="#method-i-find_images_in">#find_images_in</a></li>
-					
-					<li><a href="#method-i-has_homogeneous_structure%3F">#has_homogeneous_structure?</a></li>
-					
-					<li><a href="#method-i-has_images%3F">#has_images?</a></li>
-					
-					<li><a href="#method-i-has_scouts%3F">#has_scouts?</a></li>
-					
-					<li><a href="#method-i-image_files_pattern_for">#image_files_pattern_for</a></li>
-					
-					<li><a href="#method-i-images_already_read%3F">#images_already_read?</a></li>
-					
-					<li><a href="#method-i-is_scout_image%3F">#is_scout_image?</a></li>
-					
-					<li><a href="#method-i-looks_like_dicom%3F">#looks_like_dicom?</a></li>
-					
-					<li><a href="#method-i-prune_scout_images_from%21">#prune_scout_images_from!</a></li>
-					
-					<li><a href="#method-i-read_images">#read_images</a></li>
-					
-					<li><a href="#method-i-remove_last_dir_sep_from">#remove_last_dir_sep_from</a></li>
-					
-					<li><a href="#method-i-reset%21">#reset!</a></li>
-					
-					<li><a href="#method-i-sign_structure_of">#sign_structure_of</a></li>
-					
-					<li><a href="#method-i-sort_images_by">#sort_images_by</a></li>
-					
-					<li><a href="#method-i-sort_images_by%21">#sort_images_by!</a></li>
-					
-					<li><a href="#method-i-source_dir%3D">#source_dir=</a></li>
-					
-					<li><a href="#method-i-to_csv">#to_csv</a></li>
-					
-					<li><a href="#method-i-to_html">#to_html</a></li>
-					
-				</ul>
-			</div>
-			
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/exam.rb
+  </ul>
+</nav>
 
-			<!-- Included Modules -->
-			
-			<div id="includes-section" class="section">
-				<h3 class="section-header">Included Modules</h3>
-				<ul class="link-list">
-				
-				
-					<li><a class="include" href="DICOMElementsHelper.html">DICOMElementsHelper</a></li>
-				
-				
-				</ul>
-			</div>
-			
-		</div>
+    
+  </div>
 
-		<div id="project-metadata">
-			
-			
-			<div id="fileindex-section" class="section project-section">
-				<h3 class="section-header">Files</h3>
-				<ul>
-				
-					<li class="file"><a href="./COPYING.html">COPYING</a></li>
-				
-					<li class="file"><a href="./Gemfile.html">Gemfile</a></li>
-				
-					<li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
-				
-					<li class="file"><a href="./test/README_test_rdoc.html">README_test.rdoc</a></li>
-				
-				</ul>
-			</div>
-			
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</nav>
 
-			<div id="classindex-section" class="section project-section">
-				<h3 class="section-header">Class Index
-					<span class="search-toggle"><img src="./images/find.png"
-						height="16" width="16" alt="[+]"
-						title="show/hide quicksearch" /></span></h3>
-				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-				<fieldset>
-					<legend>Quicksearch</legend>
-					<input type="text" name="quicksearch" value=""
-						class="quicksearch-field" />
-				</fieldset>
-				</form>
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
 
-				<ul class="link-list">
-				
-					<li><a href="./DICOMElementsHelper.html">DICOMElementsHelper</a></li>
-				
-					<li><a href="./Exam.html">Exam</a></li>
-				
-					<li><a href="./ExamCruncher.html">ExamCruncher</a></li>
-				
-					<li><a href="./Object.html">Object</a></li>
-				
-				</ul>
-				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
-			</div>
+  <ul class="link-list">
+  
+  
+    <li><a class="include" href="DICOMElementsHelper.html">DICOMElementsHelper</a>
+  
+  
+  </ul>
+</nav>
 
-			
-		</div>
-	</div>
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
 
-	<div id="documentation">
-		<h1 class="class">Exam</h1>
+  <ul class="link-list">
+    
+    <li><a href="#method-c-new">::new</a>
+    
+    <li><a href="#method-i-csv_metadata_header">#csv_metadata_header</a>
+    
+    <li><a href="#method-i-empty-3F">#empty?</a>
+    
+    <li><a href="#method-i-has_homogeneous_structure-3F">#has_homogeneous_structure?</a>
+    
+    <li><a href="#method-i-has_images-3F">#has_images?</a>
+    
+    <li><a href="#method-i-has_scouts-3F">#has_scouts?</a>
+    
+    <li><a href="#method-i-images_already_read-3F">#images_already_read?</a>
+    
+    <li><a href="#method-i-read_images">#read_images</a>
+    
+    <li><a href="#method-i-sort_images_by">#sort_images_by</a>
+    
+    <li><a href="#method-i-sort_images_by-21">#sort_images_by!</a>
+    
+    <li><a href="#method-i-source_dir-3D">#source_dir=</a>
+    
+    <li><a href="#method-i-to_csv">#to_csv</a>
+    
+    <li><a href="#method-i-to_html">#to_html</a>
+    
+  </ul>
+</nav>
 
-		<div id="description">
-			<p>
-Lit un jeu d&#8217;images DICOM d&#8217;un examen radiologique de type
-CTscan à partir d&#8217;un dossier source, en distinguant les images «
-scout » des images de l&#8217;examen lui-même. Permet d&#8217;extraire les
-métadonnées du jeu d&#8217;images de l&#8217;examen et de les exporter au
-format CSV.
-</p>
-<p>
-Le dossier source peut contenir un jeu de fichiers hétérogènes, par exemple
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./COPYING.html">COPYING</a>
+  
+    <li class="file"><a href="./Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./test/fixtures/README_fixtures_rdoc.html">README_fixtures</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./DICOMElementsHelper.html">DICOMElementsHelper</a>
+  
+    <li><a href="./Exam.html">Exam</a>
+  
+    <li><a href="./ExamCruncher.html">ExamCruncher</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Exam</h1>
+
+  <div id="description" class="description">
+    
+<p>Lit un jeu d’images DICOM d’un examen radiologique de type CTscan à partir
+d’un dossier source, en distinguant les images « scout » des images de
+l’examen lui-même. Permet d’extraire les métadonnées du jeu d’images de
+l’examen et de les exporter au format CSV.</p>
+
+<p>Le dossier source peut contenir un jeu de fichiers hétérogènes, par exemple
 texte et images DICOM. Les fichiers images DICOM sont identifiés par
-lecture et analyse de leur en-tête.
-</p>
-<p>
-Usage courant, pour exporter les métadonnées:
-</p>
-<pre>
-  exam = Exam.new( &quot;images/exam001/&quot;)
-  open( &quot;exam001.csv&quot;, &quot;w+&quot;) do |file|
-    exam.to_csv( file)
-  end
+lecture et analyse de leur en-tête.</p>
+
+<p>Usage courant, pour exporter les métadonnées:</p>
+
+<pre class="ruby"><span class="ruby-identifier">exam</span> = <span class="ruby-constant">Exam</span>.<span class="ruby-identifier">new</span>( <span class="ruby-string">&quot;images/exam001/&quot;</span>)
+<span class="ruby-identifier">open</span>( <span class="ruby-string">&quot;exam001.csv&quot;</span>, <span class="ruby-string">&quot;w+&quot;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">exam</span>.<span class="ruby-identifier">to_csv</span>( <span class="ruby-identifier">file</span>)
+<span class="ruby-keyword">end</span>
 </pre>
-<p>
-Pour investiguer le jeu d&#8217;images d&#8217;un examen:
-</p>
-<pre>
-  exam = Exam.new( &quot;images/exam001/&quot;)
-  exam.read_images
-  puts exam.name
-  puts exam.images.keys
-  puts exam.scouts.keys
-</pre>
-<p>
-Noter que le jeu d&#8217;images demeure invariant une fois que les images
-ont été chargées par l&#8217;invocation de la méthode <a
-href="Exam.html#method-i-read_images">read_images</a>; des appels
-subséquents n&#8217;ont plus d&#8217;effet.
-</p>
-<p>
-En changeant la valeur de la variable d&#8217;instance <a
-href="Exam.html#source_dir">source_dir</a>, il est cependant possible de
-forcer une réinitialisation et de réutiliser un objet <a
+
+<p>Pour investiguer le jeu d’images d’un examen:</p>
+
+<pre>exam = Exam.new( &quot;images/exam001/&quot;)
+exam.read_images
+puts exam.name
+puts exam.images.keys
+puts exam.scouts.keys</pre>
+
+<p>Noter que le jeu d’images demeure invariant une fois que les images ont été
+chargées par l’invocation de la méthode <a
+href="Exam.html#method-i-read_images">#read_images</a>; des appels
+subséquents n’ont plus d’effet.</p>
+
+<p>En changeant la valeur de la variable d’instance <a
+href="Exam.html#attribute-i-source_dir">#source_dir</a>, il est cependant
+possible de forcer une réinitialisation et de réutiliser un objet <a
 href="Exam.html">Exam</a>; si sa valeur change effectivement, il faut alors
-invoquer à nouveau la méthode read_image.
-</p>
-<p>
-Nomenclature des noms de variables:
-</p>
-<ul>
-<li><p>
-<tt>image</tt>: désigne un tuple <tt>'PATH' =&gt; DICOM::DObject</tt>.
-</p>
-</li>
-<li><p>
-<tt>scout</tt>: idem, désigne un tuple <tt>'PATH' =&gt;
-DICOM::DObject</tt>.
-</p>
-</li>
-<li><p>
-<tt>dobject</tt>: désigne un objet <tt>DICOM::DObject</tt>.
-</p>
-</li>
-<li><p>
-<tt>path</tt>: désigne le plus souvent un chemin d&#8217;accès à un fichier
-source DICOM.
-</p>
-</li>
-</ul>
+invoquer à nouveau la méthode read_image.</p>
 
-		</div>
+<p>Nomenclature des noms de variables:</p>
+<ul><li>
+<p><code>image</code>: désigne un tuple <code>'PATH' =&gt;
+DICOM::DObject</code>.</p>
+</li><li>
+<p><code>scout</code>: idem, désigne un tuple <code>'PATH' =&gt;
+DICOM::DObject</code>.</p>
+</li><li>
+<p><code>dobject</code>: désigne un objet <code>DICOM::DObject</code>.</p>
+</li><li>
+<p><code>path</code>: désigne le plus souvent un chemin d’accès à un fichier
+source DICOM.</p>
+</li></ul>
 
-		<!-- Constants -->
-		
-		<div id="constants-list" class="section">
-			<h3 class="section-header">Constants</h3>
-			<dl>
-			
-				<dt><a name="DEFAULT_OPTIONS">DEFAULT_OPTIONS</a></dt>
-				
-				<dd class="description"><p>
-Options d&#8217;extraction par défaut
-</p></dd>
-				
-			
-				<dt><a name="DEFAULT_CSV_OPTIONS">DEFAULT_CSV_OPTIONS</a></dt>
-				
-				<dd class="description"><p>
-Paramètres de conversion CSV par défaut (voir description du module CSV)
-</p></dd>
-				
-			
-			</dl>
-		</div>
-		
+  </div><!-- description -->
 
-		<!-- Attributes -->
-		
-		<div id="attribute-method-details" class="method-section section">
-			<h3 class="section-header">Attributes</h3>
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
 
-			
-			<div id="source-dir-attribute-method" class="method-detail">
-				<a name="source_dir"></a>
-				
-				<a name="source_dir="></a>
-				
-				<div class="method-heading attribute-method-heading">
-					<span class="method-name">source_dir</span><span
-						class="attribute-access-type">[RW]</span>
-				</div>
+    
 
-				<div class="method-description">
-				
-				<p>
-Dossier source dans lequel se trouvent les images DICOM à traiter
-</p>
-				
-				</div>
-			</div>
-			
-			<div id="options-extract-attribute-method" class="method-detail">
-				<a name="options_extract"></a>
-				
-				<div class="method-heading attribute-method-heading">
-					<span class="method-name">options_extract</span><span
-						class="attribute-access-type">[R]</span>
-				</div>
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="DEFAULT_CSV_OPTIONS">DEFAULT_CSV_OPTIONS
+        
+        <dd class="description"><p>Paramètres de conversion CSV par défaut (voir description du module CSV)</p>
+        
+      
+        <dt id="DEFAULT_OPTIONS">DEFAULT_OPTIONS
+        
+        <dd class="description"><p>Options d’extraction par défaut</p>
+        
+      
+      </dl>
+    </section>
+    
 
-				<div class="method-description">
-				
-				<p>
-Options d&#8217;extraction; voir <a
-href="Exam.html#DEFAULT_OPTIONS">DEFAULT_OPTIONS</a> pour les valeurs
-possibles.
-</p>
-				
-				</div>
-			</div>
-			
-			<div id="images-attribute-method" class="method-detail">
-				<a name="images"></a>
-				
-				<div class="method-heading attribute-method-heading">
-					<span class="method-name">images</span><span
-						class="attribute-access-type">[R]</span>
-				</div>
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
 
-				<div class="method-description">
-				
-				<p>
-Collection des images de l&#8217;examen (<tt>'PATH' =&gt;
-DICOM::DObject</tt>).
-</p>
-<p>
-Il s&#8217;agit d&#8217;un hash, dont la <em>clé</em> est le chemin
-d&#8217;accès (path) au fichier source et la <em>valeur</em> est
-l&#8217;objet DICOM correspondant, obtenu par le décodage du fichier
-source.
-</p>
-<p>
-Pour extraire et traiter un élément, voici quelques idiomes valides:
-</p>
-<pre>
-  path, dobject = exam.images[1]
-  path, dobject = exam.images.first
-  dobject = exam.images[ '&lt;PATH&gt;']
-  dobject = exam.images.values[ INDEX]
-  exam.images.each { |path, dobject| ... }
-  exam.images.each_value { |dobject| ... }
+      
+      <div id="attribute-i-images" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">images</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Collection des images de l’examen (<code>'PATH' =&gt;
+DICOM::DObject</code>).</p>
+
+<p>Il s’agit d’un hash, dont la <em>clé</em> est le chemin d’accès (path) au
+fichier source et la <em>valeur</em> est l’objet DICOM correspondant,
+obtenu par le décodage du fichier source.</p>
+
+<p>Pour extraire et traiter un élément, voici quelques idiomes valides:</p>
+
+<pre class="ruby"><span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span> = <span class="ruby-identifier">exam</span>.<span class="ruby-identifier">images</span>[<span class="ruby-value">1</span>]
+<span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span> = <span class="ruby-identifier">exam</span>.<span class="ruby-identifier">images</span>.<span class="ruby-identifier">first</span>
+<span class="ruby-identifier">dobject</span> = <span class="ruby-identifier">exam</span>.<span class="ruby-identifier">images</span>[ <span class="ruby-string">'&lt;PATH&gt;'</span>]
+<span class="ruby-identifier">dobject</span> = <span class="ruby-identifier">exam</span>.<span class="ruby-identifier">images</span>.<span class="ruby-identifier">values</span>[ <span class="ruby-constant">INDEX</span>]
+<span class="ruby-identifier">exam</span>.<span class="ruby-identifier">images</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span><span class="ruby-operator">|</span> <span class="ruby-operator">...</span> }
+<span class="ruby-identifier">exam</span>.<span class="ruby-identifier">images</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">dobject</span><span class="ruby-operator">|</span> <span class="ruby-operator">...</span> }
 </pre>
-<p>
-Noter que dans les deux premiers exemples, on accède de façon
+
+<p>Noter que dans les deux premiers exemples, on accède de façon
 <em>positionnelle</em> à un élément du hash (non par la clé). Dans ce cas,
 un hash Ruby retourne un <em>tableau avec deux éléments</em>, le premier
-contenant la clé (path) et le second contenant la valeur (l&#8217;objet
-DICOM).
-</p>
-				
-				</div>
-			</div>
-			
-			<div id="scouts-attribute-method" class="method-detail">
-				<a name="scouts"></a>
-				
-				<div class="method-heading attribute-method-heading">
-					<span class="method-name">scouts</span><span
-						class="attribute-access-type">[R]</span>
-				</div>
+contenant la clé (path) et le second contenant la valeur (l’objet DICOM).</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-name" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">name</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
 
-				<div class="method-description">
-				
-				<p>
-Collection des « images scout » de l&#8217;examen (<tt>'PATH' =&gt;
-DICOM::DObject</tt>). Ces images, également désignées « localizers »,
-présentent une vue d&#8217;ensemble transversale correspondant aux images
-de l&#8217;examen. Il s&#8217;agit d&#8217;un hash de structure semblable à
-celle de la collection <tt>images</tt>.
-</p>
-				
-				</div>
-			</div>
-			
-			<div id="name-attribute-method" class="method-detail">
-				<a name="name"></a>
-				
-				<div class="method-heading attribute-method-heading">
-					<span class="method-name">name</span><span
-						class="attribute-access-type">[R]</span>
-				</div>
+        <div class="method-description">
+        
+        <p>Nom de l’examen (composé d’après la description du jeu d’images, voir
+méthode extract_exam_name)</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-options_extract" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">options_extract</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
 
-				<div class="method-description">
-				
-				<p>
-Nom de l&#8217;examen (composé d&#8217;après la description du jeu
-d&#8217;images, voir méthode <a
-href="Exam.html#method-i-extract_exam_name">extract_exam_name</a>)
-</p>
-				
-				</div>
-			</div>
-			
-		</div>
-		
+        <div class="method-description">
+        
+        <p>Options d’extraction; voir <a
+href="Exam.html#DEFAULT_OPTIONS">DEFAULT_OPTIONS</a> pour les valeurs
+possibles.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-scouts" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">scouts</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
 
-		<!-- Methods -->
-		
-		<div id="public-class-method-details" class="method-section section">
-			<h3 class="section-header">Public Class Methods</h3>
+        <div class="method-description">
+        
+        <p>Collection des « images scout » de l’examen (<code>'PATH' =&gt;
+DICOM::DObject</code>). Ces images, également désignées « localizers »,
+présentent une vue d’ensemble transversale correspondant aux images de
+l’examen. Il s’agit d’un hash de structure semblable à celle de la
+collection <code>images</code>.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-source_dir" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">source_dir</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
 
-		
-			<div id="new-method" class="method-detail ">
-				<a name="method-c-new"></a>
+        <div class="method-description">
+        
+        <p>Dossier source dans lequel se trouvent les images DICOM à traiter</p>
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
 
-				<div class="method-heading">
-				
-					<span class="method-name">new</span><span
-						class="method-args">( dir_path = nil, options = {})</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
 
-				<div class="method-description">
-					
-					<p>
-Créé un nouvel examen à partir du jeu d&#8217;images DICOM qui se trouve
-dans un dossier source. Si aucun dossier n&#8217;est comuniqué, il pourra
-l&#8217;être ultérieurement en invoquant la méthode <a
-href="Exam.html#source_dir">source_dir</a>=
-</p>
-					
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">( dir_path = nil, options = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
 
-					
-					<div class="method-source-code"
-						id="new-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 110</span>
-110:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">dir_path</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">options</span> = {})
-111:     <span class="ruby-identifier">reset!</span>
-112:     <span class="ruby-ivar">@options_extract</span> = <span class="ruby-constant">DEFAULT_OPTIONS</span>.<span class="ruby-identifier">merge</span>( <span class="ruby-identifier">options</span>)
-113:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">source_dir</span> = <span class="ruby-identifier">dir_path</span>
-114:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
+        <div class="method-description">
+          
+          <p>Créé un nouvel examen à partir du jeu d’images DICOM qui se trouve dans un
+dossier source. Si aucun dossier n’est comuniqué, il pourra l’être
+ultérieurement en invoquant la méthode <a
+href="Exam.html#attribute-i-source_dir">#source_dir</a>=</p>
+          
 
-				
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/exam.rb, line 108</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">dir_path</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">reset!</span>
+  <span class="ruby-ivar">@options_extract</span> = <span class="ruby-constant">DEFAULT_OPTIONS</span>.<span class="ruby-identifier">merge</span>( <span class="ruby-identifier">options</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">source_dir</span> = <span class="ruby-identifier">dir_path</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
 
-				
-			</div>
+        
 
-		
-		</div>
-	
-		<div id="public-instance-method-details" class="method-section section">
-			<h3 class="section-header">Public Instance Methods</h3>
+        
+      </div><!-- new-method -->
 
-		
-			<div id="csv-metadata-header-method" class="method-detail ">
-				<a name="method-i-csv_metadata_header"></a>
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
 
-				<div class="method-heading">
-				
-					<span class="method-name">csv_metadata_header</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
+    
+      <div id="method-i-csv_metadata_header" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">csv_metadata_header</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
 
-				<div class="method-description">
-					
-					<p>
-Retourne un tableau contenant les noms des colonnes qui se trouveraient
-dans l&#8217;en-tête du fichier CSV lorsque l&#8217;on exporte les
-métadonnées (voir la méthode <a
-href="Exam.html#method-i-to_csv">to_csv</a>). Exemple de fragment de
-tableau retourné:
-</p>
-<pre>
-  [ ..., &quot;0010,0000 (Group Length)&quot;, &quot;0010,0010 (Patient's Name)&quot;, ... ]</pre>
-					
+        <div class="method-description">
+          
+          <p>Retourne un tableau contenant les noms des colonnes qui se trouveraient
+dans l’en-tête du fichier CSV lorsque l’on exporte les métadonnées (voir la
+méthode <a href="Exam.html#method-i-to_csv">#to_csv</a>). Exemple de
+fragment de tableau retourné:</p>
 
-					
-					<div class="method-source-code"
-						id="csv-metadata-header-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 252</span>
-252:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">csv_metadata_header</span>
-253:     <span class="ruby-keyword kw">return</span> [] <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">empty?</span>
-254:     <span class="ruby-identifier">csv_metadata_header_from</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">first</span>
-255:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
+<pre>[ ..., &quot;0010,0000 (Group Length)&quot;, &quot;0010,0010 (Patient's Name)&quot;, ... ]</pre>
+          
 
-				
+          
+          <div class="method-source-code" id="csv_metadata_header-source">
+            <pre><span class="ruby-comment"># File lib/exam.rb, line 251</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">csv_metadata_header</span>
+  <span class="ruby-keyword">return</span> [] <span class="ruby-keyword">if</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-identifier">csv_metadata_header_from</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">first</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- csv_metadata_header-source -->
+          
+        </div>
 
-				
-			</div>
+        
 
-		
-			<div id="empty--method" class="method-detail ">
-				<a name="method-i-empty%3F"></a>
+        
+      </div><!-- csv_metadata_header-method -->
 
-				<div class="method-heading">
-				
-					<span class="method-name">empty?</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
+    
+      <div id="method-i-empty-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">empty?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
 
-				<div class="method-description">
-					
-					<p>
-Retourne <tt>false</tt> si une image DICOM de type quelconque (normale ou
-<em>scout</em>) au moins a été trouvée dans le dossier source,
-<tt>true</tt> dans le cas contraire et <tt>nil</tt> si aucun fichier
-n&#8217;a encore été lu.
-</p>
-					
+        <div class="method-description">
+          
+          <p>Retourne <code>false</code> si une image DICOM de type quelconque (normale
+ou <em>scout</em>) au moins a été trouvée dans le dossier source,
+<code>true</code> dans le cas contraire et <code>nil</code> si aucun
+fichier n’a encore été lu.</p>
+          
 
-					
-					<div class="method-source-code"
-						id="empty--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 191</span>
-191:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">empty?</span>
-192:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">nil?</span>
-193:     <span class="ruby-keyword kw">not</span>( <span class="ruby-identifier">has_images?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">has_scouts?</span>)
-194:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
+          
+          <div class="method-source-code" id="empty-3F-source">
+            <pre><span class="ruby-comment"># File lib/exam.rb, line 190</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">empty?</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">and</span> <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-keyword">not</span>( <span class="ruby-identifier">has_images?</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">has_scouts?</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- empty-3F-source -->
+          
+        </div>
 
-				
+        
 
-				
-			</div>
+        
+      </div><!-- empty-3F-method -->
 
-		
-			<div id="has-homogeneous-structure--method" class="method-detail ">
-				<a name="method-i-has_homogeneous_structure%3F"></a>
+    
+      <div id="method-i-has_homogeneous_structure-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">has_homogeneous_structure?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
 
-				<div class="method-heading">
-				
-					<span class="method-name">has_homogeneous_structure?</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
+        <div class="method-description">
+          
+          <p>Retourne true si la structure de données de toutes les images est homogène
+(ou qu’il n’y a aucune image), false sinon.</p>
+          
 
-				<div class="method-description">
-					
-					<p>
-Retourne true si la structure de données de toutes les images est homogène
-(ou qu&#8217;il n&#8217;y a aucune image), false sinon.
-</p>
-					
+          
+          <div class="method-source-code" id="has_homogeneous_structure-3F-source">
+            <pre><span class="ruby-comment"># File lib/exam.rb, line 197</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">has_homogeneous_structure?</span>
+  <span class="ruby-comment"># Si déjà interrogé plus tôt, on s'épargne un recalcul</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@images_homogeneous</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@images_homogeneous</span>.<span class="ruby-identifier">nil?</span>
 
-					
-					<div class="method-source-code"
-						id="has-homogeneous-structure--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 198</span>
-198:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_homogeneous_structure?</span>
-199:     <span class="ruby-comment cmt"># Si déjà interrogé plus tôt, on s'épargne un recalcul</span>
-200:     <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@images_homogeneous</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@images_homogeneous</span>.<span class="ruby-identifier">nil?</span>
-201: 
-202:     <span class="ruby-comment cmt"># Sinon on examine la structure des images, deux par deux</span>
-203:     <span class="ruby-identifier">homogeneous</span> = <span class="ruby-keyword kw">true</span>
-204:     <span class="ruby-identifier">prev_struct</span>, <span class="ruby-identifier">struct</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>
-205:     <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">each_value</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dobject</span><span class="ruby-operator">|</span>
-206:       <span class="ruby-identifier">prev_struct</span>, <span class="ruby-identifier">struct</span> = <span class="ruby-identifier">struct</span>, <span class="ruby-identifier">sign_structure_of</span>( <span class="ruby-identifier">dobject</span>)
-207:       <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">prev_struct</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span>( <span class="ruby-identifier">struct</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">prev_struct</span>)
-208:       <span class="ruby-identifier">homogeneous</span> = <span class="ruby-keyword kw">false</span>; <span class="ruby-keyword kw">break</span>
-209:     <span class="ruby-keyword kw">end</span>
-210:     <span class="ruby-ivar">@images_homogeneous</span> = <span class="ruby-identifier">homogeneous</span>
-211: 
-212:     <span class="ruby-comment cmt"># Plus succinct?</span>
-213:     <span class="ruby-comment cmt"># @images.map { |path,dobj| sign_structure_of dobj }.each_cons(2) \</span>
-214:     <span class="ruby-comment cmt">#   { |sig1,sig2| next if sig1 == sig2; homogeneous = false; break }</span>
-215:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
+  <span class="ruby-comment"># Sinon on examine la structure des images, deux par deux</span>
+  <span class="ruby-identifier">homogeneous</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-identifier">prev_struct</span>, <span class="ruby-identifier">struct</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">each_value</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dobject</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">prev_struct</span>, <span class="ruby-identifier">struct</span> = <span class="ruby-identifier">struct</span>, <span class="ruby-identifier">sign_structure_of</span>( <span class="ruby-identifier">dobject</span>)
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">prev_struct</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span>( <span class="ruby-identifier">struct</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">prev_struct</span>)
+    <span class="ruby-identifier">homogeneous</span> = <span class="ruby-keyword">false</span>; <span class="ruby-keyword">break</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@images_homogeneous</span> = <span class="ruby-identifier">homogeneous</span>
 
-				
+  <span class="ruby-comment"># Plus succinct?</span>
+  <span class="ruby-comment"># @images.map { |path,dobj| sign_structure_of dobj }.each_cons(2) \</span>
+  <span class="ruby-comment">#   { |sig1,sig2| next if sig1 == sig2; homogeneous = false; break }</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- has_homogeneous_structure-3F-source -->
+          
+        </div>
 
-				
-			</div>
+        
 
-		
-			<div id="has-images--method" class="method-detail ">
-				<a name="method-i-has_images%3F"></a>
+        
+      </div><!-- has_homogeneous_structure-3F-method -->
 
-				<div class="method-heading">
-				
-					<span class="method-name">has_images?</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
+    
+      <div id="method-i-has_images-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">has_images?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
 
-				<div class="method-description">
-					
-					<p>
-Retourne <tt>true</tt> si une image DICOM au moins a été extraite du
-dossier source, <tt>false</tt> dans le cas contraire et <tt>nil</tt> si
-aucun fichier n&#8217;a encore été lu.
-</p>
-					
+        <div class="method-description">
+          
+          <p>Retourne <code>true</code> si une image DICOM au moins a été extraite du
+dossier source, <code>false</code> dans le cas contraire et
+<code>nil</code> si aucun fichier n’a encore été lu.</p>
+          
 
-					
-					<div class="method-source-code"
-						id="has-images--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 177</span>
-177:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_images?</span>
-178:     <span class="ruby-ivar">@images</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
-179:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
+          
+          <div class="method-source-code" id="has_images-3F-source">
+            <pre><span class="ruby-comment"># File lib/exam.rb, line 176</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">has_images?</span>
+  <span class="ruby-ivar">@images</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- has_images-3F-source -->
+          
+        </div>
 
-				
+        
 
-				
-			</div>
+        
+      </div><!-- has_images-3F-method -->
 
-		
-			<div id="has-scouts--method" class="method-detail ">
-				<a name="method-i-has_scouts%3F"></a>
+    
+      <div id="method-i-has_scouts-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">has_scouts?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
 
-				<div class="method-heading">
-				
-					<span class="method-name">has_scouts?</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
+        <div class="method-description">
+          
+          <p>Retourne <code>true</code> si une image DICOM de type <em>scout</em> au
+moins a été extraite du dossier source, <code>false</code> dans le cas
+contraire et <code>nil</code> si aucun fichier n’a encore été lu.</p>
+          
 
-				<div class="method-description">
-					
-					<p>
-Retourne <tt>true</tt> si une image DICOM de type <em>scout</em> au moins a
-été extraite du dossier source, <tt>false</tt> dans le cas contraire et
-<tt>nil</tt> si aucun fichier n&#8217;a encore été lu.
-</p>
-					
+          
+          <div class="method-source-code" id="has_scouts-3F-source">
+            <pre><span class="ruby-comment"># File lib/exam.rb, line 183</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">has_scouts?</span>
+  <span class="ruby-ivar">@scouts</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- has_scouts-3F-source -->
+          
+        </div>
 
-					
-					<div class="method-source-code"
-						id="has-scouts--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 184</span>
-184:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_scouts?</span>
-185:     <span class="ruby-ivar">@scouts</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
-186:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
+        
 
-				
+        
+      </div><!-- has_scouts-3F-method -->
 
-				
-			</div>
+    
+      <div id="method-i-images_already_read-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">images_already_read?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
 
-		
-			<div id="images-already-read--method" class="method-detail ">
-				<a name="method-i-images_already_read%3F"></a>
+        <div class="method-description">
+          
+          <p>Retourne true si les fichiers des images DICOM ont été intégralement lus
+(dans quel cas @images et/ou @scouts contiennent des éléments)</p>
+          
 
-				<div class="method-heading">
-				
-					<span class="method-name">images_already_read?</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
+          
+          <div class="method-source-code" id="images_already_read-3F-source">
+            <pre><span class="ruby-comment"># File lib/exam.rb, line 136</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">images_already_read?</span>
+  <span class="ruby-ivar">@images_read</span>  <span class="ruby-comment"># comprendre @images_read == true, mais ne pas l'écrire!</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- images_already_read-3F-source -->
+          
+        </div>
 
-				<div class="method-description">
-					
-					<p>
-Retourne true si les fichiers des images DICOM ont été intégralement lus
-(dans quel cas @images et/ou @scouts contiennent des éléments)
-</p>
-					
+        
 
-					
-					<div class="method-source-code"
-						id="images-already-read--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 138</span>
-138:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">images_already_read?</span>
-139:     <span class="ruby-ivar">@images_read</span>  <span class="ruby-comment cmt"># comprendre @images_read == true, mais ne pas l'écrire!</span>
-140:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
+        
+      </div><!-- images_already_read-3F-method -->
 
-				
+    
+      <div id="method-i-read_images" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">read_images</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
 
-				
-			</div>
-
-		
-			<div id="read-images-method" class="method-detail ">
-				<a name="method-i-read_images"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">read_images</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Lecture de toutes les images DICOM qui se trouvent dans le dossier source
+        <div class="method-description">
+          
+          <p>Lecture de toutes les images DICOM qui se trouvent dans le dossier source
 (qui doit évidemment avoir été défini, utiliser la méthode <a
-href="Exam.html#source_dir">source_dir</a>= pour ce faire). Retourne le
-nombre d&#8217;images lues ou <tt>nil</tt> si les images ont déjà été lues
-plus tôt.
-</p>
-<p>
-Soulève une exception RuntimeError avec un message, si l&#8217;objet DICOM
-n&#8217;a pas pu être créé, le fichier source ne peut pas être analysé ou
-que la modalité n&#8217;est pas &#8216;CT&#8217;.
-</p>
-					
+href="Exam.html#attribute-i-source_dir">#source_dir</a>= pour ce faire).
+Retourne le nombre d’images lues ou <code>nil</code> si les images ont déjà
+été lues plus tôt.</p>
 
-					
-					<div class="method-source-code"
-						id="read-images-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 150</span>
-150:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_images</span>
-151:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">images_already_read?</span>
-152: 
-153:     <span class="ruby-identifier">image_files</span> = <span class="ruby-identifier">find_images_in</span> <span class="ruby-ivar">@source_dir</span>
-154:     <span class="ruby-identifier">image_files</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
-155:       <span class="ruby-identifier">dobject</span> = <span class="ruby-constant">DICOM</span><span class="ruby-operator">::</span><span class="ruby-constant">DObject</span>.<span class="ruby-identifier">read</span> <span class="ruby-identifier">path</span>
-156:       <span class="ruby-identifier">assert_is_kind_of_dobject</span> <span class="ruby-identifier">dobject</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-comment cmt"># the paranoïd freak in me</span>
-157:       <span class="ruby-identifier">assert_successfully_read</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span>
-158:       <span class="ruby-identifier">assert_modality_is_CTscan</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span>
-159:       <span class="ruby-ivar">@images</span>[ <span class="ruby-identifier">path</span>] = <span class="ruby-identifier">dobject</span>
-160:     <span class="ruby-keyword kw">end</span>
-161:     <span class="ruby-ivar">@images_read</span> = <span class="ruby-keyword kw">true</span>
-162: 
-163:     <span class="ruby-comment cmt"># NOTE: éxécuter prune_scout_images_from!() avant extract_exam_name(),</span>
-164:     <span class="ruby-comment cmt"># afin d'extraire le nom en priorité à partir des images de l'examen</span>
-165:     <span class="ruby-ivar">@scouts</span> = <span class="ruby-identifier">prune_scout_images_from!</span> <span class="ruby-ivar">@images</span>
-166:     <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">extract_exam_name</span>
-167: 
-168:     <span class="ruby-identifier">sort_images_by!</span> <span class="ruby-identifier">options_extract</span>[<span class="ruby-value">:sort_images_by</span>]        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options_extract</span>[<span class="ruby-value">:sort_images_by</span>]
-169: 
-170:     <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">count</span>
-171:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
+<p>Soulève une exception RuntimeError avec un message, si l’objet DICOM n’a
+pas pu être créé, le fichier source ne peut pas être analysé ou que la
+modalité n’est pas ‘CT’.</p>
+          
 
-				
+          
+          <div class="method-source-code" id="read_images-source">
+            <pre><span class="ruby-comment"># File lib/exam.rb, line 148</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">read_images</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">images_already_read?</span>
 
-				
-			</div>
+  <span class="ruby-identifier">image_files</span> = <span class="ruby-identifier">find_images_in</span> <span class="ruby-ivar">@source_dir</span>
+  <span class="ruby-identifier">image_files</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">dobject</span> = <span class="ruby-constant">DICOM</span><span class="ruby-operator">::</span><span class="ruby-constant">DObject</span>.<span class="ruby-identifier">read</span> <span class="ruby-identifier">path</span>
+    <span class="ruby-identifier">assert_is_kind_of_dobject</span> <span class="ruby-identifier">dobject</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-comment"># the paranoïd freak in me</span>
+    <span class="ruby-identifier">assert_successfully_read</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span>
+    <span class="ruby-identifier">assert_modality_is_CTscan</span> <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span>
+    <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">remove</span>( <span class="ruby-constant">DICOM_PIXEL_DATA_TAG</span>)  <span class="ruby-comment"># pour diminuer l'empreinte mémoire</span>
+    <span class="ruby-ivar">@images</span>[ <span class="ruby-identifier">path</span>] = <span class="ruby-identifier">dobject</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-ivar">@images_read</span> = <span class="ruby-keyword">true</span>
 
-		
-			<div id="sort-images-by-method" class="method-detail ">
-				<a name="method-i-sort_images_by"></a>
+  <span class="ruby-comment"># NOTE: éxécuter prune_scout_images_from!() avant extract_exam_name(),</span>
+  <span class="ruby-comment"># afin d'extraire le nom en priorité à partir des images de l'examen</span>
+  <span class="ruby-ivar">@scouts</span> = <span class="ruby-identifier">prune_scout_images_from!</span> <span class="ruby-ivar">@images</span>
+  <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">extract_exam_name</span>
 
-				<div class="method-heading">
-				
-					<span class="method-name">sort_images_by</span><span
-						class="method-args">( order = :slice_location)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
+  <span class="ruby-identifier">sort_images_by!</span> <span class="ruby-identifier">options_extract</span>[<span class="ruby-value">:sort_images_by</span>]        <span class="ruby-keyword">if</span> <span class="ruby-identifier">options_extract</span>[<span class="ruby-value">:sort_images_by</span>]
 
-				<div class="method-description">
-					
-					<p>
-Retourne une copie des images réordonnées selon l&#8217;argument
-<tt>order</tt>:
-</p>
-<ul>
-<li><p>
-s&#8217;il vaut <tt>:slice_location</tt>, réordonne les images selon la
+  <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">count</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- read_images-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- read_images-method -->
+
+    
+      <div id="method-i-sort_images_by" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sort_images_by</span><span
+            class="method-args">( order = :slice_location)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne une copie des images réordonnées selon l’argument
+<code>order</code>:</p>
+<ul><li>
+<p>s’il vaut <code>:slice_location</code>, réordonne les images selon la
 position de la tranche que chacune représente, c-à-d. la valeur de
-l&#8217;élément &#8220;0020,1041 (Slice Location)&#8221;;
-</p>
-</li>
-<li><p>
-s&#8217;il vaut <tt>false</tt>, <tt>nil</tt> ou tout autre valeur, retourne
-la collection d&#8217;images inchangée.
-</p>
-</li>
-</ul>
-					
-
-					
-					<div class="method-source-code"
-						id="sort-images-by-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 225</span>
-225:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sort_images_by</span>( <span class="ruby-identifier">order</span> = <span class="ruby-value">:slice_location</span>)
-226:     <span class="ruby-keyword kw">return</span> {} <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">empty?</span>
-227:     <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">order</span>
-228:       <span class="ruby-keyword kw">when</span> <span class="ruby-value">:slice_location</span>
-229:         <span class="ruby-identifier">sorted_hash</span> = {}
-230:         <span class="ruby-identifier">sorted_array</span> = <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">sort_by</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span><span class="ruby-operator">|</span>
-231:           <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">exists?</span>( <span class="ruby-constant">DICOM_SLICE_LOCATION_TAG</span>)              <span class="ruby-operator">?</span> <span class="ruby-constant">Float</span>( <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_SLICE_LOCATION_TAG</span>].<span class="ruby-identifier">value</span>)              <span class="ruby-operator">:</span> <span class="ruby-operator">-</span><span class="ruby-constant">Float</span><span class="ruby-operator">::</span><span class="ruby-constant">INFINITY</span>  <span class="ruby-comment cmt"># images sans Slice Location: tout au début</span>
-232:         <span class="ruby-keyword kw">end</span>
-233:         <span class="ruby-identifier">sorted_array</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sorted_hash</span>[ <span class="ruby-identifier">path</span>] = <span class="ruby-identifier">dobject</span> }
-234:         <span class="ruby-identifier">sorted_hash</span>
-235:       <span class="ruby-keyword kw">else</span>
-236:         <span class="ruby-ivar">@images</span>
-237:     <span class="ruby-keyword kw">end</span>
-238:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="sort-images-by--method" class="method-detail ">
-				<a name="method-i-sort_images_by%21"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">sort_images_by!</span><span
-						class="method-args">( order = :slice_location)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Identique à <a href="Exam.html#method-i-sort_images_by">sort_images_by</a>,
-si ce n&#8217;est que les images de l&#8217;examen sont réordonnées « in
-place ».
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="sort-images-by--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 244</span>
-244:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sort_images_by!</span>( <span class="ruby-identifier">order</span> = <span class="ruby-value">:slice_location</span>)
-245:     <span class="ruby-ivar">@images</span> = <span class="ruby-identifier">sort_images_by</span> <span class="ruby-identifier">order</span>
-246:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="source-dir--method" class="method-detail ">
-				<a name="method-i-source_dir%3D"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">source_dir=</span><span
-						class="method-args">( dir_path)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Définit le chemin d&#8217;accès au dossier source, qui contient le jeu
-d&#8217;images DICOM à traiter.
-</p>
-<p>
-Commande ensuite le chargement des images du dossier source (en invoquant
-la méthode <a href="Exam.html#method-i-read_images">read_images</a>)
-&#8212; à moins que l&#8217;option :defer_loading ne contienne true, dans
-quel cas le chargement doit être commandé par une invocation explicite de
-read_images.
-</p>
-<p>
-S&#8217;il y en avait déjà, commande auparavant l&#8217;effacement des
-images qui étaient en mémoire.
-</p>
-<p>
-Retourne le chemin d&#8217;accès effectivement mémorisé, après
-normalisation.
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="source-dir--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 128</span>
-128:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">source_dir=</span>( <span class="ruby-identifier">dir_path</span>)
-129:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dir_path</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-ivar">@source_dir</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">dir_path</span>
-130:     <span class="ruby-identifier">reset!</span>    <span class="ruby-comment cmt"># clear all data as source directory changed</span>
-131:     <span class="ruby-ivar">@source_dir</span> = <span class="ruby-identifier">remove_last_dir_sep_from</span> <span class="ruby-identifier">dir_path</span>
-132:     <span class="ruby-identifier">read_images</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@options_extract</span>[ <span class="ruby-value">:defer_loading</span>]
-133:     <span class="ruby-ivar">@source_dir</span>
-134:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="to-csv-method" class="method-detail ">
-				<a name="method-i-to_csv"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">to_csv</span><span
-						class="method-args">( output_file)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Transcrit les métadonnées d&#8217;une image DICOM dans un fichier CSV.
-</p>
-<p>
-Le paramètre &#8216;output_file&#8217; doit contenir un <em>objet</em>
-fichier dans lequel il est possible d&#8217;écrire (non seulement le nom
-d&#8217;un fichier).
-</p>
-<p>
-Soulève une exception RuntimeError si la structure des images n&#8217;est
-pas homogène (ce qui signale plusieurs séries d&#8217;images différentes).
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="to-csv-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 264</span>
-264:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_csv</span>( <span class="ruby-identifier">output_file</span>)
-265:     <span class="ruby-identifier">read_images</span>
-266:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">empty?</span>
-267:     <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;DICOM source files have inconsistent structure among them&quot;</span>        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">has_homogeneous_structure?</span>
-268: 
-269:     <span class="ruby-identifier">csv_options</span> = <span class="ruby-constant">DEFAULT_CSV_OPTIONS</span>
-270:     <span class="ruby-constant">CSV</span>( <span class="ruby-identifier">output_file</span>, <span class="ruby-identifier">csv_options</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">csv_file</span><span class="ruby-operator">|</span>
-271:       <span class="ruby-identifier">csv_file</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">csv_metadata_header</span>
-272:       <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">image</span><span class="ruby-operator">|</span>
-273:         <span class="ruby-identifier">csv_file</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">csv_metadata_values_from</span>( <span class="ruby-identifier">image</span>)
-274:       <span class="ruby-keyword kw">end</span>
-275:     <span class="ruby-keyword kw">end</span>
-276:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="to-html-method" class="method-detail ">
-				<a name="method-i-to_html"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">to_html</span><span
-						class="method-args">( output_file)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="to-html-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 279</span>
-279:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_html</span>( <span class="ruby-identifier">output_file</span>)
-280:     <span class="ruby-identifier">read_images</span>
-281:     <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">empty?</span>
-282:     <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;DICOM source files have inconsistent structure among them&quot;</span>        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">has_homogeneous_structure?</span>
-283: 
-284:     <span class="ruby-identifier">sort_images_by!</span> <span class="ruby-value">:slice_location</span>
-285: 
-286:     <span class="ruby-identifier">data</span> = []
-287:     <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dobject</span><span class="ruby-operator">|</span>
-288:       <span class="ruby-identifier">data</span> <span class="ruby-operator">&lt;&lt;</span> {
-289:         <span class="ruby-value">:l</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">exists?</span>( <span class="ruby-constant">DICOM_SLICE_LOCATION_TAG</span>)            <span class="ruby-operator">?</span> <span class="ruby-constant">Float</span>( <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_SLICE_LOCATION_TAG</span>].<span class="ruby-identifier">value</span>) <span class="ruby-operator">:</span> <span class="ruby-value">0.0</span>,
-290:         <span class="ruby-value">:x</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">exists?</span>( <span class="ruby-constant">DICOM_XRAY_TUBE_CURRENT_TAG</span>)            <span class="ruby-operator">?</span> <span class="ruby-constant">Float</span>( <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_XRAY_TUBE_CURRENT_TAG</span>].<span class="ruby-identifier">value</span>) <span class="ruby-operator">:</span> <span class="ruby-value">0.0</span>
-291:       }
-292:     <span class="ruby-keyword kw">end</span>
-293:     <span class="ruby-identifier">output_file</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">html_graph_for</span>( <span class="ruby-identifier">data</span>)
-294:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-		</div>
-	
-		<div id="private-instance-method-details" class="method-section section">
-			<h3 class="section-header">Private Instance Methods</h3>
-
-		
-			<div id="assert-is-kind-of-dobject-method" class="method-detail ">
-				<a name="method-i-assert_is_kind_of_dobject"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">assert_is_kind_of_dobject</span><span
-						class="method-args">( obj)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Soulève une exception si l&#8217;objet n&#8217;est pas compatible avec
-DICOM::DObject
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="assert-is-kind-of-dobject-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 355</span>
-355:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_is_kind_of_dobject</span>( <span class="ruby-identifier">obj</span>)
-356:     <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-node">&quot;Expected a DICOM::DObject, got #{obj.class}&quot;</span>        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">kind_of?</span> <span class="ruby-constant">DICOM</span><span class="ruby-operator">::</span><span class="ruby-constant">DObject</span>
-357:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="assert-modality-is-scan-method" class="method-detail ">
-				<a name="method-i-assert_modality_is_CTscan"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">assert_modality_is_CTscan</span><span
-						class="method-args">( path, dobject)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Soulève une exception si l&#8217;image ne provient pas d&#8217;un scanner
-de type &#8216;CT&#8217;
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="assert-modality-is-scan-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 368</span>
-368:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_modality_is_CTscan</span>( <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span>)
-369:     <span class="ruby-identifier">modality</span> = <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_MODALITY_TAG</span>].<span class="ruby-identifier">value</span>
-370:     <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Image DICOM de type autre que 'CT': #{path}, type: #{modality}&quot;</span>        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">modality</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;CT&quot;</span>
-371:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="assert-successfully-read-method" class="method-detail ">
-				<a name="method-i-assert_successfully_read"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">assert_successfully_read</span><span
-						class="method-args">( path, dobject)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Soulève une exception si l&#8217;objet DICOM n&#8217;a pu être que
-partiellement renseigné lors de la lecture du fichier source DICOM
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="assert-successfully-read-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 362</span>
-362:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">assert_successfully_read</span>( <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span>)
-363:     <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Image DICOM non traitée: #{path}; fichier corrompu?&quot;</span>        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">read_success</span>
-364:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="candidate-image--method" class="method-detail ">
-				<a name="method-i-candidate_image%3F"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">candidate_image?</span><span
-						class="method-args">( file_path)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Retourne true si le chemin d&#8217;accès donné est un fichier susceptible
-d&#8217;être une image DICOM, false sinon. Recherche une signature DICOM
-valide dans les premiers octets du fichier pour ce faire.
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="candidate-image--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 328</span>
-328:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">candidate_image?</span>( <span class="ruby-identifier">file_path</span>)
-329:     <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>( <span class="ruby-identifier">file_path</span>) <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">looks_like_dicom?</span>( <span class="ruby-identifier">file_path</span>)
-330:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="csv-metadata-header-from-method" class="method-detail ">
-				<a name="method-i-csv_metadata_header_from"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">csv_metadata_header_from</span><span
-						class="method-args">( image)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Retourne un tableau constitué de l&#8217;identifiant (tag) et du nom de
-chaque élément d&#8217;une image DICOM, destiné à être utilisé pour former
-l&#8217;en-tête d&#8217;un fichier CSV. Exemple de fragment de tableau
-retourné:
-</p>
-<pre>
-  [ ..., &quot;0010,0000 (Group Length)&quot;, &quot;0010,0010 (Patient's Name)&quot;, ... ]</pre>
-					
-
-					
-					<div class="method-source-code"
-						id="csv-metadata-header-from-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 422</span>
-422:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">csv_metadata_header_from</span>( <span class="ruby-identifier">image</span>)
-423:     <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span> = <span class="ruby-identifier">image</span>
-424:     <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">elt</span><span class="ruby-operator">|</span>        <span class="ruby-constant">DICOMElementsHelper</span><span class="ruby-operator">::</span><span class="ruby-identifier">csv_colname_for</span> <span class="ruby-identifier">elt</span>.<span class="ruby-identifier">tag</span> }          .<span class="ruby-identifier">insert</span>( <span class="ruby-value">0</span>, <span class="ruby-constant">DICOM_SOURCE_FILE_CSVNAME</span>)
-425:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="csv-metadata-values-from-method" class="method-detail ">
-				<a name="method-i-csv_metadata_values_from"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">csv_metadata_values_from</span><span
-						class="method-args">( image)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Retourne un tableau avec la valeur de tous les éléments (métadonnées)
-d&#8217;une image DICOM, destinés à être exportés dans un fichier CSV.
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="csv-metadata-values-from-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 431</span>
-431:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">csv_metadata_values_from</span>( <span class="ruby-identifier">image</span>)
-432:     <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span> = <span class="ruby-identifier">image</span>
-433:     <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">elt</span><span class="ruby-operator">|</span> <span class="ruby-identifier">elt</span>.<span class="ruby-identifier">value</span> }.<span class="ruby-identifier">insert</span>( <span class="ruby-value">0</span>, <span class="ruby-identifier">path</span>)
-434:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="extract-exam-name-method" class="method-detail ">
-				<a name="method-i-extract_exam_name"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">extract_exam_name</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Détermine et retourne le nom de l&#8217;examen tantôt à partir des images
-de l&#8217;examen s&#8217;il y en a, ou des images <em>scout</em>
-s&#8217;il n&#8217;y en a pas. Retourne une valeur par défaut s&#8217;il
-n&#8217;y a ni image normale ni <em>scout</em>.
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="extract-exam-name-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 385</span>
-385:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_exam_name</span>
-386:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">extract_exam_name_from</span>( <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">first</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">nil?</span>
-387:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">extract_exam_name_from</span>( <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">first</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">nil?</span>
-388:     <span class="ruby-value str">&quot;(empty image set)&quot;</span>  <span class="ruby-comment cmt"># valeur par défaut</span>
-389:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="extract-exam-name-from-method" class="method-detail ">
-				<a name="method-i-extract_exam_name_from"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">extract_exam_name_from</span><span
-						class="method-args">( image)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Détermine et retourne le nom de l&#8217;examen à partir des métadonnées
-d&#8217;une image DICOM; extrait pour ce faire la valeur de l&#8217;élément
-<em>Series Description</em> (tag <tt>0008,103E</tt>).
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="extract-exam-name-from-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 394</span>
-394:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extract_exam_name_from</span>( <span class="ruby-identifier">image</span>)
-395:     <span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span> = <span class="ruby-identifier">image</span>
-396:     <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_SERIES_DESCRIPTION_TAG</span>].<span class="ruby-identifier">value</span>
-397:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="find-images-in-method" class="method-detail ">
-				<a name="method-i-find_images_in"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">find_images_in</span><span
-						class="method-args">( source_dir)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Retourne un tableau avec le nom de tous les fichiers qui se trouvent dans
-un dossier et qui sont susceptibles d&#8217;être des images DICOM
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="find-images-in-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 346</span>
-346:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_images_in</span>( <span class="ruby-identifier">source_dir</span>)
-347:     <span class="ruby-identifier">image_files</span> = []
-348:     <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>( <span class="ruby-identifier">image_files_pattern_for</span> <span class="ruby-ivar">@source_dir</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
-349:       <span class="ruby-identifier">image_files</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">path</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">candidate_image?</span>( <span class="ruby-identifier">path</span>)
-350:     <span class="ruby-keyword kw">end</span>
-351:     <span class="ruby-identifier">image_files</span>
-352:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="image-files-pattern-for-method" class="method-detail ">
-				<a name="method-i-image_files_pattern_for"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">image_files_pattern_for</span><span
-						class="method-args">( dir_path)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Pattern des fichiers DICOM contenus dans un dossier donné, susceptible
-d&#8217;être communiqué à Dir.glob()
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="image-files-pattern-for-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 321</span>
-321:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image_files_pattern_for</span>( <span class="ruby-identifier">dir_path</span>)
-322:     <span class="ruby-node">&quot;#{dir_path}/*&quot;</span>
-323:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="is-scout-image--method" class="method-detail ">
-				<a name="method-i-is_scout_image%3F"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">is_scout_image?</span><span
-						class="method-args">( dobject)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Retourne true si l&#8217;objet DICOM contient une image <em>scout</em>, en
-vérifiant si la valeur &#8216;LOCALIZER&#8217; est présente dans
-l&#8217;élément &#8216;Image Type&#8217;. Attention, entorse à la
-nomenclature dans le nom de la méthode: on attend un objet DICOM::DObject
-comme argument.
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="is-scout-image--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 403</span>
-403:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">is_scout_image?</span>( <span class="ruby-identifier">dobject</span>)
-404:     <span class="ruby-identifier">assert_is_kind_of_dobject</span> <span class="ruby-identifier">dobject</span>
-405:     <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">exists?</span>( <span class="ruby-constant">DICOM_IMAGE_TYPE_TAG</span>)        <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_IMAGE_TYPE_TAG</span>].<span class="ruby-identifier">value</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">DICOM_IMAGE_TYPE_SCOUT_MODE_RE</span>
-406:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="looks-like-dicom--method" class="method-detail ">
-				<a name="method-i-looks_like_dicom%3F"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">looks_like_dicom?</span><span
-						class="method-args">( file_path)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Retourne true si la signature &#8216;DICM&#8217; se trouve à
-l&#8217;emplacement du 128ème octet du fichier (pour un aperçu de
-l&#8217;anatomie d&#8217;un fichier DICOM, consulter <a
-href="http://www.cabiatl.com/mricro/dicom/">www.cabiatl.com/mricro/dicom/</a>)
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="looks-like-dicom--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 335</span>
-335:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">looks_like_dicom?</span>( <span class="ruby-identifier">file_path</span>)
-336:     <span class="ruby-identifier">chars</span> = <span class="ruby-value str">&quot;&quot;</span>
-337:     <span class="ruby-identifier">open</span>( <span class="ruby-identifier">file_path</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
-338:       <span class="ruby-identifier">file</span>.<span class="ruby-identifier">pos</span> = <span class="ruby-value">128</span>
-339:       <span class="ruby-identifier">chars</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span> <span class="ruby-value">4</span>
-340:     <span class="ruby-keyword kw">end</span>
-341:     <span class="ruby-identifier">chars</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'DICM'</span>
-342:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="prune-scout-images-from--method" class="method-detail ">
-				<a name="method-i-prune_scout_images_from%21"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">prune_scout_images_from!</span><span
-						class="method-args">( images)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Supprime et retourne toutes les images <em>scout</em> d&#8217;une
-collection d&#8217;images donnée. Attention: la collection passée en
-paramètre sera altérée si elle contient des images <em>scout</em>.
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="prune-scout-images-from--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 412</span>
-412:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prune_scout_images_from!</span>( <span class="ruby-identifier">images</span>)
-413:     <span class="ruby-identifier">scouts</span> = <span class="ruby-identifier">images</span>.<span class="ruby-identifier">select</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span><span class="ruby-operator">|</span> <span class="ruby-identifier">is_scout_image?</span> <span class="ruby-identifier">dobject</span> }
-414:     <span class="ruby-identifier">scouts</span>.<span class="ruby-identifier">each_key</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span> <span class="ruby-identifier">images</span>.<span class="ruby-identifier">delete</span> <span class="ruby-identifier">path</span> } <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">scouts</span>.<span class="ruby-identifier">empty?</span>
-415:     <span class="ruby-identifier">scouts</span>  <span class="ruby-comment cmt"># contient au moins {}</span>
-416:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="remove-last-dir-sep-from-method" class="method-detail ">
-				<a name="method-i-remove_last_dir_sep_from"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">remove_last_dir_sep_from</span><span
-						class="method-args">( path)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Normalise le chemin d&#8217;accès à un dossier, en éliminant le dernier
-séparateur de dossier s&#8217;il est présent et un éventuel nom de fichier.
-Par exemple, retourne &#8220;test&#8221; pour les chemins d&#8217;accès
-&#8220;test&#8221;, &#8220;test/&#8221; et &#8220;test/image.dcm&#8220;.
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="remove-last-dir-sep-from-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 315</span>
-315:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">remove_last_dir_sep_from</span>( <span class="ruby-identifier">path</span>)
-316:     <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>( <span class="ruby-identifier">path</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>( <span class="ruby-identifier">path</span>) <span class="ruby-operator">:</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>( <span class="ruby-identifier">path</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;/.&quot;</span>)
-317:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="reset--method" class="method-detail ">
-				<a name="method-i-reset%21"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">reset!</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Réinitialise les variables d&#8217;instance à une valeur neutre. Invoqué
-lorsque le chemin d&#8217;accès du dossier source change.
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="reset--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 303</span>
-303:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reset!</span>
-304:     <span class="ruby-ivar">@source_dir</span> = <span class="ruby-keyword kw">nil</span>
-305:     <span class="ruby-ivar">@name</span> = <span class="ruby-value str">&quot;(no name)&quot;</span>
-306:     <span class="ruby-ivar">@images_read</span> = <span class="ruby-keyword kw">false</span>
-307:     <span class="ruby-ivar">@images_homogeneous</span> = <span class="ruby-keyword kw">nil</span>
-308:     <span class="ruby-ivar">@images</span> = <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> {} <span class="ruby-operator">:</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">clear</span>
-309:     <span class="ruby-ivar">@scouts</span> = <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> {} <span class="ruby-operator">:</span> <span class="ruby-ivar">@scouts</span>.<span class="ruby-identifier">clear</span>
-310:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="sign-structure-of-method" class="method-detail ">
-				<a name="method-i-sign_structure_of"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">sign_structure_of</span><span
-						class="method-args">( dobject)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Retourne une signature de la structure d&#8217;un objet DICOM, sous forme
-de chaîne de caractères. Cette signature doit être différente pour deux
-objets DICOM ayant une hiérarchie ou un nombre d&#8217;éléments DICOM
-distincts.
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="sign-structure-of-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam.rb, line 377</span>
-377:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sign_structure_of</span>( <span class="ruby-identifier">dobject</span>)
-378:     <span class="ruby-identifier">assert_is_kind_of_dobject</span> <span class="ruby-identifier">dobject</span>
-379:     <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">elt</span><span class="ruby-operator">|</span> <span class="ruby-identifier">elt</span>.<span class="ruby-identifier">tag</span> }.<span class="ruby-identifier">join</span>( <span class="ruby-value str">&quot;/&quot;</span>)
-380:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-		</div>
-	
-
-	</div>
-
-
-	<div id="rdoc-debugging-section-dump" class="debugging-section">
-	
-		<p>Disabled; run with --debug to generate this.</p>
-	
-	</div>
-
-	<div id="validator-badges">
-		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-			Rdoc Generator</a> 1.1.6</small>.</p>
-	</div>
-
-</body>
-</html>
+l’élément “0020,1041 (Slice Location)”;</p>
+</li><li>
+<p>s’il vaut <code>false</code>, <code>nil</code> ou tout autre valeur,
+retourne la collection d’images inchangée.</p>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="sort_images_by-source">
+            <pre><span class="ruby-comment"># File lib/exam.rb, line 224</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sort_images_by</span>( <span class="ruby-identifier">order</span> = <span class="ruby-value">:slice_location</span>)
+  <span class="ruby-keyword">return</span> {} <span class="ruby-keyword">if</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">order</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-value">:slice_location</span>
+      <span class="ruby-identifier">sorted_hash</span> = {}
+      <span class="ruby-identifier">sorted_array</span> = <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">sort_by</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">exists?</span>( <span class="ruby-constant">DICOM_SLICE_LOCATION_TAG</span>)              <span class="ruby-operator">?</span> <span class="ruby-constant">Float</span>( <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_SLICE_LOCATION_TAG</span>].<span class="ruby-identifier">value</span>)              <span class="ruby-operator">:</span> <span class="ruby-operator">-</span><span class="ruby-constant">Float</span><span class="ruby-operator">::</span><span class="ruby-constant">INFINITY</span>  <span class="ruby-comment"># images sans Slice Location: tout au début</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">sorted_array</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">path</span>, <span class="ruby-identifier">dobject</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sorted_hash</span>[ <span class="ruby-identifier">path</span>] = <span class="ruby-identifier">dobject</span> }
+      <span class="ruby-identifier">sorted_hash</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-ivar">@images</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- sort_images_by-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- sort_images_by-method -->
+
+    
+      <div id="method-i-sort_images_by-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sort_images_by!</span><span
+            class="method-args">( order = :slice_location)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Identique à <a
+href="Exam.html#method-i-sort_images_by">#sort_images_by</a>, si ce n’est
+que les images de l’examen sont réordonnées « in place ».</p>
+          
+
+          
+          <div class="method-source-code" id="sort_images_by-21-source">
+            <pre><span class="ruby-comment"># File lib/exam.rb, line 243</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sort_images_by!</span>( <span class="ruby-identifier">order</span> = <span class="ruby-value">:slice_location</span>)
+  <span class="ruby-ivar">@images</span> = <span class="ruby-identifier">sort_images_by</span> <span class="ruby-identifier">order</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- sort_images_by-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- sort_images_by-21-method -->
+
+    
+      <div id="method-i-source_dir-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">source_dir=</span><span
+            class="method-args">( dir_path)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Définit le chemin d’accès au dossier source, qui contient le jeu d’images
+DICOM à traiter.</p>
+
+<p>Commande ensuite le chargement des images du dossier source (en invoquant
+la méthode <a href="Exam.html#method-i-read_images">#read_images</a>) – à
+moins que l’option :defer_loading ne contienne true, dans quel cas le
+chargement doit être commandé par une invocation explicite de read_images.</p>
+
+<p>S’il y en avait déjà, commande auparavant l’effacement des images qui
+étaient en mémoire.</p>
+
+<p>Retourne le chemin d’accès effectivement mémorisé, après normalisation.</p>
+          
+
+          
+          <div class="method-source-code" id="source_dir-3D-source">
+            <pre><span class="ruby-comment"># File lib/exam.rb, line 126</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">source_dir=</span>( <span class="ruby-identifier">dir_path</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">dir_path</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-ivar">@source_dir</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">dir_path</span>
+  <span class="ruby-identifier">reset!</span>    <span class="ruby-comment"># clear all data as source directory changed</span>
+  <span class="ruby-ivar">@source_dir</span> = <span class="ruby-identifier">remove_last_dir_sep_from</span> <span class="ruby-identifier">dir_path</span>
+  <span class="ruby-identifier">read_images</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@options_extract</span>[ <span class="ruby-value">:defer_loading</span>]
+  <span class="ruby-ivar">@source_dir</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- source_dir-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- source_dir-3D-method -->
+
+    
+      <div id="method-i-to_csv" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_csv</span><span
+            class="method-args">( output_file)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Transcrit les métadonnées d’une image DICOM dans un fichier CSV.</p>
+
+<p>Le paramètre ‘output_file’ doit contenir un <em>objet</em> fichier dans
+lequel il est possible d’écrire (non seulement le nom d’un fichier).</p>
+
+<p>Soulève une exception RuntimeError si la structure des images n’est pas
+homogène (ce qui signale plusieurs séries d’images différentes).</p>
+          
+
+          
+          <div class="method-source-code" id="to_csv-source">
+            <pre><span class="ruby-comment"># File lib/exam.rb, line 263</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_csv</span>( <span class="ruby-identifier">output_file</span>)
+  <span class="ruby-identifier">read_images</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;DICOM source files have inconsistent structure among them&quot;</span>        <span class="ruby-keyword">unless</span> <span class="ruby-identifier">has_homogeneous_structure?</span>
+
+  <span class="ruby-identifier">csv_options</span> = <span class="ruby-constant">DEFAULT_CSV_OPTIONS</span>
+  <span class="ruby-constant">CSV</span>( <span class="ruby-identifier">output_file</span>, <span class="ruby-identifier">csv_options</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">csv_file</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">csv_file</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">csv_metadata_header</span>
+    <span class="ruby-identifier">sort_images_by</span>( <span class="ruby-value">:slice_location</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">image</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">csv_file</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">csv_metadata_values_from</span>( <span class="ruby-identifier">image</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_csv-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_csv-method -->
+
+    
+      <div id="method-i-to_html" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_html</span><span
+            class="method-args">( output_file)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_html-source">
+            <pre><span class="ruby-comment"># File lib/exam.rb, line 278</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_html</span>( <span class="ruby-identifier">output_file</span>)
+  <span class="ruby-identifier">read_images</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@images</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;DICOM source files have inconsistent structure among them&quot;</span>        <span class="ruby-keyword">unless</span> <span class="ruby-identifier">has_homogeneous_structure?</span>
+
+  <span class="ruby-identifier">data</span> = []
+  <span class="ruby-identifier">sort_images_by</span>( <span class="ruby-value">:slice_location</span>).<span class="ruby-identifier">values</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dobject</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">data</span> <span class="ruby-operator">&lt;&lt;</span> {
+      <span class="ruby-value">:l</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">exists?</span>( <span class="ruby-constant">DICOM_SLICE_LOCATION_TAG</span>)            <span class="ruby-operator">?</span> <span class="ruby-constant">Float</span>( <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_SLICE_LOCATION_TAG</span>].<span class="ruby-identifier">value</span>) <span class="ruby-operator">:</span> <span class="ruby-value">0.0</span>,
+      <span class="ruby-value">:x</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">exists?</span>( <span class="ruby-constant">DICOM_XRAY_TUBE_CURRENT_TAG</span>)            <span class="ruby-operator">?</span> <span class="ruby-constant">Float</span>( <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_XRAY_TUBE_CURRENT_TAG</span>].<span class="ruby-identifier">value</span>) <span class="ruby-operator">:</span> <span class="ruby-value">0.0</span>,
+      <span class="ruby-value">:t</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">dobject</span>.<span class="ruby-identifier">exists?</span>( <span class="ruby-constant">DICOM_EXPOSURE_TIME_TAG</span>)            <span class="ruby-operator">?</span> <span class="ruby-constant">Float</span>( <span class="ruby-identifier">dobject</span>[ <span class="ruby-constant">DICOM_EXPOSURE_TIME_TAG</span>].<span class="ruby-identifier">value</span>) <span class="ruby-operator">:</span> <span class="ruby-value">0.0</span>
+    }
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">output_file</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">html_graph_for</span>( <span class="ruby-identifier">data</span>, <span class="ruby-ivar">@name</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_html-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_html-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
 

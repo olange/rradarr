@@ -1,160 +1,213 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html>
 <head>
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-	<title>Extraction des metadonnees d'un examen DICOM</title>
+<title>RDoc Documentation</title>
 
-	<link type="text/css" media="screen" href="rdoc.css" rel="stylesheet" />
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
-	<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/thickbox-compressed.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/quicksearch.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/darkfish.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
 
-</head>
-<body class="indexpage">
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
 
-	
-	<h1>Extraction des metadonnees d'un examen DICOM</h1>
 
-	
-	<p>This is the API documentation for 'Extraction des metadonnees d'un examen DICOM'.</p>
-	
+<body>
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
 
-	
-	
-	<h2>Files</h2>
-	<ul>
-		
-			<li class="file"><a href="COPYING.html">COPYING</a></li>
-		
-			<li class="file"><a href="Gemfile.html">Gemfile</a></li>
-		
-			<li class="file"><a href="README_rdoc.html">README.rdoc</a></li>
-		
-			<li class="file"><a href="test/README_test_rdoc.html">README_test.rdoc</a></li>
-		
-	</ul>
-	
 
-	<h2 id="classes">Classes/Modules</h2>
-	<ul>
-		
-		<li class="module"><a href="DICOMElementsHelper.html">DICOMElementsHelper</a></li>
-		
-		<li class="class"><a href="Exam.html">Exam</a></li>
-		
-		<li class="class"><a href="ExamCruncher.html">ExamCruncher</a></li>
-		
-		<li class="class"><a href="Object.html">Object</a></li>
-		
-	</ul>
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
 
-	<h2 id="methods">Methods</h2>
-	<ul>
-		
-			<li><a href="ExamCruncher.html#method-c-crunch">::crunch &mdash; ExamCruncher</a></li>
-		
-			<li><a href="DICOMElementsHelper.html#method-c-csv_colname_for">::csv_colname_for &mdash; DICOMElementsHelper</a></li>
-		
-			<li><a href="ExamCruncher.html#method-c-new">::new &mdash; ExamCruncher</a></li>
-		
-			<li><a href="Exam.html#method-c-new">::new &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-assert_is_kind_of_dobject">#assert_is_kind_of_dobject &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-assert_modality_is_CTscan">#assert_modality_is_CTscan &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-assert_successfully_read">#assert_successfully_read &mdash; Exam</a></li>
-		
-			<li><a href="ExamCruncher.html#method-i-build_options_parser">#build_options_parser &mdash; ExamCruncher</a></li>
-		
-			<li><a href="ExamCruncher.html#method-i-candidate_directory%3F">#candidate_directory? &mdash; ExamCruncher</a></li>
-		
-			<li><a href="Exam.html#method-i-candidate_image%3F">#candidate_image? &mdash; Exam</a></li>
-		
-			<li><a href="ExamCruncher.html#method-i-check_if_output_exists">#check_if_output_exists &mdash; ExamCruncher</a></li>
-		
-			<li><a href="ExamCruncher.html#method-i-collect_subdirs_of">#collect_subdirs_of &mdash; ExamCruncher</a></li>
-		
-			<li><a href="ExamCruncher.html#method-i-crunch">#crunch &mdash; ExamCruncher</a></li>
-		
-			<li><a href="Exam.html#method-i-csv_metadata_header">#csv_metadata_header &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-csv_metadata_header_from">#csv_metadata_header_from &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-csv_metadata_values_from">#csv_metadata_values_from &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-empty%3F">#empty? &mdash; Exam</a></li>
-		
-			<li><a href="ExamCruncher.html#method-i-error">#error &mdash; ExamCruncher</a></li>
-		
-			<li><a href="ExamCruncher.html#method-i-excluded_directory%3F">#excluded_directory? &mdash; ExamCruncher</a></li>
-		
-			<li><a href="Exam.html#method-i-extract_exam_name">#extract_exam_name &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-extract_exam_name_from">#extract_exam_name_from &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-find_images_in">#find_images_in &mdash; Exam</a></li>
-		
-			<li><a href="ExamCruncher.html#method-i-get_output_file_for">#get_output_file_for &mdash; ExamCruncher</a></li>
-		
-			<li><a href="Exam.html#method-i-has_homogeneous_structure%3F">#has_homogeneous_structure? &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-has_images%3F">#has_images? &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-has_scouts%3F">#has_scouts? &mdash; Exam</a></li>
-		
-			<li><a href="Object.html#method-i-html_graph_for">#html_graph_for &mdash; Object</a></li>
-		
-			<li><a href="Exam.html#method-i-image_files_pattern_for">#image_files_pattern_for &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-images_already_read%3F">#images_already_read? &mdash; Exam</a></li>
-		
-			<li><a href="ExamCruncher.html#method-i-info">#info &mdash; ExamCruncher</a></li>
-		
-			<li><a href="Exam.html#method-i-is_scout_image%3F">#is_scout_image? &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-looks_like_dicom%3F">#looks_like_dicom? &mdash; Exam</a></li>
-		
-			<li><a href="ExamCruncher.html#method-i-normalize_path">#normalize_path &mdash; ExamCruncher</a></li>
-		
-			<li><a href="ExamCruncher.html#method-i-parse_arguments_from%21">#parse_arguments_from! &mdash; ExamCruncher</a></li>
-		
-			<li><a href="ExamCruncher.html#method-i-parse_options_from%21">#parse_options_from! &mdash; ExamCruncher</a></li>
-		
-			<li><a href="Exam.html#method-i-prune_scout_images_from%21">#prune_scout_images_from! &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-read_images">#read_images &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-remove_last_dir_sep_from">#remove_last_dir_sep_from &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-reset%21">#reset! &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-sign_structure_of">#sign_structure_of &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-sort_images_by">#sort_images_by &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-sort_images_by%21">#sort_images_by! &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-source_dir%3D">#source_dir= &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-to_csv">#to_csv &mdash; Exam</a></li>
-		
-			<li><a href="Exam.html#method-i-to_html">#to_html &mdash; Exam</a></li>
-		
-			<li><a href="ExamCruncher.html#method-i-warn">#warn &mdash; ExamCruncher</a></li>
-		
-	</ul>
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
 
-	<div id="validator-badges">
-		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-			Rdoc Generator</a> 1.1.6</small>.</p>
-	</div>
-</body>
-</html>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./COPYING.html">COPYING</a>
+  
+    <li class="file"><a href="./Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./test/fixtures/README_fixtures_rdoc.html">README_fixtures</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./DICOMElementsHelper.html">DICOMElementsHelper</a>
+  
+    <li><a href="./Exam.html">Exam</a>
+  
+    <li><a href="./ExamCruncher.html">ExamCruncher</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation" class="description">
+  
+<h1 id="label-Analyse+d%27un+examen+radiologique+CTscan">Analyse d’un examen radiologique CTscan</h1>
+
+<p>Pour un examen radiologique de type <strong>CTscan</strong>, cette
+librairie permet:</p>
+<ul><li>
+<p>de lire un jeu de fichiers DICOM à partir d’un dossier source;</p>
+</li><li>
+<p>d’en identifer les images « scout » (ou « localizers »);</p>
+</li><li>
+<p>d’extraire les métadonnées du jeu d’images DICOM;</p>
+</li><li>
+<p>et de les transcrire dans un fichier CSV.</p>
+</li></ul>
+
+<p>Quelques indications pour démarrer…</p>
+
+<h2 id="label-En+un+clin+d%27oeil">En un clin d’oeil</h2>
+
+<p>Obtenir les sources et décompacter le fichier de jeu de tests:</p>
+
+<pre>$ git clone git@github.com:olange/rradarr.git
+$ cd rradarr/test/fixtures/valid-dicom/
+$ tar xjvf valid-dicom.tar.bz2</pre>
+
+<p>Installer les dépendances et exécuter les tests pour vérifier que tout
+fonctionne; ignorez la deuxième commande si vous n’utilisez pas RVM:</p>
+
+<pre>$ cd rradarr
+$ rvm use 1.9.2@dicom --create
+$ bundle install
+$ rdoc -m README.rdoc .
+$ rspec --color .</pre>
+
+<h2 id="label-G%C3%A9n%C3%A9rer+la+documentation+%28API%29">Générer la documentation (API)</h2>
+
+<p>Pour consulter la description des classes et leurs méthodes au format HTML
+et explorer leur hiérarchie.</p>
+
+<pre>$ rdoc -m README.rdoc -t &quot;Extraction des metadonnees d'un examen DICOM&quot; .
+$ google-chrome doc/index.html &amp;</pre>
+
+<h2 id="label-Ex%C3%A9cuter+les+tests">Exécuter les tests</h2>
+
+<p>Pour s’assurer que le code est fonctionnel. Les spécifications permettent
+quant à elles de lire les exigences auxquelles répondent les classes et de
+trouver des fragments de code pour invoquer celles-ci.</p>
+
+<pre>$ rvm use 1.9.2@dicom
+$ rspec --color .
+...............
+
+Finished in 4.92 seconds
+15 examples, 0 failures</pre>
+
+<p>Avant d’exécuter les tests pour la première fois, décompresser l’archive
+<code>valid-dicom.tar.bz2</code>, qui se trouve dans le dossier
+<code>test/fixtures/valid-dicom/</code>:</p>
+
+<pre>$ cd test/fixtures/valid-dicom/
+$ tar xjvf valid-dicom.tar.bz2</pre>
+
+<h2 id="label-Mise+en+place+de+l%27environnement">Mise en place de l’environnement</h2>
+
+<h3 id="label-Cr%C3%A9er+un+environnement+RVM">Créer un environnement RVM</h3>
+
+<p>Si vous utilisez <a
+href="http://beginrescueend.com/rvm/best-practices/">RVM</a> (Ruby
+enVironment Manager), créez un jeu de librairies pour le projet:</p>
+
+<pre>$ rvm use 1.9.2
+$ rvm gemset create dicom</pre>
+
+<p>Ensuite, en préalable à toute commande (<code>ruby</code>,
+<code>bundle</code>, <code>irb</code>) et à chaque fois que vous ouvrirez
+la ligne de commande, songez à exécuter <strong>une fois</strong> la
+commande qui suit:</p>
+
+<pre>$ rvm use 1.9.2@dicom</pre>
+
+<p>Un descripteur <code>.rvmrc</code> se trouve à la racine du projet, pour
+simplifier cette tâche (RVM l’exécute automatiquement).</p>
+
+<h3 id="label-Outils+Ruby+n%C3%A9cessaires">Outils Ruby nécessaires</h3>
+
+<p>Si <code>bundler</code> n’était pas encore installé:</p>
+
+<pre>$ gem install bundler</pre>
+
+<h3 id="label-Librairies+Ruby+n%C3%A9cessaires">Librairies Ruby nécessaires</h3>
+
+<p>Les librairies nécessaires au projet sont décrites dans le fichier
+<code>Gemfile</code>. Exécutez la commande suivante pour les télécharger et
+les installer dans votre environnement Ruby:</p>
+
+<pre>$ bundle install</pre>
+
+<h2 id="label-Cr%C3%A9dits+de+r%C3%A9alisation">Crédits de réalisation</h2>
+
+<p>Requirements: Tristan Zand (<a href="mailto:zzz@zzz.ch">zzz@zzz.ch</a>)</p>
+
+<p>Author: Olivier Lange (<a
+href="mailto:olange@petit-atelier.ch">olange@petit-atelier.ch</a>)</p>
+
+<h2 id="label-Licence">Licence</h2>
+
+<p>Copyright © 2011 Tristan Zand &amp; Olivier Lange</p>
+
+<p>This program is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option)
+any later version.</p>
+
+<p>This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+more details.</p>
+
+<p>You should find a copy of the GNU General Public License within the <a
+href="COPYING.html">COPYING</a> file along with this program. If not, see
+<a href="http://www.gnu.org/licenses/.">www.gnu.org/licenses/.</a></p>
+
+</div>
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

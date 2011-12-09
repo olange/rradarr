@@ -1,971 +1,374 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+
+<html>
 <head>
-	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-
-	<title>Class: ExamCruncher</title>
-
-	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
-
-	<script src="./js/jquery.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="./js/thickbox-compressed.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="./js/quicksearch.js" type="text/javascript"
-		charset="utf-8"></script>
-	<script src="./js/darkfish.js" type="text/javascript"
-		charset="utf-8"></script>
-
-</head>
-<body class="class">
-
-	<div id="metadata">
-		<div id="home-metadata">
-			<div id="home-section" class="section">
-        <h3 class="section-header">
-          <a href="./index.html">Home</a>
-          <a href="./index.html#classes">Classes</a>
-          <a href="./index.html#methods">Methods</a>
-        </h3>
-			</div>
-		</div>
-
-		<div id="file-metadata">
-			<div id="file-list-section" class="section">
-				<h3 class="section-header">In Files</h3>
-				<div class="section-body">
-					<ul>
-					
-						<li><a href="./lib/exam_cruncher_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="lib/exam_cruncher.rb">lib/exam_cruncher.rb</a></li>
-					
-					</ul>
-				</div>
-			</div>
-
-			
-		</div>
-
-		<div id="class-metadata">
-
-			<!-- Parent Class -->
-			
-			<div id="parent-class-section" class="section">
-				<h3 class="section-header">Parent</h3>
-				
-				<p class="link"><a href="Object.html">Object</a></p>
-				
-			</div>
-			
-
-			<!-- Namespace Contents -->
-			
-
-			<!-- Method Quickref -->
-			
-			<div id="method-list-section" class="section">
-				<h3 class="section-header">Methods</h3>
-				<ul class="link-list">
-					
-					<li><a href="#method-c-crunch">::crunch</a></li>
-					
-					<li><a href="#method-c-new">::new</a></li>
-					
-					<li><a href="#method-i-build_options_parser">#build_options_parser</a></li>
-					
-					<li><a href="#method-i-candidate_directory%3F">#candidate_directory?</a></li>
-					
-					<li><a href="#method-i-check_if_output_exists">#check_if_output_exists</a></li>
-					
-					<li><a href="#method-i-collect_subdirs_of">#collect_subdirs_of</a></li>
-					
-					<li><a href="#method-i-crunch">#crunch</a></li>
-					
-					<li><a href="#method-i-error">#error</a></li>
-					
-					<li><a href="#method-i-excluded_directory%3F">#excluded_directory?</a></li>
-					
-					<li><a href="#method-i-get_output_file_for">#get_output_file_for</a></li>
-					
-					<li><a href="#method-i-info">#info</a></li>
-					
-					<li><a href="#method-i-normalize_path">#normalize_path</a></li>
-					
-					<li><a href="#method-i-parse_arguments_from%21">#parse_arguments_from!</a></li>
-					
-					<li><a href="#method-i-parse_options_from%21">#parse_options_from!</a></li>
-					
-					<li><a href="#method-i-warn">#warn</a></li>
-					
-				</ul>
-			</div>
-			
-
-			<!-- Included Modules -->
-			
-		</div>
-
-		<div id="project-metadata">
-			
-			
-			<div id="fileindex-section" class="section project-section">
-				<h3 class="section-header">Files</h3>
-				<ul>
-				
-					<li class="file"><a href="./COPYING.html">COPYING</a></li>
-				
-					<li class="file"><a href="./Gemfile.html">Gemfile</a></li>
-				
-					<li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
-				
-					<li class="file"><a href="./test/README_test_rdoc.html">README_test.rdoc</a></li>
-				
-				</ul>
-			</div>
-			
-
-			<div id="classindex-section" class="section project-section">
-				<h3 class="section-header">Class Index
-					<span class="search-toggle"><img src="./images/find.png"
-						height="16" width="16" alt="[+]"
-						title="show/hide quicksearch" /></span></h3>
-				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
-				<fieldset>
-					<legend>Quicksearch</legend>
-					<input type="text" name="quicksearch" value=""
-						class="quicksearch-field" />
-				</fieldset>
-				</form>
-
-				<ul class="link-list">
-				
-					<li><a href="./DICOMElementsHelper.html">DICOMElementsHelper</a></li>
-				
-					<li><a href="./Exam.html">Exam</a></li>
-				
-					<li><a href="./ExamCruncher.html">ExamCruncher</a></li>
-				
-					<li><a href="./Object.html">Object</a></li>
-				
-				</ul>
-				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
-			</div>
-
-			
-		</div>
-	</div>
-
-	<div id="documentation">
-		<h1 class="class">ExamCruncher</h1>
-
-		<div id="description">
-			<p>
-Classe utilitaire qui commande l&#8217;extraction des métadonnées
-d&#8217;une série d&#8217;images DICOM et leur transcription dans un
-fichier CSV, d&#8217;après les arguments de la ligne de commande.
-</p>
-<p>
-Usage:
-</p>
-<pre>
-  ExamCruncher.crunch ARGV
-  ExamCruncher.crunch ARGV, { :force =&gt; true }</pre>
-
-		</div>
-
-		<!-- Constants -->
-		
-		<div id="constants-list" class="section">
-			<h3 class="section-header">Constants</h3>
-			<dl>
-			
-				<dt><a name="DEFAULT_OPTIONS">DEFAULT_OPTIONS</a></dt>
-				
-				<dd class="description"></dd>
-				
-			
-				<dt><a name="LICENSE">LICENSE</a></dt>
-				
-				<dd class="description"></dd>
-				
-			
-			</dl>
-		</div>
-		
-
-		<!-- Attributes -->
-		
-		<div id="attribute-method-details" class="method-section section">
-			<h3 class="section-header">Attributes</h3>
-
-			
-			<div id="options-attribute-method" class="method-detail">
-				<a name="options"></a>
-				
-				<div class="method-heading attribute-method-heading">
-					<span class="method-name">options</span><span
-						class="attribute-access-type">[R]</span>
-				</div>
-
-				<div class="method-description">
-				
-				
-				
-				</div>
-			</div>
-			
-			<div id="images-base-dir-attribute-method" class="method-detail">
-				<a name="images_base_dir"></a>
-				
-				<div class="method-heading attribute-method-heading">
-					<span class="method-name">images_base_dir</span><span
-						class="attribute-access-type">[R]</span>
-				</div>
-
-				<div class="method-description">
-				
-				
-				
-				</div>
-			</div>
-			
-			<div id="output-file-attribute-method" class="method-detail">
-				<a name="output_file"></a>
-				
-				<div class="method-heading attribute-method-heading">
-					<span class="method-name">output_file</span><span
-						class="attribute-access-type">[R]</span>
-				</div>
-
-				<div class="method-description">
-				
-				
-				
-				</div>
-			</div>
-			
-		</div>
-		
-
-		<!-- Methods -->
-		
-		<div id="public-class-method-details" class="method-section section">
-			<h3 class="section-header">Public Class Methods</h3>
-
-		
-			<div id="crunch-method" class="method-detail ">
-				<a name="method-c-crunch"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">crunch</span><span
-						class="method-args">( args, options = {})</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="crunch-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 40</span>
-40:   <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">crunch</span>( <span class="ruby-identifier">args</span>, <span class="ruby-identifier">options</span> = {})
-41:     <span class="ruby-constant">ExamCruncher</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">options</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cruncher</span><span class="ruby-operator">|</span>
-42:       <span class="ruby-identifier">cruncher</span>.<span class="ruby-identifier">crunch</span>( <span class="ruby-identifier">args</span>)
-43:     <span class="ruby-keyword kw">end</span>
-44:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="new-method" class="method-detail ">
-				<a name="method-c-new"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">new</span><span
-						class="method-args">( options = {})</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="new-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 46</span>
-46:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">options</span> = {})
-47:     <span class="ruby-ivar">@options</span> = <span class="ruby-constant">DEFAULT_OPTIONS</span>.<span class="ruby-identifier">merge</span>( <span class="ruby-identifier">options</span>)
-48:     <span class="ruby-ivar">@images_base_dir</span> = <span class="ruby-keyword kw">nil</span>
-49: 
-50:     <span class="ruby-ivar">@executable_name</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">split</span>( <span class="ruby-identifier">$0</span>)[ <span class="ruby-value">1</span>]
-51:     <span class="ruby-ivar">@options_parser</span> = <span class="ruby-identifier">build_options_parser</span>
-52: 
-53:     <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">self</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
-54:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-		</div>
-	
-		<div id="public-instance-method-details" class="method-section section">
-			<h3 class="section-header">Public Instance Methods</h3>
-
-		
-			<div id="crunch-method" class="method-detail ">
-				<a name="method-i-crunch"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">crunch</span><span
-						class="method-args">( args)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="crunch-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 56</span>
-56:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">crunch</span>( <span class="ruby-identifier">args</span>)
-57:     <span class="ruby-identifier">parse_arguments_from!</span>( <span class="ruby-identifier">args</span>)
-58: 
-59:     <span class="ruby-identifier">info</span>( <span class="ruby-value str">&quot;snifff&quot;</span>, <span class="ruby-value str">&quot;for directories within %s/&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-ivar">@images_base_dir</span>)
-60:     <span class="ruby-identifier">image_dirs</span>, <span class="ruby-identifier">count</span> = <span class="ruby-identifier">collect_subdirs_of</span> <span class="ruby-ivar">@images_base_dir</span>
-61: 
-62:     <span class="ruby-identifier">error</span>( <span class="ruby-value str">&quot;found no directories containing any files, exiting&quot;</span>, <span class="ruby-value">2</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">count</span>.<span class="ruby-identifier">zero?</span>
-63:     <span class="ruby-identifier">info</span>( <span class="ruby-value str">&quot;mmmmhh&quot;</span>, <span class="ruby-value str">&quot;found %d candidate director%s&quot;</span>        <span class="ruby-operator">%</span> [ <span class="ruby-identifier">count</span>, <span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">?</span> <span class="ruby-value str">&quot;ies&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">&quot;y&quot;</span>])
-64: 
-65:     <span class="ruby-identifier">image_dirs</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">input_dir</span><span class="ruby-operator">|</span>
-66:       <span class="ruby-identifier">info</span>( <span class="ruby-value str">&quot;sluurp&quot;</span>, <span class="ruby-value str">&quot;images from directory %s/ ...&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">input_dir</span>)
-67:       <span class="ruby-identifier">exam</span> = <span class="ruby-constant">Exam</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">input_dir</span>)
-68:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">exam</span>.<span class="ruby-identifier">empty?</span>
-69:         <span class="ruby-identifier">info</span>( <span class="ruby-value str">&quot;ouuups&quot;</span>, <span class="ruby-value str">&quot;found no DICOM images, skipping that directory&quot;</span>)
-70:         <span class="ruby-keyword kw">next</span>
-71:       <span class="ruby-keyword kw">end</span>
-72: 
-73:       <span class="ruby-identifier">output_basename</span> = <span class="ruby-identifier">get_output_file_for</span>( <span class="ruby-identifier">input_dir</span>)
-74:       <span class="ruby-identifier">output_csv</span> = <span class="ruby-identifier">output_basename</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;.csv&quot;</span>
-75:       <span class="ruby-identifier">output_html</span> = <span class="ruby-identifier">output_basename</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;.html&quot;</span>
-76:       <span class="ruby-identifier">check_if_output_exists</span>( <span class="ruby-identifier">output_csv</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:csv_export</span>]
-77:       <span class="ruby-identifier">check_if_output_exists</span>( <span class="ruby-identifier">output_html</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:html_export</span>]
-78: 
-79:       <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:dry_run</span>]
-80:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:csv_export</span>]
-81:           <span class="ruby-identifier">info</span>( <span class="ruby-value str">&quot;crunch&quot;</span>, <span class="ruby-value str">&quot;to CSV file %s ...&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">output_csv</span>)
-82:           <span class="ruby-identifier">open</span>( <span class="ruby-identifier">output_csv</span>, <span class="ruby-value str">&quot;w&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">exam</span>.<span class="ruby-identifier">to_csv</span> <span class="ruby-identifier">f</span> }
-83:         <span class="ruby-keyword kw">end</span>
-84: 
-85:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:html_export</span>]
-86:           <span class="ruby-identifier">info</span>( <span class="ruby-value str">&quot;cronch&quot;</span>, <span class="ruby-value str">&quot;to HTML file %s ...&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">output_html</span>)
-87:           <span class="ruby-identifier">open</span>( <span class="ruby-identifier">output_html</span>, <span class="ruby-value str">&quot;w&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">exam</span>.<span class="ruby-identifier">to_html</span> <span class="ruby-identifier">f</span> }
-88:         <span class="ruby-keyword kw">end</span>
-89:       <span class="ruby-keyword kw">end</span>
-90:     <span class="ruby-keyword kw">end</span>
-91:     <span class="ruby-identifier">info</span>( <span class="ruby-value str">&quot;buuurp\n&quot;</span>)
-92:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-		</div>
-	
-		<div id="private-instance-method-details" class="method-section section">
-			<h3 class="section-header">Private Instance Methods</h3>
-
-		
-			<div id="build-options-parser-method" class="method-detail ">
-				<a name="method-i-build_options_parser"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">build_options_parser</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Assemble l&#8217;analyseur des options de la ligne de commande spécifiques
-à ce programme.
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="build-options-parser-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 191</span>
-191:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build_options_parser</span>
-192:     <span class="ruby-constant">OptionParser</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">opts</span><span class="ruby-operator">|</span>
-193:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">banner</span> =            <span class="ruby-value str">&quot;\nConverts the metadata in a serie of DICOM image files&quot;</span>          <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\nto CSV and an HTML graph of the X-ray tube current.\n&quot;</span>          <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\nUsage:&quot;</span>          <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n  %s [options] dicom_base_dir\n&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-ivar">@executable_name</span>
-194: 
-195:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">&quot;\nOptions:&quot;</span>
-196: 
-197:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>( <span class="ruby-value str">&quot;--[no-]csv&quot;</span>, <span class="ruby-value str">&quot;Exports the DICOM metadata as CSV &quot;</span>          <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;(default %s).&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:csv_export</span>]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">csv</span><span class="ruby-operator">|</span>
-198:         <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:csv_export</span>] = <span class="ruby-identifier">csv</span>
-199:       <span class="ruby-keyword kw">end</span>
-200: 
-201:       <span class="ruby-comment cmt"># [ TODO</span>
-202:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>( <span class="ruby-value str">&quot;--[no-]html&quot;</span>, <span class="ruby-value str">&quot;Graph the DICOM metadata as HTML &quot;</span>          <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;(default %s).&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:html_export</span>]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">html</span><span class="ruby-operator">|</span>
-203:         <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:html_export</span>] = <span class="ruby-identifier">html</span>
-204:       <span class="ruby-keyword kw">end</span> <span class="ruby-comment cmt"># ]</span>
-205: 
-206:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>( <span class="ruby-value str">&quot;-f&quot;</span>, <span class="ruby-value str">&quot;--[no-]force&quot;</span>, <span class="ruby-value str">&quot;Overwrite existing files &quot;</span>          <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;(default %s).&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:force</span>]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">force</span><span class="ruby-operator">|</span>
-207:         <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:force</span>] = <span class="ruby-identifier">force</span>
-208:       <span class="ruby-keyword kw">end</span>
-209: 
-210:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>( <span class="ruby-value str">&quot;-r&quot;</span>, <span class="ruby-value str">&quot;--[no-]recurse&quot;</span>, <span class="ruby-value str">&quot;Recurse into directories &quot;</span>          <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;(default %s).&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:recurse</span>]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">recurse</span><span class="ruby-operator">|</span>
-211:         <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:recurse</span>] = <span class="ruby-identifier">recurse</span>
-212:       <span class="ruby-keyword kw">end</span>
-213: 
-214:       <span class="ruby-comment cmt"># [ FIXME: souhaité? cela rendrait-il l'export plus facile</span>
-215:       <span class="ruby-comment cmt"># à utiliser? quelles seraient les colonnes souhaitées? ]</span>
-216:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>( <span class="ruby-value str">&quot;--elements SET&quot;</span>, [ <span class="ruby-value">:all</span>, <span class="ruby-value">:doseff</span>],
-217:         <span class="ruby-value str">&quot;Set of elements in the export (all, doseff; &quot;</span>          <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;default %s).&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:element_set</span>]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">eltset</span><span class="ruby-operator">|</span>
-218:         <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:element_set</span>] = <span class="ruby-identifier">eltset</span>
-219:         <span class="ruby-identifier">warn</span>( <span class="ruby-value str">&quot;L'option --elements n'est pas prise en compte &quot;</span>            <span class="ruby-value str">&quot;(non implémenté). Serait-elle utile?&quot;</span>.<span class="ruby-identifier">red</span>)
-220:       <span class="ruby-keyword kw">end</span>
-221: 
-222:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>( <span class="ruby-value str">&quot;-v&quot;</span>, <span class="ruby-value str">&quot;--verbose&quot;</span>, <span class="ruby-value str">&quot;Run more verbosely &quot;</span>          <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;(default %s).&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:verbose</span>]) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">verb</span><span class="ruby-operator">|</span>
-223:         <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:verbose</span>] = <span class="ruby-identifier">verb</span>
-224:       <span class="ruby-keyword kw">end</span>
-225: 
-226:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>( <span class="ruby-value str">&quot;--dry-run&quot;</span>,
-227:         <span class="ruby-value str">&quot;Parse options and files, but do not write anything.&quot;</span>) <span class="ruby-keyword kw">do</span>
-228:         <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:dry_run</span>] = <span class="ruby-keyword kw">true</span>
-229:       <span class="ruby-keyword kw">end</span>
-230: 
-231:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">&quot;\nMiscellaneous options:&quot;</span>
-232: 
-233:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on_tail</span>( <span class="ruby-value str">&quot;-h&quot;</span>, <span class="ruby-value str">&quot;--help&quot;</span>, <span class="ruby-value str">&quot;Show this usage message and exit.&quot;</span>) <span class="ruby-keyword kw">do</span>
-234:         <span class="ruby-identifier">info</span>( <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">help</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n&quot;</span>)
-235:         <span class="ruby-identifier">exit</span>
-236:       <span class="ruby-keyword kw">end</span>
-237: 
-238:       <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on_tail</span>( <span class="ruby-value str">&quot;--copyright&quot;</span>, <span class="ruby-value str">&quot;Print the copyright.&quot;</span>) <span class="ruby-keyword kw">do</span>
-239:         <span class="ruby-constant">STDOUT</span>.<span class="ruby-identifier">puts</span> <span class="ruby-constant">LICENSE</span>
-240:         <span class="ruby-identifier">exit</span>
-241:       <span class="ruby-keyword kw">end</span>
-242:     <span class="ruby-keyword kw">end</span>
-243:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="candidate-directory--method" class="method-detail ">
-				<a name="method-i-candidate_directory%3F"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">candidate_directory?</span><span
-						class="method-args">( pathname)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="candidate-directory--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 117</span>
-117:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">candidate_directory?</span>( <span class="ruby-identifier">pathname</span>)
-118:     <span class="ruby-comment cmt"># raise TypeError unless pathname.kind_of? Pathname</span>
-119:     <span class="ruby-identifier">it_contains_a_file</span> = <span class="ruby-keyword kw">false</span>
-120:     <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>( <span class="ruby-identifier">pathname</span>.<span class="ruby-identifier">join</span>( <span class="ruby-value str">&quot;*&quot;</span>)) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
-121:       <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">end_with?</span>( <span class="ruby-value str">&quot;.csv&quot;</span>)
-122:       <span class="ruby-identifier">it_contains_a_file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>( <span class="ruby-identifier">path</span>)
-123:       <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">it_contains_a_file</span>
-124:     <span class="ruby-keyword kw">end</span>
-125:     <span class="ruby-identifier">it_contains_a_file</span>
-126:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="check-if-output-exists-method" class="method-detail ">
-				<a name="method-i-check_if_output_exists"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">check_if_output_exists</span><span
-						class="method-args">( output_file)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Reporte une erreur si un fichier de sortie CSV existe déjà et que
-l&#8217;option :force n&#8217;a pas été spécifiée.
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="check-if-output-exists-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 130</span>
-130:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">check_if_output_exists</span>( <span class="ruby-identifier">output_file</span>)
-131:     <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span> <span class="ruby-identifier">output_file</span>
-132:       <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:force</span>]
-133:         <span class="ruby-identifier">warn</span>( <span class="ruby-value str">&quot;Overwriting file %s&quot;</span>.<span class="ruby-identifier">red</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">output_file</span>)
-134:       <span class="ruby-keyword kw">else</span>
-135:         <span class="ruby-identifier">error</span>( <span class="ruby-value str">&quot;Error: file %s exists, use --force to overwrite&quot;</span>.<span class="ruby-identifier">red</span>            <span class="ruby-operator">%</span> <span class="ruby-identifier">output_file</span>, <span class="ruby-value">1</span>)
-136:       <span class="ruby-keyword kw">end</span>
-137:     <span class="ruby-keyword kw">end</span>
-138:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="collect-subdirs-of-method" class="method-detail ">
-				<a name="method-i-collect_subdirs_of"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">collect_subdirs_of</span><span
-						class="method-args">( base_dir)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Collecte et retourne la liste des sous-dossiers qui contienne un fichier au
-moins, à partir d&#8217;un chemin d&#8217;accès, ainsi que le nombre de
-dossiers collectés &#8212; à moins que l&#8217;option :recurse ait été
-définie comme <tt>false</tt>, dans quel cas le chemin d&#8217;accès de base
-est retourné tel quel.
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="collect-subdirs-of-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 101</span>
-101:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">collect_subdirs_of</span>( <span class="ruby-identifier">base_dir</span>)
-102:     <span class="ruby-keyword kw">return</span> [ <span class="ruby-identifier">base_dir</span> ], <span class="ruby-value">1</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:recurse</span>]
-103:     <span class="ruby-identifier">subdirs</span> = []
-104:     <span class="ruby-constant">Pathname</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">base_dir</span>).<span class="ruby-identifier">find</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
-105:       <span class="ruby-keyword kw">next</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">directory?</span>
-106:       <span class="ruby-constant">Find</span>.<span class="ruby-identifier">prune</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">excluded_directory?</span>( <span class="ruby-identifier">path</span>)
-107:       <span class="ruby-identifier">subdirs</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">candidate_directory?</span>( <span class="ruby-identifier">path</span>)
-108:     <span class="ruby-keyword kw">end</span>
-109:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">subdirs</span>, <span class="ruby-identifier">subdirs</span>.<span class="ruby-identifier">count</span>
-110:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="error-method" class="method-detail ">
-				<a name="method-i-error"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">error</span><span
-						class="method-args">( msg, with_status = nil)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="error-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 256</span>
-256:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">error</span>( <span class="ruby-identifier">msg</span>, <span class="ruby-identifier">with_status</span> = <span class="ruby-keyword kw">nil</span>)
-257:     <span class="ruby-identifier">msg</span> = <span class="ruby-value str">&quot;\n&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">msg</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
-258:     <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">msg</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot; &quot;</span>
-259:     <span class="ruby-identifier">exit</span> <span class="ruby-identifier">with_status</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">with_status</span>.<span class="ruby-identifier">nil?</span>
-260:     <span class="ruby-identifier">exit</span>
-261:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="excluded-directory--method" class="method-detail ">
-				<a name="method-i-excluded_directory%3F"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">excluded_directory?</span><span
-						class="method-args">( pathname)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="excluded-directory--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 112</span>
-112:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">excluded_directory?</span>( <span class="ruby-identifier">pathname</span>)
-113:     <span class="ruby-comment cmt"># raise TypeError unless pathname.kind_of? Pathname</span>
-114:     <span class="ruby-identifier">pathname</span>.<span class="ruby-identifier">fnmatch?</span> <span class="ruby-value str">&quot;**/.svn&quot;</span>, <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">FNM_PATHNAME</span>
-115:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="get-output-file-for-method" class="method-detail ">
-				<a name="method-i-get_output_file_for"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">get_output_file_for</span><span
-						class="method-args">( dirname)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Compose un nom de fichier d&#8217;après le chemin d&#8217;accès à un
-dossier d&#8217;images, sans extension (on peut ainsi lui ajouter
-&#8220;.csv&#8221; ou &#8220;.html&#8221;). Par exemple, pour le dossier
-&#8220;test/valid-dicom/LAPIN2/&#8220;, retournerait le nom de fichier
-&#8220;test/valid-dicom/LAPIN2&#8220;.
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="get-output-file-for-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 153</span>
-153:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_output_file_for</span>( <span class="ruby-identifier">dirname</span>)
-154:     <span class="ruby-identifier">dirpath</span> = <span class="ruby-constant">Pathname</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">dirname</span>).<span class="ruby-identifier">cleanpath</span>
-155:     <span class="ruby-identifier">output_file</span> = <span class="ruby-node">&quot;#{dirpath.basename}&quot;</span>   <span class="ruby-comment cmt"># dernier segment</span>
-156:     <span class="ruby-identifier">dirpath</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">join</span>( <span class="ruby-identifier">output_file</span>).<span class="ruby-identifier">to_s</span>
-157:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="info-method" class="method-detail ">
-				<a name="method-i-info"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">info</span><span
-						class="method-args">( msg, compl = nil)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="info-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 268</span>
-268:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">info</span>( <span class="ruby-identifier">msg</span>, <span class="ruby-identifier">compl</span> = <span class="ruby-keyword kw">nil</span>)
-269:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:verbose</span>]
-270:       <span class="ruby-identifier">msg</span> = <span class="ruby-value str">&quot;%s → %s&quot;</span> <span class="ruby-operator">%</span> [ <span class="ruby-identifier">msg</span>, <span class="ruby-identifier">compl</span>] <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">compl</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">compl</span>.<span class="ruby-identifier">empty?</span>
-271:       <span class="ruby-identifier">msg</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;\n&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>[ <span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;\n&quot;</span>
-272:     <span class="ruby-keyword kw">else</span>
-273:       <span class="ruby-identifier">msg</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot; &quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">msg</span>[ <span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;\n&quot;</span>
-274:     <span class="ruby-keyword kw">end</span>
-275:     <span class="ruby-constant">STDOUT</span>.<span class="ruby-identifier">print</span> <span class="ruby-identifier">msg</span>
-276:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="normalize-path-method" class="method-detail ">
-				<a name="method-i-normalize_path"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">normalize_path</span><span
-						class="method-args">( path)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Normalise un chemin d&#8217;accès relatif ou absolu, en supprimant les
-séparateurs et les segments &#8217;.&#8217; ou &#8217;..&#8217; superflus.
-Noter que le dernier séparateur en particulier est supprimé. Par exemple,
-&#8220;./test/valid-dicom/XY/../&#8220; deviendrait
-&#8220;test/valid-dicom&#8220;.
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="normalize-path-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 145</span>
-145:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">normalize_path</span>( <span class="ruby-identifier">path</span>)
-146:     <span class="ruby-constant">Pathname</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">path</span>).<span class="ruby-identifier">cleanpath</span>.<span class="ruby-identifier">to_s</span>
-147:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="parse-arguments-from--method" class="method-detail ">
-				<a name="method-i-parse_arguments_from%21"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">parse_arguments_from!</span><span
-						class="method-args">( args)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Transcrit les valeurs des *options et arguments* de la ligne de commande
-dans les variables d&#8217;instance. Altère le tableau &#8216;args&#8217;.
-Reporte une erreur si l&#8217;un des arguments ou options sont invalides.
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="parse-arguments-from--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 162</span>
-162:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_arguments_from!</span>( <span class="ruby-identifier">args</span>)
-163:     <span class="ruby-identifier">parse_options_from!</span> <span class="ruby-identifier">args</span>
-164: 
-165:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">empty?</span>
-166:       <span class="ruby-identifier">error</span>( <span class="ruby-value str">&quot;Error: you must supply a base directory name\n&quot;</span>.<span class="ruby-identifier">red</span>          <span class="ruby-operator">+</span> <span class="ruby-ivar">@options_parser</span>.<span class="ruby-identifier">help</span>, <span class="ruby-value">2</span>)
-167:     <span class="ruby-keyword kw">end</span>
-168: 
-169:     <span class="ruby-ivar">@images_base_dir</span> = <span class="ruby-identifier">normalize_path</span> <span class="ruby-identifier">args</span>[ <span class="ruby-value">0</span>]
-170:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="parse-options-from--method" class="method-detail ">
-				<a name="method-i-parse_options_from%21"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">parse_options_from!</span><span
-						class="method-args">( args)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					<p>
-Transcrit les valeurs des <b>options</b> de la ligne de commande dans la
-variable d&#8217;instance &#8216;options&#8217; (un hash). Altère le
-tableau &#8216;args&#8217;, dont les options identifiées sont retirées.
-Soulève une exception si l&#8217;une des options ou son argument sont
-invalides.
-</p>
-					
-
-					
-					<div class="method-source-code"
-						id="parse-options-from--source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 177</span>
-177:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_options_from!</span>( <span class="ruby-identifier">args</span>)
-178:     <span class="ruby-keyword kw">begin</span>
-179:       <span class="ruby-ivar">@options_parser</span>.<span class="ruby-identifier">parse!</span>( <span class="ruby-identifier">args</span>)
-180:     <span class="ruby-keyword kw">rescue</span>        <span class="ruby-constant">OptionParser</span><span class="ruby-operator">::</span><span class="ruby-constant">InvalidArgument</span>,
-181:       <span class="ruby-constant">OptionParser</span><span class="ruby-operator">::</span><span class="ruby-constant">InvalidOption</span>,
-182:       <span class="ruby-constant">OptionParser</span><span class="ruby-operator">::</span><span class="ruby-constant">MissingArgument</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">ex</span>
-183:       <span class="ruby-identifier">error</span>( <span class="ruby-value str">&quot;%s\n%s&quot;</span>          <span class="ruby-operator">%</span> [ <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">message</span>.<span class="ruby-identifier">capitalize</span>.<span class="ruby-identifier">red</span>, <span class="ruby-ivar">@options_parser</span>.<span class="ruby-identifier">help</span> ], <span class="ruby-value">1</span>)
-184:     <span class="ruby-keyword kw">end</span>
-185:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-			<div id="warn-method" class="method-detail ">
-				<a name="method-i-warn"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">warn</span><span
-						class="method-args">( msg)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="warn-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/exam_cruncher.rb, line 263</span>
-263:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">warn</span>( <span class="ruby-identifier">msg</span>)
-264:     <span class="ruby-identifier">msg</span> = <span class="ruby-value str">&quot;\n&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">msg</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:verbose</span>]
-265:     <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">msg</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot; &quot;</span>
-266:   <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-		</div>
-	
-
-	</div>
-
-
-	<div id="rdoc-debugging-section-dump" class="debugging-section">
-	
-		<p>Disabled; run with --debug to generate this.</p>
-	
-	</div>
-
-	<div id="validator-badges">
-		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
-		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
-			Rdoc Generator</a> 1.1.6</small>.</p>
-	</div>
-
-</body>
-</html>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>Class: ExamCruncher</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/exam_cruncher.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-crunch">::crunch</a>
+    
+    <li><a href="#method-c-new">::new</a>
+    
+    <li><a href="#method-i-crunch">#crunch</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./COPYING.html">COPYING</a>
+  
+    <li class="file"><a href="./Gemfile.html">Gemfile</a>
+  
+    <li class="file"><a href="./README_rdoc.html">README</a>
+  
+    <li class="file"><a href="./test/fixtures/README_fixtures_rdoc.html">README_fixtures</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./DICOMElementsHelper.html">DICOMElementsHelper</a>
+  
+    <li><a href="./Exam.html">Exam</a>
+  
+    <li><a href="./ExamCruncher.html">ExamCruncher</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class ExamCruncher</h1>
+
+  <div id="description" class="description">
+    
+<p>Classe utilitaire qui commande l’extraction des métadonnées d’une série
+d’images DICOM et leur transcription dans un fichier CSV, d’après les
+arguments de la ligne de commande.</p>
+
+<p>Usage:</p>
+
+<pre class="ruby"><span class="ruby-constant">ExamCruncher</span>.<span class="ruby-identifier">crunch</span> <span class="ruby-constant">ARGV</span>
+<span class="ruby-constant">ExamCruncher</span>.<span class="ruby-identifier">crunch</span> <span class="ruby-constant">ARGV</span>, { :<span class="ruby-identifier">force</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span> }
+</pre>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <!-- Constants -->
+    <section id="constants-list" class="section">
+      <h3 class="section-header">Constants</h3>
+      <dl>
+      
+        <dt id="DEFAULT_OPTIONS">DEFAULT_OPTIONS
+        
+        <dd class="description">
+        
+      
+        <dt id="EXCLUDED_DIRS">EXCLUDED_DIRS
+        
+        <dd class="description">
+        
+      
+        <dt id="LICENSE">LICENSE
+        
+        <dd class="description">
+        
+      
+      </dl>
+    </section>
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-images_base_dir" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">images_base_dir</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-options" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">options</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-output_file" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">output_file</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-crunch" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">crunch</span><span
+            class="method-args">( args, options = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="crunch-source">
+            <pre><span class="ruby-comment"># File lib/exam_cruncher.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">crunch</span>( <span class="ruby-identifier">args</span>, <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-constant">ExamCruncher</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">options</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cruncher</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">cruncher</span>.<span class="ruby-identifier">crunch</span>( <span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- crunch-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- crunch-method -->
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">( options = {}) { |self| ... }</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/exam_cruncher.rb, line 46</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">options</span> = {})
+  <span class="ruby-ivar">@options</span> = <span class="ruby-constant">DEFAULT_OPTIONS</span>.<span class="ruby-identifier">merge</span>( <span class="ruby-identifier">options</span>)
+  <span class="ruby-ivar">@images_base_dir</span> = <span class="ruby-keyword">nil</span>
+
+  <span class="ruby-ivar">@executable_name</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">split</span>( <span class="ruby-identifier">$0</span>)[ <span class="ruby-value">1</span>]
+  <span class="ruby-ivar">@options_parser</span> = <span class="ruby-identifier">build_options_parser</span>
+
+  <span class="ruby-keyword">yield</span> <span class="ruby-keyword">self</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-crunch" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">crunch</span><span
+            class="method-args">( args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="crunch-source">
+            <pre><span class="ruby-comment"># File lib/exam_cruncher.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">crunch</span>( <span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">parse_arguments_from!</span>( <span class="ruby-identifier">args</span>)
+
+  <span class="ruby-identifier">info</span>( <span class="ruby-string">&quot;snifff&quot;</span>, <span class="ruby-string">&quot;for directories within %s/&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-ivar">@images_base_dir</span>)
+  <span class="ruby-identifier">image_dirs</span>, <span class="ruby-identifier">count</span> = <span class="ruby-identifier">collect_subdirs_of</span> <span class="ruby-ivar">@images_base_dir</span>
+
+  <span class="ruby-identifier">error</span>( <span class="ruby-string">&quot;found no directories containing any files, exiting&quot;</span>, <span class="ruby-value">2</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">count</span>.<span class="ruby-identifier">zero?</span>
+  <span class="ruby-identifier">info</span>( <span class="ruby-string">&quot;mmmmhh&quot;</span>, <span class="ruby-string">&quot;found %d candidate director%s&quot;</span>        <span class="ruby-operator">%</span> [ <span class="ruby-identifier">count</span>, <span class="ruby-identifier">count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;ies&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;y&quot;</span>])
+
+  <span class="ruby-identifier">image_dirs</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">input_dir</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">info</span>( <span class="ruby-string">&quot;sluurp&quot;</span>, <span class="ruby-string">&quot;images from directory %s/&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">input_dir</span>)
+    <span class="ruby-identifier">exam</span> = <span class="ruby-constant">Exam</span>.<span class="ruby-identifier">new</span>( <span class="ruby-identifier">input_dir</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">exam</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">info</span>( <span class="ruby-string">&quot;ouuups&quot;</span>.<span class="ruby-identifier">red</span>,            <span class="ruby-string">&quot;found no DICOM images in %s, skipping to next (sub)directory&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">input_dir</span>)
+      <span class="ruby-keyword">next</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">output_csv</span> = <span class="ruby-identifier">get_output_file_for</span>( <span class="ruby-identifier">input_dir</span>, <span class="ruby-string">&quot;.csv&quot;</span>)
+    <span class="ruby-identifier">output_html</span> = <span class="ruby-identifier">get_output_file_for</span>( <span class="ruby-identifier">input_dir</span>, <span class="ruby-string">&quot;.html&quot;</span>)
+    <span class="ruby-identifier">check_if_output_exists</span>( <span class="ruby-identifier">output_csv</span>) <span class="ruby-keyword">if</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:csv_export</span>]
+    <span class="ruby-identifier">check_if_output_exists</span>( <span class="ruby-identifier">output_html</span>) <span class="ruby-keyword">if</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:html_export</span>]
+
+    <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:dry_run</span>]
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:csv_export</span>]
+        <span class="ruby-identifier">info</span>( <span class="ruby-string">&quot;crunch&quot;</span>, <span class="ruby-string">&quot;to CSV file %s&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">output_csv</span>)
+        <span class="ruby-identifier">open</span>( <span class="ruby-identifier">output_csv</span>, <span class="ruby-string">&quot;w&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">exam</span>.<span class="ruby-identifier">to_csv</span> <span class="ruby-identifier">f</span> }
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@options</span>[ <span class="ruby-value">:html_export</span>]
+        <span class="ruby-identifier">info</span>( <span class="ruby-string">&quot;cronch&quot;</span>, <span class="ruby-string">&quot;to HTML file %s&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">output_html</span>)
+        <span class="ruby-identifier">open</span>( <span class="ruby-identifier">output_html</span>, <span class="ruby-string">&quot;w&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-identifier">exam</span>.<span class="ruby-identifier">to_html</span> <span class="ruby-identifier">f</span> }
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">exam</span> = <span class="ruby-keyword">nil</span>  <span class="ruby-comment"># zappe l'objet</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">info</span>( <span class="ruby-string">&quot;buuurp\n&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- crunch-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- crunch-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
 

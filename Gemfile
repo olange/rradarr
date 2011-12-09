@@ -13,5 +13,6 @@ gem "colored", ">= 1.2"
 
 group :test, :development do
   gem "rspec", "~> 2.7"
+  gem "rdoc", "~> 3.0"
 end
 
