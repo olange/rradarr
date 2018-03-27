@@ -5,14 +5,14 @@ source :rubygems
 
 # Librairies requises par le projet
 
-gem "dicom", ">= 0.9.2"
-gem "json", ">= 1.6"
-gem "colored", ">= 1.2"
+gem "dicom", "~> 0.9.2"
+gem "json", "~> 1.6.8"
+gem "colored", "~> 1.2"
 
 # Librairies requises pour les tests et le développement
 
 group :test, :development do
   gem "rspec", "~> 2.7"
-  gem "rdoc", "~> 3.0"
+  gem "rdoc", "~> 3.12.1"
 end
 
