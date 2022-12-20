@@ -9,6 +9,10 @@ Pour un examen radiologique de type *CTscan*, cette librairie permet:
 
 Quelques indications pour démarrer...
 
+== Statut
+
+Code source est fonctionnel. Développé lors d'un _sprint_ en 2011, archivé en 2022.
+
 == En un clin d'oeil
 
 Obtenir les sources et décompacter le fichier de jeu de tests:
@@ -58,7 +62,7 @@ dossier <tt>test/fixtures/valid-dicom/</tt>:
 
 === Créer un environnement RVM
 
-Si vous utilisez RVM[beginrescueend.com/rvm/best-practices/] (Ruby enVironment
+Si vous utilisez RVM[https://rvm.io] (Ruby enVironment
 Manager), créez un jeu de librairies pour le projet:
 
   $ rvm use 1.9.2
